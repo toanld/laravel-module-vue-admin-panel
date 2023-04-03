@@ -1,5 +1,6 @@
 import '../css/main.css';
 
+import NProgress from 'nprogress'
 import { createPinia } from 'pinia'
 import { useStyleStore } from '@/Stores/style.js'
 import { useLayoutStore } from '@/Stores/layout.js'
@@ -17,7 +18,18 @@ const pinia = createPinia()
 
 createInertiaApp({
     progress: {
-      color: '#4B5563',
+        // The delay after which the progress bar will appear
+        // during navigation, in milliseconds.
+        delay: 250,
+
+        // The color of the progress bar.
+        color: '#29d',
+
+        // Whether to include the default NProgress styles.
+        includeCSS: true,
+
+        // Whether the NProgress spinner will be shown.
+        showSpinner: false,
     },
     title: (title) => `${title} - ${appName}`,
     //resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
@@ -50,7 +62,8 @@ createInertiaApp({
             .mount(el);
     },
 });
-
+router.on('start', () => NProgress.start())
+router.on('finish', () => NProgress.done())
 const styleStore = useStyleStore(pinia)
 const layoutStore = useLayoutStore(pinia)
 
