@@ -1,0 +1,22 @@
+<?php
+
+return [
+    'name' => '$STUDLY_NAME$',
+    'menu' =>[
+            "name" => '$STUDLY_NAME$',
+            "uri" => "<nolink>",
+            "link" => "",
+            "children" => [
+              [
+                "name" => "Thêm mới",
+                "uri" => "/$LOWER_NAME$/create",
+                "link" => "/$LOWER_NAME$/create"
+              ],
+                [
+                    "name" => "Danh sách",
+                    "uri" => "/$LOWER_NAME$",
+                    "link" => "/$LOWER_NAME$"
+                ]
+            ]
+        ]
+];
