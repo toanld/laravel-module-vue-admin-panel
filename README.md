@@ -47,6 +47,11 @@
 - `php artisan serve`
 - Now open http://localhost:8000/
 
+
+### With Module
+- Create new module.
+- `php artisan module:make <Module name>`
+
 ###### Super Admin Login
 - Email - superadmin@example.com
 - Password - password

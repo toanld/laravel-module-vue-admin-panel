@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Modules\Test\Entities\ModelExample as $STUDLY_NAME$;
+use Modules\$STUDLY_NAME$\Entities\ModelExample as $STUDLY_NAME$;
 use Inertia\Inertia;
 
 class $CLASS$ extends Controller
@@ -27,7 +27,7 @@ class $CLASS$ extends Controller
 
         $data = $STUDLY_NAME$::orderBy('id','DESC')->paginate(30);
         return Inertia::module('$LOWER_NAME$::Index', [
-            'datas' => $data,
+            'datas' => Inertia::lazy(fn () =>  $data),
             'filters' => request()->all('search'),
             'can' => [
                 'create' => Auth::user()->can('$LOWER_NAME$ create'),

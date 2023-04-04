@@ -102,7 +102,6 @@ class UserController extends Controller
     {
         $roles = Role::all()->pluck("name","id");
         $userHasRoles = array_column(json_decode($user->roles, true), 'id');
-
         return Inertia::render('Admin/User/Show', [
             'user' => $user,
             'roles' => $roles,
@@ -120,7 +119,6 @@ class UserController extends Controller
     {
         $roles = Role::all()->pluck("name","id");
         $userHasRoles = array_column(json_decode($user->roles, true), 'id');
-
         return Inertia::render('Admin/User/Edit', [
             'user' => $user,
             'roles' => $roles,

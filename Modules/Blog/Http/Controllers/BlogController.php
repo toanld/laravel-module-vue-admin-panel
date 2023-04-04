@@ -19,16 +19,22 @@ class BlogController extends Controller
         $this->middleware('can:blog edit', ['only' => ['edit', 'update']]);
         $this->middleware('can:blog delete', ['only' => ['destroy']]);
     }
+    public function getData2(){
+        sleep(10);
+        $data2 = Blog::orderBy('id','ASC')->paginate(30);
+        return $data2;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-
         $data = Blog::orderBy('id','DESC')->paginate(30);
+
         return Inertia::module('blog::Index', [
-            'datas' => $data,
+            'datas' => Inertia::lazy(fn () =>  $data),
             'filters' => request()->all('search'),
             'can' => [
                 'create' => Auth::user()->can('blog create'),

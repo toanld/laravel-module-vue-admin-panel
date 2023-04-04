@@ -25,7 +25,7 @@ const props = defineProps({
 const form = useForm({
   email: '',
   password: '',
-  remember: []
+  remember: ["on"]
 })
 
 const submit = () => {
@@ -55,7 +55,7 @@ const submit = () => {
       >
         <FormValidationErrors />
 
-        <NotificationBarInCard 
+        <NotificationBarInCard
           v-if="status"
           color="info"
         >
@@ -95,7 +95,7 @@ const submit = () => {
         <FormCheckRadioGroup
           v-model="form.remember"
           name="remember"
-          :options="{ remember: 'Remember' }"
+          :options="{ on: 'Remember' }"
         />
 
         <BaseDivider />

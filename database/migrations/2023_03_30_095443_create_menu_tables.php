@@ -35,9 +35,9 @@ class CreateMenuTables extends Migration
             $table->string('name');
             $table->string('uri')->nullable();
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->integer('weight')->default(0);
-            $table->boolean('enabled');
+            $table->unsignedBigInteger('parent_id')->nullable()->index();
+            $table->integer('weight')->default(0)->index();
+            $table->boolean('enabled')->index();
             $table->timestamps();
         });
     }

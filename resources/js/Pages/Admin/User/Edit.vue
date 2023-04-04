@@ -38,6 +38,7 @@ const form = useForm({
   password_confirmation: '',
   roles: props.userHasRoles
 })
+console.log(form.roles);
 </script>
 
 <template>

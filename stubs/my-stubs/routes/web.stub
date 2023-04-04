@@ -11,4 +11,4 @@
 |
 */
 
-Route::resource('$LOWER_NAME$','$STUDLY_NAME$Controller');
+Route::middleware('auth:web')->resource('$LOWER_NAME$','$STUDLY_NAME$Controller');

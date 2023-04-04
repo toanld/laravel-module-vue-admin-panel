@@ -11,4 +11,4 @@
 |
 */
 
-Route::resource('blog','BlogController');
+Route::middleware('auth:web')->resource('blog','BlogController');

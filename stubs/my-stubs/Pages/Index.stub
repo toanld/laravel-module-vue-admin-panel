@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link, useForm } from "@inertiajs/vue3"
+import { Head, Link, useForm,router } from "@inertiajs/vue3"
 import {
     mdiPlus,
     mdiCogOutline,
@@ -43,7 +43,7 @@ function destroy(id) {
         formDelete.delete(route("$LOWER_NAME$.destroy", id))
     }
 }
-console.log(props.datas);
+router.reload({ only: ['datas'] });
 </script>
 
 <template>
