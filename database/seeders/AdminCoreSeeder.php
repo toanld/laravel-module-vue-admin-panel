@@ -62,12 +62,13 @@ class AdminCoreSeeder extends Seeder
         }
 
         $role3 = Role::create(['name' => 'super-admin']);
+        $role4 = Role::create(['name' => 'guest']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
         $user = \App\Models\User::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'superadmin@example.com',
+            'email' => 'toanld1905@gmail.com',
         ]);
         $user->assignRole($role3);
 

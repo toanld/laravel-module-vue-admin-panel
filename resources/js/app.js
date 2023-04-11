@@ -7,11 +7,16 @@ import { useLayoutStore } from '@/Stores/layout.js'
 
 import { darkModeKey, styleKey } from '@/config.js'
 
-import { createApp, h } from 'vue';
+import { createApp, h} from 'vue';
+//window.md5 = require('md5');
 import { createInertiaApp, router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-
+import {myTrans} from "@/functions";
+import md5 from 'md5';
+window.myTrans = myTrans;
+window.md5 = md5;
+window.translateFormData = new FormData();
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 const pinia = createPinia()
@@ -55,15 +60,21 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+        let app = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(pinia)
-            .use(ZiggyVue, Ziggy)
-            .mount(el);
+            //.use(myPlugin)
+            .use(ZiggyVue, Ziggy);
+        app.config.globalProperties.$myTrans = myTrans;
+        return app.mount(el);
     },
 });
+
 router.on('start', () => NProgress.start())
-router.on('finish', () => NProgress.done())
+router.on('finish', () => {
+    NProgress.done();
+})
+
 const styleStore = useStyleStore(pinia)
 const layoutStore = useLayoutStore(pinia)
 

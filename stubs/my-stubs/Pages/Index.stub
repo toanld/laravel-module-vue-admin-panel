@@ -43,7 +43,7 @@ function destroy(id) {
         formDelete.delete(route("$LOWER_NAME$.destroy", id))
     }
 }
-router.reload({ only: ['datas'] });
+//router.reload({ only: ['datas'] });
 </script>
 
 <template>

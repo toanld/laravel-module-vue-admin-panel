@@ -1,7 +1,0 @@
-<template>
-    <div>Welcome to the $STUDLY_NAME$ module</div>
-</template>
-
-<script>
-export default {};
-</script>

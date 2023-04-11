@@ -30,4 +30,4 @@ export default defineConfig({
         }),
     ],
 });
-glob.sync('./Modules/*/*/vite.config.js').forEach(item => require(item));
+//glob.sync('./Modules/*/*/vite.config.js').forEach(item => require(item));

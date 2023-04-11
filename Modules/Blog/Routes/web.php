@@ -11,4 +11,5 @@
 |
 */
 
+Route::middleware('auth:web')->resource('blog/categories','CategoryController', array("as"=>"blog"));
 Route::middleware('auth:web')->resource('blog','BlogController');

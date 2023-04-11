@@ -33,8 +33,9 @@ class BlogController extends Controller
     {
         $data = Blog::orderBy('id','DESC')->paginate(30);
 
-        return Inertia::module('blog::Index', [
+        return Inertia::module('blog::Categories/Index', [
             'datas' => Inertia::lazy(fn () =>  $data),
+            //'datas' => $data,
             'filters' => request()->all('search'),
             'can' => [
                 'create' => Auth::user()->can('blog create'),
@@ -51,7 +52,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return Inertia::module('blog::Create');
+        return Inertia::module('blog::Categories/Create');
     }
 
     /**
@@ -82,7 +83,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         $data = Blog::find($id);
-        return Inertia::module('blog::Edit', [
+        return Inertia::module('blog::Categories/Edit', [
             'data' => $data,
         ]);
     }
@@ -118,6 +119,7 @@ class BlogController extends Controller
     public function destroy($id)
     {
         Blog::destroy($id);
+
         return redirect()->route('blog.index')
             ->with('message', __('Blog deleted successfully'));
         //

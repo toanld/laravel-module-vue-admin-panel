@@ -27,7 +27,8 @@ class $CLASS$ extends Controller
 
         $data = $STUDLY_NAME$::orderBy('id','DESC')->paginate(30);
         return Inertia::module('$LOWER_NAME$::Index', [
-            'datas' => Inertia::lazy(fn () =>  $data),
+            //'datas' => Inertia::lazy(fn () =>  $data),
+            'datas' => $data,
             'filters' => request()->all('search'),
             'can' => [
                 'create' => Auth::user()->can('$LOWER_NAME$ create'),

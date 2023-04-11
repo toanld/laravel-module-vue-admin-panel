@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -21,6 +22,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        Role::getRole(['Viewer']);
         return Inertia::render('Auth/Register');
     }
 
@@ -47,8 +49,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
-        Auth::login($user);
+        $user->syncRoles(Role::getRole(["Viewer"]));
+        Auth::login($user,true);
 
         return redirect(RouteServiceProvider::HOME);
     }

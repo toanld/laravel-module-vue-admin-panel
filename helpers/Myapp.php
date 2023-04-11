@@ -1,4 +1,6 @@
 <?php
+
+
 class Myapp
 {
     use \App\Traits\SingletonTrait;
@@ -11,10 +13,17 @@ class Myapp
         return $this->isWebviewApp;
     }
     function getModules(){
-        if(empty($this->modules)){
-            $this->modules = Module::all();
+        if($this->modules !== false) return $this->modules;
+        $fileJson = __DIR__ . "/../modules_statuses.json";
+        if(file_exists($fileJson)) {
+            $modules = json_decode(file_get_contents($fileJson), true);
+            if (!empty($modules)) {
+                $this->modules = $modules;
+                return $modules;
+            }
         }
-        return $this->modules;
+        $this->modules = [];
+        return [];
     }
 }
 function myapp(){
