@@ -58,7 +58,7 @@ const logout = () => {
 
 <template>
   <nav
-    class="top-0 left-0 right-0 fixed bg-gray-50 h-14 z-30 w-screen transition-position xl:pl-60 lg:w-auto dark:bg-slate-800"
+    class="top-0 left-0 right-0 fixed bg-gray-50 h-14 z-30 w-screen transition-position lg:w-auto dark:bg-slate-800"
   >
     <div
       class="flex lg:items-stretch"
@@ -106,7 +106,7 @@ const logout = () => {
           <NavBarMenu>
             <NavBarItemLabel
               :icon="mdiMenu"
-              label="Sample menu"
+              label=""
             />
 
             <template #dropdown>
@@ -131,9 +131,12 @@ const logout = () => {
               </NavBarItem>
             </template>
           </NavBarMenu>
+
+          
+
           <NavBarMenu>
-            <NavBarItemLabel :label="userName">
-              <UserAvatarCurrentUser class="w-6 h-6 mr-3 inline-flex" />
+            <NavBarItemLabel >
+              <UserAvatarCurrentUser class="w-6 h-6 inline-flex" />
             </NavBarItemLabel>
 
             <template #dropdown>
@@ -164,6 +167,7 @@ const logout = () => {
               </NavBarItem>
             </template>
           </NavBarMenu>
+
           <NavBarItem
             is-desktop-icon-only
             @click.prevent="toggleLightDark"
@@ -174,6 +178,7 @@ const logout = () => {
               is-desktop-icon-only
             />
           </NavBarItem>
+          
           <NavBarItem
             is-desktop-icon-only
             @click="logout"

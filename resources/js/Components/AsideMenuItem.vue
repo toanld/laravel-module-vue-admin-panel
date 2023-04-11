@@ -1,11 +1,12 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { Link } from '@inertiajs/vue3'
+import { ref, computed, onMounted } from 'vue'
+import { Link, router } from '@inertiajs/vue3'
 import { useStyleStore } from '@/Stores/style.js'
 import { mdiMinus, mdiPlus } from '@mdi/js'
 import { getButtonColor } from '@/colors.js'
 import BaseIcon from '@/Components/BaseIcon.vue'
 import AsideMenuList from '@/Components/AsideMenuList.vue'
+import { useLayoutStore } from '@/Stores/layout.js'
 
 const props = defineProps({
   item: {
@@ -13,6 +14,7 @@ const props = defineProps({
     required: true
   },
   isDropdownList: Boolean,
+  isAsideExpanded: Boolean
 })
 
 const itemHref = computed(() => (props.item && props.item.link) ? props.item.link : '')
@@ -32,10 +34,11 @@ const componentClass = computed(() => (
     props.isDropdownList ? 'py-3 px-6 text-sm' : 'py-3 px-6',
     hasColor.value
       ? getButtonColor(props.item.color, false, true)
-      : styleStore.asideMenuItemStyle
+      : styleStore.asideMenuItemStyle,
+    props.isAsideExpanded ? 'pl-1' : ''
   ]
 ))
-
+onMounted(() => {console.log() });
 const hasDropdown = computed(() => props.item.children)
 
 const menuClick = event => {
@@ -47,7 +50,7 @@ const menuClick = event => {
 }
 
 const activeInactiveStyle = computed(
-  () => props.item.route && route().current(props.item.route)
+  () => props.item.link == router.page.url
     ? styleStore.asideMenuItemActiveStyle
     : ''
 )
@@ -91,3 +94,9 @@ const activeInactiveStyle = computed(
     />
   </li>
 </template>
+
+<style scoped>
+/* .color-aside, li a:hover{
+  color: rgb(255 156 81) !important;
+} */
+</style>

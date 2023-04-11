@@ -1,6 +1,6 @@
 <script setup>
 import { router } from '@inertiajs/vue3'
-import { mdiLogout, mdiClose } from '@mdi/js'
+import { mdiLogout, mdiClose, mdiMenu } from '@mdi/js'
 import { computed } from 'vue'
 import { useLayoutStore } from '@/Stores/layout.js'
 import { useStyleStore } from '@/Stores/style.js'
@@ -40,25 +40,41 @@ const menuClick = (event, item) => {
 <template>
   <aside
     id="aside"
-    class="lg:py-2 lg:pl-2 w-60 fixed flex z-40 top-0 h-screen transition-position overflow-hidden"
+    class="fixed flex z-40 top-0 h-screen transition-position overflow-hidden"
   >
     <div
       :class="styleStore.asideStyle"
-      class="lg:rounded-xl flex-1 flex flex-col overflow-hidden dark:bg-slate-900"
+      class=" flex-1 flex flex-col overflow-hidden dark:bg-slate-900 backg"
     >
       <div
         :class="styleStore.asideBrandStyle"
-        class="flex flex-row h-14 items-center justify-between dark:bg-slate-900"
+        class="flex flex-row h-14 items-center justify-between dark:bg-slate-900 backg"
       >
-        <div class="text-center flex-1 lg:text-left lg:pl-6 xl:text-center xl:pl-0">
-          <b class="font-black">One</b>
+        <div class="text-center flex-1 lg:text-left lg:pl-6 xl:text-center xl:pl-0" :class="{'hidden': layoutStore.isAsideExpanded}">
+          <b class="font-black text-black">One</b>
         </div>
-        <button
-          class="hidden lg:inline-block xl:hidden p-3"
+        <!-- <button
+          class="hidden lg:inline-block p-3"
           @click.prevent="layoutStore.isAsideLgActive = false"
         >
           <BaseIcon
             :path="mdiClose"
+          />
+        </button> -->
+        <!-- <button
+          class="hidden lg:inline-block p-3"
+          @click.prevent="layoutStore.asideMobileToggle()"
+        >
+          <BaseIcon
+            :path="mdiClose"
+          />
+        </button> -->
+        <button
+          class="hidden lg:inline-block p-3 mx-auto"
+          @click.prevent="layoutStore.asideToggle()"
+        >
+          <BaseIcon
+            :path="layoutStore.isAsideExpanded ? mdiMenu : mdiClose" size="20"
           />
         </button>
       </div>
@@ -76,8 +92,24 @@ const menuClick = (event, item) => {
         <AsideMenuItem
           :item="logoutItem"
           @menu-click="logoutItemClick"
+          :isAsideExpanded="true"
         />
       </ul>
     </div>
   </aside>
 </template>
+
+<style>
+#aside .backg{
+  background: #edf1f8;
+}
+#aside button{
+  color: initial;
+}
+#aside li a{
+  color: #768285;
+}
+#aside li a.text-white{
+  color: white;
+}
+</style>

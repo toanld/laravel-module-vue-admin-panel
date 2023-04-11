@@ -15,7 +15,7 @@ const layoutStore = useLayoutStore()
   <AsideMenuLayer
     v-if="Object.keys(menu).length"
     :menu="menu"
-    :class="[layoutStore.isAsideMobileExpanded ? 'left-0' : '-left-60 lg:left-0', {'lg:hidden xl:flex': !layoutStore.isAsideLgActive}]"
+    :class="[layoutStore.isAsideMobileExpanded ? 'left-0' : '-left-60 lg:left-0', {'lg:hidden xl:flex': !layoutStore.isAsideLgActive}, layoutStore.isAsideExpanded ? 'w-20' : 'w-60']"
   />
   <OverlayLayer
     v-show="layoutStore.isAsideLgActive"
