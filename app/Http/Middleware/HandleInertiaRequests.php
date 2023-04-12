@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
-use BalajiDharma\LaravelMenu\Models\Menu;
 
 class HandleInertiaRequests extends Middleware
 {
