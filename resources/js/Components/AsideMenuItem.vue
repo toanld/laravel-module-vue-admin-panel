@@ -16,8 +16,8 @@ import {
 } from "@mdi/js";
 
 const mdiIcon = {
-  mdiMonitor: mdiMonitor, 
-  mdiAccountSettings: mdiAccountSettings, 
+  mdiMonitor: mdiMonitor,
+  mdiAccountSettings: mdiAccountSettings,
   mdiFolderAccountOutline:mdiFolderAccountOutline,
   mdiAccount: mdiAccount,
   mdiMenu: mdiMenu

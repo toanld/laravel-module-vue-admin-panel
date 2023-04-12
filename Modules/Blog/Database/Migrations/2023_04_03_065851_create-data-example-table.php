@@ -80,7 +80,7 @@ return new class extends Migration
                 ['name'=>'blog delete', 'guard_name'=> 'web'],
                 ['name'=>'blog manage', 'guard_name'=> 'web'],
             ];
-            \App\Models\Permission::insert($data);
+            \App\Models\Permission::updateOrInsert($data);
         }
 
         //
@@ -94,6 +94,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists("data_example");
         //
     }
 };

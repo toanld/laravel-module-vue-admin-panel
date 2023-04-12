@@ -4,12 +4,14 @@ return [
     'name' => 'Blog',
     'menu' =>[
         "name" => "Blog",
+        "icon" => "mdiMinus",
         "uri" => "<nolink>",
         "link" => "",
         "children" => [
         [
             "name" => "Danh mục",
             "uri" => "<nolink>",
+            "icon" => "mdiMinus",
             "link" => "",
             "children" => [
                 [
@@ -27,10 +29,12 @@ return [
         [
             "name" => "Thêm mới",
             "uri" => "/blog/create",
+            "icon" => "mdiMinus",
             "link" => "/blog/create"
         ],
         [
             "name" => "Danh sách",
+            "icon" => "mdiMinus",
             "uri" => "/blog",
             "link" => "/blog"
         ]
