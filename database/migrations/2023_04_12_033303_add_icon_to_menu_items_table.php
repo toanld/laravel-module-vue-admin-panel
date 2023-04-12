@@ -13,7 +13,7 @@ return new class extends Migration
     {
         $tableNames = config('menu.table_names');
         Schema::table($tableNames['menu_items'], function (Blueprint $table) {
-            //
+            $table->string('icon', 200)->after('weight');
         });
     }
 

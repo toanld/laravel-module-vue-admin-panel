@@ -7,6 +7,21 @@ import { getButtonColor } from '@/colors.js'
 import BaseIcon from '@/Components/BaseIcon.vue'
 import AsideMenuList from '@/Components/AsideMenuList.vue'
 import { useLayoutStore } from '@/Stores/layout.js'
+import {
+  mdiMonitor,
+  mdiAccountSettings,
+  mdiFolderAccountOutline,
+  mdiAccount,
+  mdiMenu
+} from "@mdi/js";
+
+const mdiIcon = {
+  mdiMonitor: mdiMonitor, 
+  mdiAccountSettings: mdiAccountSettings, 
+  mdiFolderAccountOutline:mdiFolderAccountOutline,
+  mdiAccount: mdiAccount,
+  mdiMenu: mdiMenu
+}
 
 const props = defineProps({
   item: {
@@ -31,7 +46,7 @@ const isDropdownActive = ref(false)
 
 const componentClass = computed(() => (
   [
-    props.isDropdownList ? 'py-3 px-6 text-sm' : 'py-3 px-6',
+    props.isDropdownList ? 'py-3 text-sm' : 'py-3',
     hasColor.value
       ? getButtonColor(props.item.color, false, true)
       : styleStore.asideMenuItemStyle,
@@ -48,6 +63,8 @@ const menuClick = event => {
     isDropdownActive.value = !isDropdownActive.value
   }
 }
+
+const layoutStore = useLayoutStore();
 
 const activeInactiveStyle = computed(
   () => props.item.link == router.page.url
@@ -68,15 +85,15 @@ const activeInactiveStyle = computed(
     >
       <BaseIcon
         v-if="item.icon"
-        :path="item.icon"
+        :path="mdiIcon[item.icon] ? mdiIcon[item.icon] : item.icon"
         class="flex-none"
-        :class="activeInactiveStyle"
-        w="w-16"
+        :class="[activeInactiveStyle, layoutStore.isAsideExpanded && item.link == router.page.url ? 'text-blue-400' : '']"
+        w="w-20"
         :size="18"
       />
       <span
         class="grow text-ellipsis line-clamp-1"
-        :class="activeInactiveStyle"
+        :class="[activeInactiveStyle, layoutStore.isAsideExpanded ? 'hidden' : '']"
       >{{ item.name }}</span>
       <BaseIcon
         v-if="hasDropdown"

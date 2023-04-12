@@ -97,30 +97,35 @@ class AdminCoreSeeder extends Seeder
                 'uri'       => '/dashboard',
                 'enabled'   => 1,
                 'weight'    => 0,
+                'icon'      => 'mdiMonitor'
             ],
             [
                 'name'      => 'Permissions',
                 'uri'       => '/<admin>/permission',
                 'enabled'   => 1,
                 'weight'    => 1,
+                'icon'      => 'mdiAccountSettings'
             ],
             [
                 'name'      => 'Roles',
                 'uri'       => '/<admin>/role',
                 'enabled'   => 1,
                 'weight'    => 2,
+                'icon'      => 'mdiFolderAccountOutline'
             ],
             [
                 'name'      => 'Users',
                 'uri'       => '/<admin>/user',
                 'enabled'   => 1,
                 'weight'    => 3,
+                'icon'      => 'mdiAccount'
             ],
             [
                 'name'      => 'Menus',
                 'uri'       => '/<admin>/menu',
                 'enabled'   => 1,
                 'weight'    => 4,
+                'icon'      => 'mdiMenu'
             ]
         ];
 
