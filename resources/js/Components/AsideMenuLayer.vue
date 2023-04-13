@@ -106,10 +106,16 @@ const menuClick = (event, item) => {
 #aside button{
   color: initial;
 }
-#aside li a{
+#aside li{
   color: #768285;
 }
 #aside li a.text-white{
   color: white;
+}
+#aside li ul{
+  padding-left: 30px;
+}
+#aside li ul ul{
+  padding-left: 10px;
 }
 </style>

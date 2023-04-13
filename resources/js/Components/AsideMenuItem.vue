@@ -2,7 +2,6 @@
 import { ref, computed, onMounted } from 'vue'
 import { Link, router } from '@inertiajs/vue3'
 import { useStyleStore } from '@/Stores/style.js'
-import { mdiMinus, mdiPlus } from '@mdi/js'
 import { getButtonColor } from '@/colors.js'
 import BaseIcon from '@/Components/BaseIcon.vue'
 import AsideMenuList from '@/Components/AsideMenuList.vue'
@@ -12,7 +11,9 @@ import {
   mdiAccountSettings,
   mdiFolderAccountOutline,
   mdiAccount,
-  mdiMenu
+  mdiMenu,
+  mdiMinus,
+  mdiPlus
 } from "@mdi/js";
 
 const mdiIcon = {
@@ -20,7 +21,9 @@ const mdiIcon = {
   mdiAccountSettings: mdiAccountSettings,
   mdiFolderAccountOutline:mdiFolderAccountOutline,
   mdiAccount: mdiAccount,
-  mdiMenu: mdiMenu
+  mdiMenu: mdiMenu,
+  mdiMinus: mdiMinus,
+  mdiPlus: mdiPlus
 }
 
 const props = defineProps({
@@ -79,7 +82,7 @@ const activeInactiveStyle = computed(
       :is="itemHref ? Link : 'div'"
       :href="itemHref"
       :target="item.target ?? null"
-      class="flex cursor-pointer dark:text-slate-300 dark:hover:text-white"
+      class="flex cursor-pointer"
       :class="componentClass"
       @click="menuClick"
     >
@@ -99,14 +102,14 @@ const activeInactiveStyle = computed(
         v-if="hasDropdown"
         :path="isDropdownActive ? mdiMinus : mdiPlus"
         class="flex-none"
-        :class="activeInactiveStyle"
+        :class="[activeInactiveStyle, layoutStore.isAsideExpanded ? 'hidden' : '']"
         w="w-12"
       />
     </component>
     <AsideMenuList
       v-if="hasDropdown"
       :menu="item.children"
-      :class="[ styleStore.asideMenuDropdownStyle, isDropdownActive ? 'block dark:bg-slate-800/50' : 'hidden' ]"
+      :class="[ styleStore.asideMenuDropdownStyle, isDropdownActive ? 'block' : 'hidden' ]"
       is-dropdown-list
     />
   </li>
