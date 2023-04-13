@@ -91,7 +91,7 @@ const activeInactiveStyle = computed(
         :path="mdiIcon[item.icon] ? mdiIcon[item.icon] : item.icon"
         class="flex-none"
         :class="[activeInactiveStyle, layoutStore.isAsideExpanded && item.link == router.page.url ? 'text-blue-400' : '']"
-        w="w-20"
+        :w="layoutStore.isAsideExpanded ? 'w-20' : 'w-10'"
         :size="18"
       />
       <span
