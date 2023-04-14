@@ -82,7 +82,7 @@ function destroy(id) {
                             <Sort label="Name" attribute="name" />
                         </th>
                         <th>
-                            Description
+                            Content
                         </th>
                         <th v-if="can.edit || can.delete || can.manage">Actions</th>
                     </tr>
@@ -94,10 +94,10 @@ function destroy(id) {
                             {{ (index+props.datas.from)}}
                         </td>
                         <td data-label="Name">
-                            {{ item.name }}
+                            {{ item.title }}
                         </td>
-                        <td data-label="Description">
-                            {{ item.description }}
+                        <td data-label="Content">
+                            {{ item.content }}
                         </td>
                         <td
                             v-if="can.edit || can.delete || can.manage"

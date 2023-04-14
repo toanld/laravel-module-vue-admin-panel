@@ -16,6 +16,7 @@ import BaseButtons from "@/Components/BaseButtons.vue"
 import NotificationBar from "@/Components/NotificationBar.vue"
 import Pagination from "@/Components/Admin/Pagination.vue"
 import Sort from "@/Components/Admin/Sort.vue"
+import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
 
 const props = defineProps({
     datas: {
@@ -47,7 +48,88 @@ function destroy(id) {
 </script>
 
 <template>
-    <LayoutSalon>
+    <LayoutAuthenticated>
+        <Head :title="$myTrans('Category blog')" />
+        <SectionMain>
+            <SectionTitleLineWithButton
+                :title="$myTrans('Salon')"
+                main
+            >
+                
+                <BaseButton
+                    v-if="can.create"
+                    :route-name="route('blog.create')"
+                    :icon="mdiPlus"
+                    label="Add"
+                    color="info"
+                    rounded-full
+                    small
+                />
+            </SectionTitleLineWithButton>
+            <NotificationBar
+                v-if="$page.props.flash.message"
+                color="success"
+                :icon="mdiAlertBoxOutline"
+            >
+                {{ $page.props.flash.message }}
+            </NotificationBar>
+            <CardBox class="mb-6" has-table>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            STT
+                        </th>
+                        <th>
+                            <Sort label="Name" attribute="name" />
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th v-if="can.edit || can.delete">Actions</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr v-for="(item,index) in datas.data" :key="item.id">
+                            <td data-label="STT">
+                                {{ (index+props.datas.from)}}
+                            </td>
+                            <td data-label="Name">
+                                {{ item.name }}
+                            </td>
+                            <td data-label="Description">
+                                {{ item.description }}
+                            </td>
+                            <td
+                                v-if="can.edit || can.delete || can.manage"
+                                class="before:hidden lg:w-1 whitespace-nowrap"
+                            >
+                                <BaseButtons type="justify-start lg:justify-end" no-wrap>
+                                    <BaseButton
+                                        v-if="can.edit"
+                                        :route-name="route('salon.edit', item.id)"
+                                        color="info"
+                                        :icon="mdiSquareEditOutline"
+                                        small
+                                    />
+                                    <BaseButton
+                                        v-if="can.delete"
+                                        color="danger"
+                                        :icon="mdiTrashCan"
+                                        small
+                                        @click="destroy(item.id)"
+                                    />
+                                </BaseButtons>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </CardBox>
+        </SectionMain>
+    </LayoutAuthenticated>
+    <!-- <LayoutSalon>
         <Head title="datas" />
         <SectionMain>
             <SectionTitleLineWithButton
@@ -73,5 +155,5 @@ function destroy(id) {
             </NotificationBar>
 
         </SectionMain>
-    </LayoutSalon>
+    </LayoutSalon> -->
 </template>

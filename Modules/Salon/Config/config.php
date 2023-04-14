@@ -6,7 +6,7 @@ return [
             "name" => 'Salon',
             "uri" => "<nolink>",
             "link" => "",
-            "icon" => "mdiPlus",
+            "icon" => "mdiStore",
             "children" => [
               [
                 "name" => "Thêm mới",

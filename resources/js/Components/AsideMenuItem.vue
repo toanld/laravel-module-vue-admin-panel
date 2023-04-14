@@ -13,7 +13,9 @@ import {
   mdiAccount,
   mdiMenu,
   mdiMinus,
-  mdiPlus
+  mdiPlus,
+  mdiStore,
+  mdiPostOutline
 } from "@mdi/js";
 
 const mdiIcon = {
@@ -23,7 +25,9 @@ const mdiIcon = {
   mdiAccount: mdiAccount,
   mdiMenu: mdiMenu,
   mdiMinus: mdiMinus,
-  mdiPlus: mdiPlus
+  mdiPlus: mdiPlus,
+  mdiStore: mdiStore,
+  mdiPostOutline: mdiPostOutline
 }
 
 const props = defineProps({
@@ -56,7 +60,7 @@ const componentClass = computed(() => (
     props.isAsideExpanded ? 'pl-1' : ''
   ]
 ))
-onMounted(() => {console.log() });
+onMounted(() => { });
 const hasDropdown = computed(() => props.item.children)
 
 const menuClick = event => {

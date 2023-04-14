@@ -10,5 +10,5 @@ class Blog extends Model
     use HasFactory;
 
     protected $fillable = [];
-    public $table = 'data_example';
+    public $table = 'posts';
 }

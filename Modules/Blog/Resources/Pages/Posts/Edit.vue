@@ -18,12 +18,19 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
+  item_options: {
+        type: Object,
+        default: () => ({}),
+    },
 })
 
 const form = useForm({
   _method: 'put',
-  name: props.data.name,
-  description: props.data.description
+  title: props.data.title,
+  content: props.data.content,
+  category_id: props.data.category_id,
+  status: props.data.status ? true : false,
+  publish_date: props.data.publish_date
 })
 </script>
 
@@ -50,34 +57,74 @@ const form = useForm({
       >
         <FormField
           label="Name"
-          :class="{ 'text-red-400': form.errors.name }"
+          :class="{ 'text-red-400': form.errors.title }"
         >
           <FormControl
-            v-model="form.name"
+            v-model="form.title"
             type="text"
-            placeholder="Enter Name"
-            :error="form.errors.name"
+            placeholder="Enter title"
+            :error="form.errors.title"
           >
-            <div class="text-red-400 text-sm" v-if="form.errors.name">
-              {{ form.errors.name }}
+            <div class="text-red-400 text-sm" v-if="form.errors.title">
+              {{ form.errors.title }}
             </div>
           </FormControl>
         </FormField>
+
         <FormField
-          label="Description"
-          :class="{ 'text-red-400': form.errors.description }"
+            label="Category"
+            :class="{ 'text-red-400': form.errors.category_id }"
+        >
+            <FormControl
+                v-model="form.category_id"
+                type="select"
+                placeholder=""
+                :error="form.errors.category_id"
+                :options="item_options"
+            >
+                <div class="text-red-400 text-sm" v-if="form.errors.category_id">
+                    {{ form.errors.category_id }}
+                </div>
+            </FormControl>
+        </FormField>
+
+        <FormField
+          label="Content"
+          :class="{ 'text-red-400': form.errors.content }"
         >
           <FormControl
-            v-model="form.description"
+            v-model="form.content"
             type="textarea"
-            placeholder="Enter Description"
-            :error="form.errors.description"
+            placeholder="Enter content"
+            :error="form.errors.content"
           >
-            <div class="text-red-400 text-sm" v-if="form.errors.description">
-              {{ form.errors.description }}
+            <div class="text-red-400 text-sm" v-if="form.errors.content">
+              {{ form.errors.content }}
             </div>
           </FormControl>
         </FormField>
+
+        <FormField
+          label="Publish date"
+          :class="{ 'text-red-400': form.errors.publish_date }"
+        >
+          <FormControl
+            v-model="form.publish_date"
+            type="datetime-local"
+            :error="form.errors.publish_date"
+          >
+            <div class="text-red-400 text-sm" v-if="form.errors.publish_date">
+              {{ form.errors.publish_date }}
+            </div>
+          </FormControl>
+        </FormField>
+
+        <!-- <FormCheckRadioGroup
+              v-model="form.status"
+              name="status"
+              :options="{ enabled: 'Enabled' }"
+          /> -->
+
         <template #footer>
           <BaseButtons>
             <BaseButton

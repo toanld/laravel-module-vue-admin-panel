@@ -9,6 +9,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Modules\Blog\Entities\Blog;
+use Modules\Blog\Entities\Category;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -33,7 +35,7 @@ class BlogController extends Controller
     {
         $data = Blog::orderBy('id','DESC')->paginate(30);
 
-        return Inertia::module('blog::Categories/Index', [
+        return Inertia::module('blog::Posts/Index', [
             'datas' => Inertia::lazy(fn () =>  $data),
             //'datas' => $data,
             'filters' => request()->all('search'),
@@ -52,7 +54,10 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return Inertia::module('blog::Categories/Create');
+        $item_options = Category::selectOptions(0);
+        return Inertia::module('blog::Posts/Create', [
+            'item_options' => $item_options
+        ]);
     }
 
     /**
@@ -63,12 +68,18 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'max:255'
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'category_id' => 'required'
         ]);
         $blog = new Blog();
-        $blog->name = $request->name;
-        $blog->description = $request->description;
+        $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
+        $blog->user_id = Auth::user()->id;
+        $blog->content = $request->content;
+        $blog->category_id = $request->category_id;
+        $blog->status = $request->status ? 1 : 0;
+        $blog->publish_date = $request->publish_date;
         $blog->save();
         return redirect()->route('blog.index')
             ->with('message', 'Blog created successfully.');
@@ -83,8 +94,10 @@ class BlogController extends Controller
     public function edit($id)
     {
         $data = Blog::find($id);
-        return Inertia::module('blog::Categories/Edit', [
+        $item_options = Category::selectOptions(0);
+        return Inertia::module('blog::Posts/Edit', [
             'data' => $data,
+            'item_options' => $item_options
         ]);
     }
 

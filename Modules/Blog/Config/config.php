@@ -4,7 +4,7 @@ return [
     'name' => 'Blog',
     'menu' =>[
         "name" => "Blog",
-        "icon" => "mdiPlus",
+        "icon" => "mdiPostOutline",
         "uri" => "<nolink>",
         "link" => "",
         "children" => [

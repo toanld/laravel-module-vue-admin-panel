@@ -46,14 +46,23 @@ const props = defineProps({
                 main
             >
                 <BaseButtons type="justify-start lg:justify-end" no-wrap>
-                    <BaseButton
+                    <!-- <BaseButton
                         :route-name="route('blog.categories.index')"
                         :icon="mdiArrowLeftBoldOutline"
                         label="Back"
                         color="white"
                         rounded-full
                         small
-                    />
+                    /> -->
+                    <BaseButton
+                    v-if="can.create"
+                    :route-name="route('blog.categories.create')"
+                    :icon="mdiPlus"
+                    label="Add"
+                    color="info"
+                    rounded-full
+                    small
+                />
                 </BaseButtons>
             </SectionTitleLineWithButton>
             <NotificationBar
