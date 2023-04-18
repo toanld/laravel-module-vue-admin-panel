@@ -76,6 +76,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->slug = Str::slug($request->title);
         $blog->user_id = Auth::user()->id;
+        $blog->teaser = $request->teaser;
         $blog->content = $request->content;
         $blog->category_id = $request->category_id;
         $blog->status = $request->status ? 1 : 0;
@@ -110,13 +111,14 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'max:255'
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'category_id' => 'required'
         ]);
         $data = Blog::find($id);
         if($data){
-            $data->name = $request->input('name');
-            $data->description = $request->input('description');
+            $data->title = $request->input('title');
+            $data->content = $request->input('content');
             $data->save();
         }
         return redirect()->route('blog.index')

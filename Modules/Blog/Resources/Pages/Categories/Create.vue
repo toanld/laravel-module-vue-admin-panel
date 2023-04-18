@@ -58,7 +58,7 @@ const form = useForm({
                 @submit.prevent="form.post(route('blog.categories.store', data.id))"
             >
                 <FormField
-                    label="fdsfsdfds"
+                    label="Tiêu đề"
                     :class="{ 'text-red-400': form.errors.name }"
                 >
                     <FormControl

@@ -12,6 +12,7 @@ import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
 import FormCheckRadioGroup from '@/Components/FormCheckRadioGroup.vue'
+import Ckeditor from '@/Components/Ckeditor.vue'
 
 const props = defineProps({
     item_options: {
@@ -20,9 +21,9 @@ const props = defineProps({
     },
 })
 
-
 const form = useForm({
   title: '',
+  teaser: '',
   content: '',
   category_id: 0,
   status: true,
@@ -85,10 +86,26 @@ const form = useForm({
         </FormField>
 
         <FormField
+          label="Teaser"
+          :class="{ 'text-red-400': form.errors.teaser }"
+        >
+          <FormControl
+            v-model="form.teaser"
+            type="textarea"
+            placeholder="Enter teaser"
+            :error="form.errors.teaser"
+          >
+            <div class="text-red-400 text-sm" v-if="form.errors.teaser">
+              {{ form.errors.teaser }}
+            </div>
+          </FormControl>
+        </FormField>
+
+        <FormField
           label="Content"
           :class="{ 'text-red-400': form.errors.content }"
         >
-          <FormControl
+          <!-- <FormControl
             v-model="form.content"
             type="textarea"
             placeholder="Enter content"
@@ -97,7 +114,11 @@ const form = useForm({
             <div class="text-red-400 text-sm" v-if="form.errors.content">
               {{ form.errors.content }}
             </div>
-          </FormControl>
+          </FormControl> -->
+          <Ckeditor v-model="form.content" :error="form.errors.content"></Ckeditor>
+          <div class="text-red-400 text-sm" v-if="form.errors.content">
+              {{ form.errors.content }}
+            </div>
         </FormField>
 
         <FormField
@@ -108,6 +129,7 @@ const form = useForm({
             v-model="form.publish_date"
             type="datetime-local"
             :error="form.errors.publish_date"
+            class="w-1/2"
           >
             <div class="text-red-400 text-sm" v-if="form.errors.publish_date">
               {{ form.errors.publish_date }}

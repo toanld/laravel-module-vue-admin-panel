@@ -12,6 +12,7 @@ import FormField from '@/Components/FormField.vue'
 import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
+import Ckeditor from '@/Components/Ckeditor.vue'
 
 const props = defineProps({
   data: {
@@ -27,6 +28,7 @@ const props = defineProps({
 const form = useForm({
   _method: 'put',
   title: props.data.title,
+  teaser: props.data.teaser,
   content: props.data.content,
   category_id: props.data.category_id,
   status: props.data.status ? true : false,
@@ -89,10 +91,26 @@ const form = useForm({
         </FormField>
 
         <FormField
+          label="Teaser"
+          :class="{ 'text-red-400': form.errors.teaser }"
+        >
+          <FormControl
+            v-model="form.teaser"
+            type="textarea"
+            placeholder="Enter teaser"
+            :error="form.errors.teaser"
+          >
+            <div class="text-red-400 text-sm" v-if="form.errors.teaser">
+              {{ form.errors.teaser }}
+            </div>
+          </FormControl>
+        </FormField>
+
+        <FormField
           label="Content"
           :class="{ 'text-red-400': form.errors.content }"
         >
-          <FormControl
+          <!-- <FormControl
             v-model="form.content"
             type="textarea"
             placeholder="Enter content"
@@ -100,8 +118,12 @@ const form = useForm({
           >
             <div class="text-red-400 text-sm" v-if="form.errors.content">
               {{ form.errors.content }}
-            </div>
-          </FormControl>
+            </div> 
+          </FormControl>-->
+          <Ckeditor v-model="form.content" :error="form.errors.content"></Ckeditor>
+            <div class="text-red-400 text-sm" v-if="form.errors.content">
+                {{ form.errors.content }}
+              </div>
         </FormField>
 
         <FormField
@@ -112,6 +134,7 @@ const form = useForm({
             v-model="form.publish_date"
             type="datetime-local"
             :error="form.errors.publish_date"
+            class="w-1/2"
           >
             <div class="text-red-400 text-sm" v-if="form.errors.publish_date">
               {{ form.errors.publish_date }}
