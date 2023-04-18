@@ -105,20 +105,8 @@ const form = useForm({
           label="Content"
           :class="{ 'text-red-400': form.errors.content }"
         >
-          <!-- <FormControl
-            v-model="form.content"
-            type="textarea"
-            placeholder="Enter content"
-            :error="form.errors.content"
-          >
-            <div class="text-red-400 text-sm" v-if="form.errors.content">
-              {{ form.errors.content }}
-            </div>
-          </FormControl> -->
           <Ckeditor v-model="form.content" :error="form.errors.content"></Ckeditor>
-          <div class="text-red-400 text-sm" v-if="form.errors.content">
-              {{ form.errors.content }}
-            </div>
+          
         </FormField>
 
         <FormField
