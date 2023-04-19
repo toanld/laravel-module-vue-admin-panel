@@ -12,7 +12,7 @@ import FormField from '@/Components/FormField.vue'
 import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
-import Ckeditor from '@/Components/Ckeditor.vue'
+import editor from '@/Components/tinymce.vue'
 
 const props = defineProps({
   data: {
@@ -110,18 +110,7 @@ const form = useForm({
           label="Content"
           :class="{ 'text-red-400': form.errors.content }"
         >
-          <!-- <FormControl
-            v-model="form.content"
-            type="textarea"
-            placeholder="Enter content"
-            :error="form.errors.content"
-          >
-            <div class="text-red-400 text-sm" v-if="form.errors.content">
-              {{ form.errors.content }}
-            </div> 
-          </FormControl>-->
-          <Ckeditor v-model="form.content" :error="form.errors.content"></Ckeditor>
-            
+          <editor v-model="form.content" :error="form.errors.content"></editor>
         </FormField>
 
         <FormField

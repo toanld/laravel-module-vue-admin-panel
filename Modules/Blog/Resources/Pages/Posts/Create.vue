@@ -12,7 +12,7 @@ import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
 import FormCheckRadioGroup from '@/Components/FormCheckRadioGroup.vue'
-import Ckeditor from '@/Components/Ckeditor.vue'
+import editor from '@/Components/tinymce.vue'
 
 const props = defineProps({
     item_options: {
@@ -105,7 +105,7 @@ const form = useForm({
           label="Content"
           :class="{ 'text-red-400': form.errors.content }"
         >
-          <Ckeditor v-model="form.content" :error="form.errors.content"></Ckeditor>
+          <editor v-model="form.content" :error="form.errors.content"></editor>
           
         </FormField>
 

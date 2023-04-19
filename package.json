@@ -23,10 +23,9 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-build-classic": "^37.0.1",
-        "@ckeditor/ckeditor5-vue": "^5.0.0",
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/vue3": "^1.0.0",
+        "@tinymce/tinymce-vue": "^4.0.7",
         "flowbite": "^1.6.5",
         "md5": "^2.3.0",
         "nprogress": "^0.2.0"

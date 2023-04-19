@@ -117,8 +117,14 @@ class BlogController extends Controller
         ]);
         $data = Blog::find($id);
         if($data){
-            $data->title = $request->input('title');
-            $data->content = $request->input('content');
+            $data->title = $request->title;
+            $data->slug = Str::slug($request->title);
+            $data->user_id = Auth::user()->id;
+            $data->teaser = $request->teaser;
+            $data->content = $request->content;
+            $data->category_id = $request->category_id;
+            $data->status = 0;
+            $data->publish_date = $request->publish_date;
             $data->save();
         }
         return redirect()->route('blog.index')
