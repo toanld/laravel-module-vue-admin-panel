@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Modules\Blog\Entities\Blog;
 use Modules\Blog\Entities\Category;
+use Modules\Blog\Entities\Tags;
+use Modules\Blog\Entities\PostTags;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -72,6 +74,28 @@ class BlogController extends Controller
             'content' => 'required',
             'category_id' => 'required'
         ]);
+
+        $tagId = [];
+        if ($request->tags) {
+            foreach ($request->tags as $key => $value) {
+                $tag = Tags::where('slug', Str::slug($value))->first();
+                if ($tag) {
+                    $tagId[] = $tag->id;
+                    // dd(Tags::where('id', $tag->id)->withCount('post')->get()->toArray());
+                    $tag->increment('count');
+                } else {
+                    $tag = Tags::create([
+                        'name' => $value,
+                        'slug' => Str::slug($value),
+                        'count' => 1,
+                        'status' => 1
+                    ]);
+                    $tagId[] = $tag->id;
+                }
+            }
+            $tagId = array_unique($tagId);
+        }
+
         $blog = new Blog();
         $blog->title = $request->title;
         $blog->slug = Str::slug($request->title);
@@ -79,9 +103,13 @@ class BlogController extends Controller
         $blog->teaser = $request->teaser;
         $blog->content = $request->content;
         $blog->category_id = $request->category_id;
+        $blog->tag_id = implode(',', $tagId);
         $blog->status = $request->status ? 1 : 0;
         $blog->publish_date = $request->publish_date;
         $blog->save();
+
+        $blog->tags()->syncWithPivotValues($tagId, ['category_id' => $request->category_id]);
+
         return redirect()->route('blog.index')
             ->with('message', 'Blog created successfully.');
     }
@@ -95,10 +123,13 @@ class BlogController extends Controller
     public function edit($id)
     {
         $data = Blog::find($id);
+        $tags = Tags::whereIn('id', explode(',', $data->tag_id))->get()->pluck('name')->all();
+        // dd($tags);
         $item_options = Category::selectOptions(0);
         return Inertia::module('blog::Posts/Edit', [
             'data' => $data,
-            'item_options' => $item_options
+            'item_options' => $item_options,
+            'tags' => $tags
         ]);
     }
 
@@ -116,6 +147,32 @@ class BlogController extends Controller
             'category_id' => 'required'
         ]);
         $data = Blog::find($id);
+
+        $tagId = [];
+        if ($request->tags) {
+            foreach ($request->tags as $key => $value) {
+                $tag = Tags::where('slug', Str::slug($value))->first();
+                if ($tag) {
+                    $tagId[] = $tag->id;
+                    // dd(Tags::where('id', $tag->id)->withCount('post')->get()->toArray());
+                    $dataTagId = explode(',', $data->tag_id);
+                    if (array_search($tag->id, $dataTagId) === false) {
+                        $tag->increment('count');
+                    }
+                } else {
+                    $tag = Tags::create([
+                        'name' => $value,
+                        'slug' => Str::slug($value),
+                        'count' => 1,
+                        'status' => 1
+                    ]);
+                    $tagId[] = $tag->id;
+                }
+            }
+            $tagId = array_unique($tagId);
+        }
+
+        
         if($data){
             $data->title = $request->title;
             $data->slug = Str::slug($request->title);
@@ -124,8 +181,10 @@ class BlogController extends Controller
             $data->content = $request->content;
             $data->category_id = $request->category_id;
             $data->status = 0;
+            $data->tag_id = implode(',', $tagId);
             $data->publish_date = $request->publish_date;
             $data->save();
+            $data->tags()->syncWithPivotValues($tagId, ['category_id' => $request->category_id]);
         }
         return redirect()->route('blog.index')
             ->with('message', 'Blog updated successfully.');

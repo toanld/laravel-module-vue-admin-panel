@@ -13,6 +13,7 @@ import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
 import editor from '@/Components/tinymce.vue'
+import Vue3TagsInput from 'vue3-tags-input'
 
 const props = defineProps({
   data: {
@@ -22,7 +23,11 @@ const props = defineProps({
   item_options: {
         type: Object,
         default: () => ({}),
-    },
+  },
+  tags: {
+        type: Object,
+        default: () => ({}),
+  },
 })
 
 const form = useForm({
@@ -32,8 +37,13 @@ const form = useForm({
   content: props.data.content,
   category_id: props.data.category_id,
   status: props.data.status ? true : false,
-  publish_date: props.data.publish_date
+  publish_date: props.data.publish_date,
+  tags: props.tags
 })
+
+function handleChangeTag(tags) {
+  form.tags = tags;
+  }
 </script>
 
 <template>
@@ -111,6 +121,13 @@ const form = useForm({
           :class="{ 'text-red-400': form.errors.content }"
         >
           <editor v-model="form.content" :error="form.errors.content"></editor>
+        </FormField>
+
+        <FormField label="Tags">
+        <vue3-tags-input :tags="form.tags"
+                   placeholder="enter some tags"
+                   :add-tag-on-keys="[13, 188]"
+                   @on-tags-changed="handleChangeTag"/>
         </FormField>
 
         <FormField
