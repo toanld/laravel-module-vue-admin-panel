@@ -36,7 +36,12 @@ const computedValue = computed({
           toolbar:
             'undo redo | formatselect | bold italic underline code backcolor | \
             alignleft aligncenter alignright alignjustify | \
-            bullist numlist outdent indent | removeformat | help'
+            bullist numlist outdent indent | removeformat | image | help',
+          image_title: true,
+          file_picker_types: 'image',
+          images_upload_url: '/api/upload',
+          convert_urls: false
+          // images_upload_base_path: '/'
         }"
         v-model="computedValue"
       />

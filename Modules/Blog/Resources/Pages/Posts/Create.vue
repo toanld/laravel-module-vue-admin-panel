@@ -12,7 +12,7 @@ import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
 import FormCheckRadioGroup from '@/Components/FormCheckRadioGroup.vue'
-import editor from '@/Components/tinymce.vue'
+import editor from '@/Components/Tinymce.vue'
 import Vue3TagsInput from 'vue3-tags-input'
 
 const props = defineProps({
