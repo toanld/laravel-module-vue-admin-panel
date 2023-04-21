@@ -29,7 +29,8 @@ const form = useForm({
   category_id: 0,
   status: true,
   publish_date: null,
-  tags: []
+  tags: [],
+  image: null
 })
 
 function handleChangeTag(tags) {
@@ -73,6 +74,20 @@ function handleChangeTag(tags) {
             </div>
           </FormControl>
         </FormField>
+
+        <FormField
+          label="Image intro"
+          :class="{ 'text-red-400': form.errors.image }"
+        >
+        <input type="file" @input="form.image = $event.target.files[0]" class="block w-full text-sm text-slate-500 mt-2
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-violet-50 file:text-violet-700
+            hover:file:bg-violet-100
+          "/>
+        </FormField>
+        
 
         <FormField
             label="Category"

@@ -38,12 +38,16 @@ const form = useForm({
   category_id: props.data.category_id,
   status: props.data.status ? true : false,
   publish_date: props.data.publish_date,
-  tags: props.tags
+  tags: props.tags,
+  image: props.data.image
 })
 
 function handleChangeTag(tags) {
   form.tags = tags;
   }
+function onFileChange(e) {
+    form.image = e.target.files[0];
+}
 </script>
 
 <template>
@@ -81,6 +85,20 @@ function handleChangeTag(tags) {
               {{ form.errors.title }}
             </div>
           </FormControl>
+        </FormField>
+
+        <FormField
+          label="Image intro"
+          :class="{ 'text-red-400': form.errors.image }"
+        >
+          <img class="w-16 md:w-32 lg:w-48" :src="'/storage/' + props.data.image" v-if="props.data.image">
+          <input type="file" @input="form.image = $event.target.files[0]" class="block w-full text-sm text-slate-500 mt-2
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-violet-50 file:text-violet-700
+            hover:file:bg-violet-100
+          "/>
         </FormField>
 
         <FormField

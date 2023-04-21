@@ -106,6 +106,12 @@ class BlogController extends Controller
         $blog->tag_id = implode(',', $tagId);
         $blog->status = $request->status ? 1 : 0;
         $blog->publish_date = $request->publish_date;
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('public');
+            $name = str_replace('public/', '', $path);
+            $blog->image = $name;
+        }
+
         $blog->save();
 
         $blog->tags()->syncWithPivotValues($tagId, ['category_id' => $request->category_id]);
@@ -174,6 +180,11 @@ class BlogController extends Controller
 
         
         if($data){
+            if ($request->file('image')) {
+                $path = $request->file('image')->store('public');
+                $name = str_replace('public/', '', $path);
+                $data->image = $name;
+            }
             $data->title = $request->title;
             $data->slug = Str::slug($request->title);
             $data->user_id = Auth::user()->id;
