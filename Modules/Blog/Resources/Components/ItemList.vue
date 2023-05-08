@@ -51,7 +51,7 @@ function destroy(id) {
         <BaseButtons type="justify-start lg:justify-end" no-wrap>
             <BaseButton
             v-if="can.edit"
-            :route-name="route('blog.categories.index', {menu: menu.id, item: item.id})"
+            :route-name="route('blog.categories.edit', {menu: menu.id, id: item.id})"
             color="info"
             :icon="mdiSquareEditOutline"
             small

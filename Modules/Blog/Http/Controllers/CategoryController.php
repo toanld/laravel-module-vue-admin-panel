@@ -90,7 +90,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $data = Blog::find($id);
+        $data = Category::find($id);
         return Inertia::module('blog::Categories/Edit', [
             'data' => $data,
         ]);
@@ -108,14 +108,14 @@ class CategoryController extends Controller
             'name' => 'required|max:255',
             'description' => 'max:255'
         ]);
-        $data = Blog::find($id);
+        $data = Category::find($id);
         if($data){
             $data->name = $request->input('name');
             $data->description = $request->input('description');
             $data->save();
         }
-        return redirect()->route('blog.index')
-            ->with('message', 'Blog updated successfully.');
+        return redirect()->route('blog.categories.index')
+            ->with('message', 'Category updated successfully.');
         //
     }
 
