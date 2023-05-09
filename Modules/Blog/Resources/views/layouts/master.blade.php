@@ -10,7 +10,7 @@
         
        {{-- Laravel Vite - CSS File --}}
        {{-- {{ module_vite('build-blog', 'Resources/assets/sass/app.scss') }} --}}
-       <link rel="stylesheet" href="assets/css/app.css">
+       <link rel="stylesheet" href="/assets/css/app.css">
     </head>
     <body>
         <!-- ***** Preloader Start ***** -->

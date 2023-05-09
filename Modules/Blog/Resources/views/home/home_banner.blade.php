@@ -9,7 +9,7 @@
                         <div class="meta-category">
                             <span>{{$item->category_name}}</span>
                         </div>
-                        <a href="post-details.html"><h4>{{$item->title}}</h4></a>
+                        <a href="{{route('detail', ['category_id' => $item->category_id, 'title' => $item->slug, 'id' => $item->id])}}"><h4>{{$item->title}}</h4></a>
                         <ul class="post-info">
                             <li><a href="#">{{$item->user_name}}</a></li>
                             <li><a href="#">{{\Carbon\Carbon::parse($item->publish_date)->format('d/m/Y')}}</a></li>

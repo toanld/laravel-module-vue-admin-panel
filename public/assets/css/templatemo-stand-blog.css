@@ -482,6 +482,20 @@ header .navbar {
 	border-bottom: 1px solid #eee;
 }
 
+.blog-posts .down-content .content{
+	padding: 25px 0px;
+	margin: 25px 0px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+.blog-posts .down-content .content p{
+	border: 0;
+	padding: initial;
+    margin: initial;
+    margin-bottom: 1rem;
+}
+
 .blog-posts .down-content ul.post-share {
 	text-align: right;
 }

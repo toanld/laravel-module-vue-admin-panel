@@ -35,6 +35,22 @@ class HomeController extends Controller
         return view('blog::index', $data);
     }
 
+    public function detail(Request $request)
+    {
+        $data = [];
+        $data['data'] = Blog::select('posts.*', 'blog_categories.name as category_name', 'users.name as user_name')
+            ->join('blog_categories', 'posts.category_id', '=', 'blog_categories.id')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->where('posts.id', $request->id)
+            ->first();
+        
+        $data['recent_posts'] = Blog::orderBy('posts.id', 'desc')
+            ->limit(3)->get();
+        $data['categoryRoot'] = (new Category())->toTree(0);
+        $data['tags'] = Tags::limit(10)->get();
+        return view('blog::detail', $data);
+    }
+
     public function about()
     {
 
