@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="blog-post">
                 <div class="blog-thumb">
-                    <img src="assets/images/blog-post-01.jpg" alt="">
+                    <img src="/storage/{{$item->image}}" alt="">
                 </div>
                 <div class="down-content">
                     <span>{{$item->category_name}}</span>

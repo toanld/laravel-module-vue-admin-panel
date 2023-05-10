@@ -452,6 +452,14 @@ header .navbar {
 	letter-spacing: 0.25px;
 }
 
+.blog-posts .down-content h4.title{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .grid-system .down-content ul.post-info li {
 	margin-right: 3px;
 }
@@ -494,6 +502,24 @@ header .navbar {
 	padding: initial;
     margin: initial;
     margin-bottom: 1rem;
+}
+
+.blog-posts .down-content .teaser{
+	padding: 25px 0px;
+    margin: 25px 0px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.blog-posts .down-content .teaser p{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    padding: initial;
+    border: 0;
+    margin: initial;
 }
 
 .blog-posts .down-content ul.post-share {

@@ -59,7 +59,7 @@
                     </div>
                     <div class="down-content">
                       <span>{{$data->category_name}}</span>
-                      <a href="post-details.html"><h4>{{$data->title}}</h4></a>
+                      <a href="{{route('detail', ['category_id' => $data->category_id, 'title' => $data->slug, 'id' => $data->id])}}"><h4>{{$data->title}}</h4></a>
                       <ul class="post-info">
                         <li><a href="#">{{$data->user_name}}</a></li>
                         <li><a href="#">{{\Carbon\Carbon::parse($data->publish_date)->format('d/m/Y')}}</a></li>

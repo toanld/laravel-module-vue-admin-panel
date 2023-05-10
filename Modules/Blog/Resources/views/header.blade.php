@@ -15,10 +15,10 @@
             <li class="nav-item {{request()->route()->getName() == 'about' ? 'active' : '' }}" href="{{route('about')}}">
             <a class="nav-link" href="{{route('about')}}">About Us</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="">Blog Entries</a>
+            <li class="nav-item {{request()->route()->getName() == 'blog' ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('blog')}}">Blog Entries</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{request()->route()->getName() == 'detail' ? 'active' : '' }}">
             <a class="nav-link" href="">Post Details</a>
             </li>
             <li class="nav-item {{request()->route()->getName() == 'contact' ? 'active' : '' }}">

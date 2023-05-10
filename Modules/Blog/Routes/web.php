@@ -16,4 +16,5 @@ Route::middleware('auth:web')->resource('blog','BlogController');
 Route::middleware('auth:web')->get('home','HomeController@index')->name('home');
 Route::middleware('auth:web')->get('about','HomeController@about')->name('about');
 Route::middleware('auth:web')->get('contact','HomeController@contact')->name('contact');
+Route::middleware('auth:web')->get('blog.html','HomeController@blog')->name('blog');
 Route::middleware('auth:web')->get('/{category_id}/{title}-{id}.html', 'HomeController@detail')->where(['title' => '[^\.]+','category_id' => '[0-9]+', 'id' => '[0-9]+'])->name('detail');
