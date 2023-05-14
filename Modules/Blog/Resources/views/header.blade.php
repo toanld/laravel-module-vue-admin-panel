@@ -8,21 +8,21 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item {{request()->route()->getName() == 'home' ? 'active' : '' }}">
-            <a class="nav-link" href="{{route('home')}}">Home
+            <a class="nav-link" href="{{route('home')}}">Trang chủ
                 <span class="sr-only">(current)</span>
             </a>
             </li> 
             <li class="nav-item {{request()->route()->getName() == 'about' ? 'active' : '' }}" href="{{route('about')}}">
-            <a class="nav-link" href="{{route('about')}}">About Us</a>
+            <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
             </li>
             <li class="nav-item {{request()->route()->getName() == 'blog' ? 'active' : '' }}">
             <a class="nav-link" href="{{route('blog')}}">Blog Entries</a>
             </li>
-            <li class="nav-item {{request()->route()->getName() == 'detail' ? 'active' : '' }}">
+            <!-- <li class="nav-item {{request()->route()->getName() == 'detail' ? 'active' : '' }}">
             <a class="nav-link" href="">Post Details</a>
-            </li>
+            </li> -->
             <li class="nav-item {{request()->route()->getName() == 'contact' ? 'active' : '' }}">
-            <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
+            <a class="nav-link" href="{{route('contact')}}">Liên hệ</a>
             </li>
         </ul>
         </div>

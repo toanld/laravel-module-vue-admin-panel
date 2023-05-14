@@ -88,5 +88,40 @@ jQuery( document ).ready(function( $ ) {
                 }
             });
         }
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#form-submit').click(function(){
+            $.ajax({
+                url: "/comment", // địa chỉ URL của API
+                method: "POST", // phương thức HTTP
+                data: {
+                    post_id: $(this).data('id'), 
+                    parent_id: 0, 
+                    content: $('#message').val(), 
+                    // _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                headers: {
+                    // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    // 'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                dataType: "json", // kiểu dữ liệu trả về từ server
+                success: function(response) {
+                    // xử lý kết quả trả về
+                    if(response && response.success == 1){
+                        window.location.href = window.location.href+'#submit-comment';
+                        window.location.reload();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // xử lý lỗi khi không thể gọi API
+                    console.log(xhr.responseText);
+                }
+            });
+        })
  
 });

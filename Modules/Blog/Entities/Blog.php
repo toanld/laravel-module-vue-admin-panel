@@ -17,4 +17,12 @@ class Blog extends Model
     {
         return $this->belongsToMany(Tags::class, 'post_tags', 'post_id', 'tag_id')->withTimestamps();
     }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function comment()
+    {
+        return $this->hasMany(Comments::class, 'post_id');
+    }
 }
