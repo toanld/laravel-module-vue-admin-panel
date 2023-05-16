@@ -75,9 +75,17 @@
                         <div class="row">
                           <div class="col-lg-12">
                             <ul class="post-tags">
-                              <li><i class="fa fa-tags"></i></li>
+                              
                               @foreach($item->tags()->limit(2)->get() as $tag)
-                              <li><a href="#">{{$tag->name}}</a>,</li>
+                              @if ($loop->first)
+                              <li><i class="fa fa-tags"></i></li>
+                              @endif
+                              <li>
+                                <a href="#">{{$tag->name}}</a>
+                                @if (!$loop->last)
+                                    ,
+                                @endif
+                              </li>
                               @endforeach
                             </ul>
                           </div>
