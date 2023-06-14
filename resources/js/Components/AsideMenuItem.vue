@@ -99,7 +99,7 @@ const activeInactiveStyle = computed(
         :size="18"
       />
       <span
-        class="grow text-ellipsis line-clamp-1"
+        class="flex-1 ml-3 text-left whitespace-nowrap"
         :class="[activeInactiveStyle, layoutStore.isAsideExpanded ? 'hidden' : '']"
       >{{ item.name }}</span>
       <BaseIcon
