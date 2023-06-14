@@ -12,7 +12,8 @@ import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
 import FormCheckRadioGroup from '@/Components/FormCheckRadioGroup.vue'
-import Ckeditor from '@/Components/Ckeditor.vue'
+import editor from '@/Components/Tinymce.vue'
+import Vue3TagsInput from 'vue3-tags-input'
 
 const props = defineProps({
     item_options: {
@@ -27,8 +28,14 @@ const form = useForm({
   content: '',
   category_id: 0,
   status: true,
-  publish_date: null
+  publish_date: null,
+  tags: [],
+  image: null
 })
+
+function handleChangeTag(tags) {
+  form.tags = tags;
+  }
 </script>
 
 <template>
@@ -69,6 +76,20 @@ const form = useForm({
         </FormField>
 
         <FormField
+          label="Image intro"
+          :class="{ 'text-red-400': form.errors.image }"
+        >
+        <input type="file" @input="form.image = $event.target.files[0]" class="block w-full text-sm text-slate-500 mt-2
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-violet-50 file:text-violet-700
+            hover:file:bg-violet-100
+          "/>
+        </FormField>
+        
+
+        <FormField
             label="Category"
             :class="{ 'text-red-400': form.errors.category_id }"
         >
@@ -105,8 +126,15 @@ const form = useForm({
           label="Content"
           :class="{ 'text-red-400': form.errors.content }"
         >
-          <Ckeditor v-model="form.content" :error="form.errors.content"></Ckeditor>
+          <editor v-model="form.content" :error="form.errors.content"></editor>
           
+        </FormField>
+
+        <FormField label="Tags">
+        <vue3-tags-input :tags="form.tags"
+                   placeholder="enter some tags"
+                   :add-tag-on-keys="[13, 188]"
+                   @on-tags-changed="handleChangeTag"/>
         </FormField>
 
         <FormField

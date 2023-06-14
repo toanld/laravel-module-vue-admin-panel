@@ -12,7 +12,8 @@ import FormField from '@/Components/FormField.vue'
 import FormControl from '@/Components/FormControl.vue'
 import BaseButton from '@/Components/BaseButton.vue'
 import BaseButtons from '@/Components/BaseButtons.vue'
-import Ckeditor from '@/Components/Ckeditor.vue'
+import editor from '@/Components/Tinymce.vue'
+import Vue3TagsInput from 'vue3-tags-input'
 
 const props = defineProps({
   data: {
@@ -22,7 +23,11 @@ const props = defineProps({
   item_options: {
         type: Object,
         default: () => ({}),
-    },
+  },
+  tags: {
+        type: Object,
+        default: () => ({}),
+  },
 })
 
 const form = useForm({
@@ -32,8 +37,17 @@ const form = useForm({
   content: props.data.content,
   category_id: props.data.category_id,
   status: props.data.status ? true : false,
-  publish_date: props.data.publish_date
+  publish_date: props.data.publish_date,
+  tags: props.tags,
+  image: props.data.image
 })
+
+function handleChangeTag(tags) {
+  form.tags = tags;
+  }
+function onFileChange(e) {
+    form.image = e.target.files[0];
+}
 </script>
 
 <template>
@@ -74,6 +88,20 @@ const form = useForm({
         </FormField>
 
         <FormField
+          label="Image intro"
+          :class="{ 'text-red-400': form.errors.image }"
+        >
+          <img class="w-16 md:w-32 lg:w-48" :src="'/storage/' + props.data.image" v-if="props.data.image">
+          <input type="file" @input="form.image = $event.target.files[0]" class="block w-full text-sm text-slate-500 mt-2
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-violet-50 file:text-violet-700
+            hover:file:bg-violet-100
+          "/>
+        </FormField>
+
+        <FormField
             label="Category"
             :class="{ 'text-red-400': form.errors.category_id }"
         >
@@ -110,18 +138,14 @@ const form = useForm({
           label="Content"
           :class="{ 'text-red-400': form.errors.content }"
         >
-          <!-- <FormControl
-            v-model="form.content"
-            type="textarea"
-            placeholder="Enter content"
-            :error="form.errors.content"
-          >
-            <div class="text-red-400 text-sm" v-if="form.errors.content">
-              {{ form.errors.content }}
-            </div> 
-          </FormControl>-->
-          <Ckeditor v-model="form.content" :error="form.errors.content"></Ckeditor>
-            
+          <editor v-model="form.content" :error="form.errors.content"></editor>
+        </FormField>
+
+        <FormField label="Tags">
+        <vue3-tags-input :tags="form.tags"
+                   placeholder="enter some tags"
+                   :add-tag-on-keys="[13, 188]"
+                   @on-tags-changed="handleChangeTag"/>
         </FormField>
 
         <FormField

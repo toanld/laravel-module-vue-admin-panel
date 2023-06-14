@@ -26,12 +26,12 @@ return [
             ]
         ],
         [
-            "name" => "Thêm mới",
+            "name" => "Thêm mới blog",
             "uri" => "/blog/create",
             "link" => "/blog/create"
         ],
         [
-            "name" => "Danh sách",
+            "name" => "Danh sách blog",
             "uri" => "/blog",
             "link" => "/blog"
         ]
