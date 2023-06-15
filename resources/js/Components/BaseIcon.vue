@@ -30,8 +30,11 @@ const spanClass = computed(() => `inline-flex justify-center items-center ${prop
       :width="size"
       :height="size"
       class="inline-block"
-      v-html="path"
     >
+      <path
+          fill="currentColor"
+          :d="path"
+        />
     </svg>
   </span>
 </template>

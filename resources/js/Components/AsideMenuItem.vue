@@ -90,14 +90,29 @@ const activeInactiveStyle = computed(
       :class="componentClass"
       @click="menuClick"
     >
-      <BaseIcon
+      <!-- <BaseIcon
         v-if="item.icon"
         :path="mdiIcon[item.icon] ? mdiIcon[item.icon] : item.icon"
         class="flex-none"
         :class="[activeInactiveStyle, layoutStore.isAsideExpanded && item.link == router.page.url ? 'text-blue-400' : '']"
         :w="layoutStore.isAsideExpanded ? 'w-20' : 'w-10'"
-        :size="18"
-      />
+        :size="24"
+      /> -->
+      <span v-if="item.icon" 
+        class="flex-none inline-flex justify-center items-center h-6" 
+        :class="[activeInactiveStyle, 
+          layoutStore.isAsideExpanded && item.link == router.page.url ? 'text-blue-400' : '',
+          layoutStore.isAsideExpanded ? 'w-20' : 'w-10' ]"
+        >
+        <svg
+          viewBox="0 0 24 24"
+          :width="18"
+          :height="18"
+          class="inline-block"
+          v-html="item.icon"
+        >
+        </svg>
+      </span>
       <span
         class="flex-1 ml-3 text-left whitespace-nowrap"
         :class="[activeInactiveStyle, layoutStore.isAsideExpanded ? 'hidden' : '']"
