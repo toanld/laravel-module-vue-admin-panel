@@ -1,0 +1,28 @@
+{
+    "name": "fresns/test",
+    "description": "Test plugin made by fresns",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jevan Tang",
+            "email": "jevan@fresns.org",
+            "homepage": "https://github.com/jevantang",
+            "role": "Creator"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Plugins\\Test\\": "app",
+            "Plugins\\Test\\Database\\Factories\\": "database/factories/",
+            "Plugins\\Test\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Plugins\\Test\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">= 8.0"
+    }
+}

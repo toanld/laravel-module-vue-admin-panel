@@ -47,6 +47,7 @@ createInertiaApp({
             // let a =   import.meta.glob('@modules/Admin/Resources/Pages/Index.vue')['/modules/Admin/Resources/Pages/Index.vue']();
             let module = isModule[0];
             let pathTo = isModule[1];
+            pathTo = pathTo.replace("\\", "/");
             //console.log(module, pathTo);//Admin Resources/Pages/Index
             let key = `/Modules/${module}/${pathTo}.vue`;
             console.log('module');

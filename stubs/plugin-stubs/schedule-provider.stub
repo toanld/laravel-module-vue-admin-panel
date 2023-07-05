@@ -1,0 +1,36 @@
+<?php
+
+/*
+ * Fresns (https://fresns.org)
+ * Copyright (C) 2021-Present Jevan Tang
+ * Released under the Apache-2.0 License.
+ */
+
+namespace $NAMESPACE$;
+
+use Illuminate\Support\Str;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Console\Scheduling\Schedule;
+
+class ScheduleServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any services.
+     */
+    public function boot(): void
+    {
+        $this->app->resolving(Schedule::class, function ($schedule) {
+            $this->schedule($schedule);
+        });
+    }
+
+    /**
+     * Prepare schedule from tasks.
+     *
+     * @param  Schedule  $schedule
+     */
+    public function schedule(Schedule $schedule)
+    {
+        // $schedule->command('inspire')->hourly();
+    }
+}

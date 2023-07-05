@@ -21,7 +21,11 @@ return new class extends Migration
                     ['name'=>'$LOWER_NAME$ delete', 'guard_name'=> 'web'],
                     ['name'=>'$LOWER_NAME$ manage', 'guard_name'=> 'web'],
                 ];
-        \App\Models\Permission::insertOrIgnore($data);
+        foreach ($data as $row){
+            if(!\App\Models\Permission::where('name',$row["name"])->first()){
+                \App\Models\Permission::create($row);
+            }
+        }
 
         //
     }

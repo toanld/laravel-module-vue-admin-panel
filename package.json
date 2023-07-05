@@ -26,7 +26,8 @@
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/vue3": "^1.0.0",
         "@tinymce/tinymce-vue": "^4.0.7",
-        "flowbite": "^1.6.5",
+        "flowbite": "^1.7.0",
+        "flowbite-vue": "^0.0.14",
         "md5": "^2.3.0",
         "nprogress": "^0.2.0",
         "vue3-tags-input": "^1.0.7"
