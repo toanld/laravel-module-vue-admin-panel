@@ -7,6 +7,7 @@ export default defineConfig({
     resolve:{
         alias:{
             '@modules' : path.resolve(__dirname + '/Modules'),
+            '@erp' : path.resolve(__dirname + '/Modules/Erp/Resources/Vuejs'),
             '@' : __dirname+'/resources/js'
         },
     },

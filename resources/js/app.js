@@ -6,7 +6,7 @@ import { useStyleStore } from '@/Stores/style.js'
 import { useLayoutStore } from '@/Stores/layout.js'
 
 import { darkModeKey, styleKey } from '@/config.js'
-
+import 'flowbite';
 import { createApp, h} from 'vue';
 //window.md5 = require('md5');
 import { createInertiaApp, router } from '@inertiajs/vue3';

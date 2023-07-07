@@ -1,12 +1,8 @@
 <script setup>
 import { Head, Link, useForm,router } from "@inertiajs/vue3"
 import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
-import LayoutErp from "@/Erp/Layouts/LayoutErp.vue"
-import { onMounted } from 'vue'
-import { initFlowbite } from 'flowbite'
-onMounted(() => {
-    initFlowbite();
-})
+import LayoutErp from "@erp/Layouts/LayoutErp.vue"
+
 const props = defineProps({
     datas: {
         type: Object,
