@@ -7,6 +7,7 @@ import FooterBar from '@/Components/FooterBar.vue'
 import NavBar from '@/Erp/Components/NavBar.vue'
 
 const layoutStore = useLayoutStore()
+
 </script>
 
 <template>
@@ -14,7 +15,9 @@ const layoutStore = useLayoutStore()
         <NavBar></NavBar>
         <!-- Sidebar -->
         <AsideMenu></AsideMenu>
-        <main class="p-4 md:ml-64 h-auto pt-20">
+        <main class="p-4 md:ml-64 h-auto pt-20 transition-position"
+            :class="{ 'md:ml-20': layoutStore.isAsideLgActive}"
+            >
             <slot></slot>
         </main>
     </div>
