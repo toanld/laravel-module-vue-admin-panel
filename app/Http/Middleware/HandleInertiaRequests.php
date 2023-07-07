@@ -36,6 +36,13 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request)
     {
         $menu = Menu::getMenuTree('admin');
+        $prefix = substr($request->route()->getPrefix(),1);
+        $arr_menu = [];
+        $menu_module = config(strtolower($prefix) . '.menu');
+
+        if(!empty($menu_module)){
+            $arr_menu = $menu_module;
+        }
 
         return array_merge(parent::share($request), [
             'auth' => [
@@ -50,7 +57,8 @@ class HandleInertiaRequests extends Middleware
                 'message' => fn () => $request->session()->get('message'),
             ],
             'navigation' => [
-                'menu' => $menu
+                'menu' => $menu,
+                'menu_module' => $arr_menu
             ]
         ]);
     }
