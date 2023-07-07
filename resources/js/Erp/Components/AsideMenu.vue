@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, computed,ref } from 'vue'
 import { usePage,Link, router } from '@inertiajs/vue3'
+import BaseIcon from '@/Components/BaseIcon.vue'
 
 import {
   mdiMonitor,
@@ -11,7 +12,9 @@ import {
   mdiMinus,
   mdiPlus,
   mdiStore,
-  mdiPostOutline
+  mdiPostOutline,
+  mdiChevronUp,
+  mdiChevronDown
 } from "@mdi/js";
 
 const mdiIcon = {
@@ -23,11 +26,14 @@ const mdiIcon = {
   mdiMinus: mdiMinus,
   mdiPlus: mdiPlus,
   mdiStore: mdiStore,
-  mdiPostOutline: mdiPostOutline
+  mdiPostOutline: mdiPostOutline,
+  mdiChevronUp: mdiChevronUp,
+  mdiChevronDown : mdiChevronDown
 }
 const checkActive = ref(router.page.url)
 let menu = reactive({})
 menu = computed(() => usePage().props.navigation.menu_module)
+
 
 </script>
 <template>
@@ -65,15 +71,24 @@ menu = computed(() => usePage().props.navigation.menu_module)
                     />
                 </div>
             </form>
-                <ul class="space-y-2">
+                <ul class="space-y-2" data-accordion="open">
+
                     <li v-for="(value, key) in menu" :key="key">
                         <div v-if="value.children">
                              <button
                                     type="button"
-                                    class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                                    :aria-controls="'dropdown-'+value.name"
-                                    :data-collapse-toggle="'dropdown-'+value.name"
+                                    class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition ease-in-out duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    :data-accordion-target="'#dropdown-'+value.text"
+                                    :aria-controls="'#dropdown-'+value.text"
+
                                 >
+                                <!--  <BaseIcon
+                                    v-if="value.icon"
+                                    :path="mdiIcon[item.icon] ? mdiIcon[value.icon] : value.icon"
+                                    class="flex-none"
+                                    :class="{'text-red' : checkActive == value.link}"
+                                    :size="24"
+                                  /> -->
                                 <svg
                                     aria-hidden="true"
                                     class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -91,7 +106,15 @@ menu = computed(() => usePage().props.navigation.menu_module)
 
                                 >{{ value.name }}</span
                                 >
+                               <!--  <BaseIcon
+                                    :path="isDropdownActive ? mdiChevronUp : mdiChevronDown"
+                                    class="flex-none"
+                                    :class="{'text-red' : checkActive == value.link}"
+                                    :size="24"
+                                  /> -->
+
                                 <svg
+                                    data-accordion-icon
                                     aria-hidden="true"
                                     class="w-6 h-6"
                                     fill="currentColor"
@@ -105,7 +128,7 @@ menu = computed(() => usePage().props.navigation.menu_module)
                                     ></path>
                                 </svg>
                             </button>
-                            <ul :id="'dropdown-'+value.name" class="hidden py-2 space-y-2">
+                            <ul :id="'dropdown-'+value.text" class="hidden py-2 space-y-2 ">
                                 <li v-for="(chil, key) in value.children" :key="key">
                                     <a
                                         href="#"
