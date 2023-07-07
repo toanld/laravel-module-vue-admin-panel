@@ -56,7 +56,7 @@ class Menu extends Model
                     $arrModuleMenu[] = $menu;
                 }
             }
-            //dd($arrModuleMenu);
+            // dd($arrModuleMenu);
         }
 
         $menu = Menu::where('machine_name', $machine_name)->first();
