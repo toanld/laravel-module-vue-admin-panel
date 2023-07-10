@@ -7,16 +7,18 @@ import FooterBar from '@/Components/FooterBar.vue'
 import NavBar from '@/Erp/Components/NavBar.vue'
 
 const layoutStore = useLayoutStore()
-
+defineProps({
+    title: String
+})
 </script>
 
 <template>
     <div class="antialiased bg-gray-50 dark:bg-gray-900">
-        <NavBar></NavBar>
+        <NavBar :title="title"></NavBar>
         <!-- Sidebar -->
         <AsideMenu></AsideMenu>
-        <main class="p-4 md:ml-64 h-auto pt-20 transition-position"
-            :class="{ 'md:ml-20': layoutStore.isAsideLgActive}"
+        <main class="p-4 h-auto pt-20 transition-position"
+            :class="{ 'md:ml-20': layoutStore.isAsideLgActive,'md:ml-64' : !layoutStore.isAsideLgActive}"
             >
             <slot></slot>
         </main>

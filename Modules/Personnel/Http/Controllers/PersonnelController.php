@@ -28,6 +28,7 @@ class PersonnelController extends Controller
         $data = Personnel::orderBy('id','DESC')->paginate(30);
         return Inertia::module('personnel::Index', [
             //'datas' => Inertia::lazy(fn () =>  $data),
+            'title' => 'Danh sách nhân sự',
             'datas' => $data,
             'filters' => request()->all('search'),
             'can' => [

@@ -43,16 +43,21 @@ const isMenuNavBarActive = ref(false)
 const menuOpenLg = () => {
   layoutStore.isAsideLgActive = !layoutStore.isAsideLgActive
 }
-
+const cssTop = (value) => {
+    if(document.getElementById('hover-'+value)){
+        return document.getElementById('hover-'+value).offsetTop +'px'
+    }
+    return '64px'
+}
 </script>
 <template>
     <aside
-        class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-64 h-screen transition-position -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         :class="{ 'lg:w-16' : layoutStore.isAsideLgActive}"
         aria-label="Sidenav"
         id="drawer-navigation"
         >
-        <div class="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
+        <div class="overflow-y-auto py-5 h-full bg-white dark:bg-gray-800">
             <form action="#" method="GET" class="md:hidden mb-2">
                 <label for="sidebar-search" class="sr-only">Search</label>
                 <div class="relative">
@@ -81,7 +86,7 @@ const menuOpenLg = () => {
                     />
                 </div>
             </form>
-            <div class="justify-between items-center mb-3 p-2 lg:flex md:flex sm:hidden">
+            <div class="justify-between items-center mb-3 py-2 px-5 lg:flex md:flex sm:hidden">
                  <div class="cursor-pointer" @click="menuOpenLg">
                      <svg
                         aria-hidden="true"
@@ -108,11 +113,11 @@ const menuOpenLg = () => {
 
             </div>
                 <ul class="space-y-2" data-accordion="open">
-                    <li v-for="(value, key) in menu" :key="key">
+                    <li v-for="(value, key) in menu" :key="key" class="px-3 group" :id="'hover-'+value.text">
                         <div v-if="value.children">
                              <button
                                     type="button"
-                                    class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition ease-in-out duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    class="flex items-center relative p-2 w-full text-base font-medium text-gray-900 rounded-lg transition ease-in-out duration-75  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                     :data-accordion-target="'#dropdown-'+value.text"
                                     :aria-controls="'#dropdown-'+value.text"
 
@@ -150,8 +155,20 @@ const menuOpenLg = () => {
                                         clip-rule="evenodd"
                                     ></path>
                                 </svg>
+                                <ul class="group-hover:block fixed bg-white z-100 top-20 border border-gray-300 rounded -right-56 w-56 hidden shadow-lg shadow-gray-500/50  p-2 space-y-2 "  v-if="layoutStore.isAsideLgActive" :style="'top:'+ cssTop(value.text)+';'">
+                                    <li v-for="(chil, key) in value.children" :key="key">
+                                        <a
+                                            href="#"
+                                            :class="{
+                                                'flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700' :true,
+                                                'text-red-400' : checkActive == chil.link
+                                            }"
+                                        >{{ chil.name }}</a
+                                        >
+                                    </li>
+                                </ul>
                             </button>
-                            <ul :id="'dropdown-'+value.text" class="hidden py-2 space-y-2 " v-if="layoutStore.isAsideLgActive">
+                            <ul :id="'dropdown-'+value.text" class="hidden py-2 space-y-2 " v-show="!layoutStore.isAsideLgActive">
                                 <li v-for="(chil, key) in value.children" :key="key">
                                     <a
                                         href="#"

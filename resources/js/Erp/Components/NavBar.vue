@@ -3,12 +3,17 @@ import Notification from '@/Erp/Components/Notification.vue'
 import AppList from '@/Erp/Components/AppList.vue'
 import UserProfile from '@/Erp/Components/UserProfile.vue'
 import { useLayoutStore } from '@/Stores/layout.js'
-
+defineProps({
+    title: String
+})
 const layoutStore = useLayoutStore()
 </script>
 <template>
-    <nav class="md:ml-64  bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50"
-        :class="{'md:ml-16' : layoutStore.isAsideLgActive}">
+    <nav class="bg-white border-b border-gray-200 px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-50"
+        :class="{
+            'md:ml-16' : layoutStore.isAsideLgActive,
+            'md:ml-64' : !layoutStore.isAsideLgActive
+        }">
         <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center w-64">
                 <button
@@ -53,11 +58,19 @@ const layoutStore = useLayoutStore()
                     />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
+                <div class="flex items-center">
+                    <div class="group w-8 h-8 rounded-full border border-sky-200 flex items-center justify-center cursor-pointer mr-2 hover:shadow hover:shadow-sky-200 hover:border-sky-200 hover:bg-sky-500 transition-all">
+                        <svg class="w-[14px] h-[14px] text-sky-500 transition-all group-hover:rotate-90 dark:text-white group-hover:text-white e" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                        </svg>
+                    </div>
+                    {{ title }}
+                </div>
             </div>
             <div class="flex items-center lg:order-2">
                  <form action="#" method="GET" class="hidden md:block md:pl-2">
                     <label for="topbar-search" class="sr-only">Search</label>
-                    <div class="relative md:w-64 md:w-96">
+                    <div class="relative md:w-64 md:w-96 mr-3">
                         <div
                             class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
                         >
@@ -88,7 +101,7 @@ const layoutStore = useLayoutStore()
                     data-drawer-toggle="drawer-navigation"
                     aria-controls="drawer-navigation"
                     class="p-2 mr-1 text-gray-500 rounded-lg md:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                >
+                    >
                     <span class="sr-only">Toggle search</span>
                     <svg  class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path clip-rule="evenodd" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
@@ -99,7 +112,7 @@ const layoutStore = useLayoutStore()
                     type="button"
                     data-dropdown-toggle="notification-dropdown"
                     class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                >
+                    >
                     <span class="sr-only">View notifications</span>
                     <!-- Bell icon -->
                     <svg
