@@ -6,40 +6,148 @@ return [
         [
             "name" => 'Danh sách nhân sự',
             "uri" => "<nolink>",
-            "icon" => '<path d="M16 0H4a2 2 0 0 0-2 2v1H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM13.929 17H7.071a.5.5 0 0 1-.5-.5 3.935 3.935 0 1 1 7.858 0 .5.5 0 0 1-.5.5Z"/></svg>',
+            "icon" => 'mdiCardAccountDetailsOutline',
             "link" => "",
+            'summary' => 'Nhân sự',
             'text' => "list-personnel",
             "children" => [
-              [
-                "name" => "Thêm mới",
-                "uri" => "/personnel/create",
-                "link" => "/personnel/create"
-              ],
                 [
-                    "name" => "Danh sách",
+                    "name" => "Tất cả",
                     "uri" => "/personnel",
                     "link" => "/personnel"
+                ],
+                [
+                    "name" => "Đang làm việc",
+                    "uri" => "/personnel/create",
+                    "link" => "/personnel/create"
+                ],
+                [
+                    "name" => "Nghỉ tạm thời",
+                    "uri" => "/personnel/create",
+                    "link" => "/personnel/create"
+                ],
+                [
+                    "name" => "Cập nhật thông tin",
+                    "uri" => "/personnel/create",
+                    "link" => "/personnel/create"
+                ],
+                [
+                    "name" => "Được cấp chứ ký số",
+                    "uri" => "/personnel/create",
+                    "link" => "/personnel/create"
+                ],
+                [
+                    "name" => "Nghỉ việc",
+                    "uri" => "/personnel/out",
+                    "link" => "/personnel/out"
+                ],
+
+            ]
+        ],
+        [
+            "name" => 'Hợp đồng lao động',
+            "uri" => "<nolink>",
+            "icon" => 'mdiFileSyncOutline',
+            "link" => "",
+            'summary' => 'Hợp đồng',
+            'text' => "personnel-contract-contract",
+            "children" => [
+                [
+                    "name" => "Loại hợp đồng",
+                    "uri" => "/personnel-contract-contract",
+                    "link" => "/personnel-contract-contract"
+                ],
+                [
+                    "name" => "Trạng thái",
+                    "uri" => "/personnel-contract-contract?menu=status",
+                    "link" => "/personnel-contract-contract?menu=status"
+                ],
+                [
+                    "name" => "Hợp đồng ký số",
+                    "uri" => "/personnel-contract-contract?menu=status",
+                    "link" => "/personnel-contract-contract?menu=status"
                 ]
             ]
         ],
         [
-            "name" => 'Danh sách ',
+            "name" => 'Bảo hiểm',
             "uri" => "<nolink>",
-            "icon" => '<path d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z"/>',
+            "icon" => 'mdiPlusBoxOutline',
             "link" => "",
-            'text' => "list-one",
+            'summary' => 'Bảo hiểm',
+            'summary' => 'Bảo hiểm',
+            'text' => "personnel-insurance-insurance",
             "children" => [
-              [
-                "name" => "Thêm mới",
-                "uri" => "/personnel/create",
-                "link" => "/personnel/create"
-              ],
                 [
-                    "name" => "Danh sách",
-                    "uri" => "/personnel",
-                    "link" => "/personnel"
+                    "name" => "Tất cả",
+                    "uri" => "/personnel-insurance-insurance",
+                    "link" => "/personnel-insurance-insurance"
+                ],
+                [
+                    "name" => "Tăng dự kiên",
+                    "uri" => "/personnel-insurance-insurance?menu=up",
+                    "link" => "/personnel-insurance-insurance?menu=up"
+                ],
+                [
+                    "name" => "Giảm dự kiến",
+                    "uri" => "/personnel-insurance-insurance?menu=down",
+                    "link" => "/personnel-insurance-insurance?menu=down"
+                ],
+                [
+                    "name" => "Lịch sử đóng",
+                    "uri" => "/personnel-insurance-insurance/report-history",
+                    "link" => "/personnel-insurance-insurance/report-history"
                 ]
             ]
         ],
+        [
+            "name" => 'Quyết định',
+            "uri" => "/personnel-bonus-decision",
+            "icon" => 'mdiCardAccountDetailsOutline',
+            "link" => "/personnel-bonus-decision",
+            'summary' => 'Quyết định',
+            'text' => "personnel-bonus-decision",
+            "children" => []
+        ],
+        [
+            "name" => 'Báo cáo',
+            "uri" => "/personnel-report-report",
+            "icon" => 'mdiChartPieOutline',
+            "link" => "/personnel-report-report",
+            'summary' => 'Báo cáo',
+            'text' => "personnel-report-report",
+            "children" => []
+        ],
+
+    ],
+    'menutop' => [
+        [
+            "name" => 'Hồ sơ nhân sự',
+            "uri" => "/personnel",
+            "icon" => 'mdiChartPieOutline',
+            "link" => "/personnel",
+            'summary' => 'Nhân sự',
+            'text' => "personnel",
+            "children" => []
+        ],
+        [
+            "name" => 'Hợp đồng lao động',
+            "uri" => "/personnel-report-report",
+            "icon" => 'mdiFileSyncOutline',
+            "link" => "/personnel-report-report",
+            'summary' => 'Hợp đồng',
+            'text' => "personnel-report-report",
+            "children" => []
+        ],
+        [
+            "name" => 'Quyết định',
+            "uri" => "/personnel-bonus-decision",
+            "icon" => 'mdiGiftOutline',
+            "link" => "/personnel-bonus-decision",
+            'summary' => 'Quyết định',
+            'text' => "personnel-bonus-decision",
+            "children" => []
+        ],
+
     ]
 ];

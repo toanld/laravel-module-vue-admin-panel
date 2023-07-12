@@ -15,7 +15,12 @@ import {
   mdiStore,
   mdiPostOutline,
   mdiChevronUp,
-  mdiChevronDown
+  mdiChevronDown,
+  mdiCardAccountDetailsOutline,
+  mdiFileSyncOutline,
+  mdiPlusBoxOutline,
+  mdiGiftOutline,
+  mdiChartPieOutline
 } from "@mdi/js";
 
 const mdiIcon = {
@@ -29,7 +34,12 @@ const mdiIcon = {
   mdiStore: mdiStore,
   mdiPostOutline: mdiPostOutline,
   mdiChevronUp: mdiChevronUp,
-  mdiChevronDown : mdiChevronDown
+  mdiChevronDown : mdiChevronDown,
+  mdiCardAccountDetailsOutline : mdiCardAccountDetailsOutline,
+  mdiFileSyncOutline: mdiFileSyncOutline,
+  mdiPlusBoxOutline: mdiPlusBoxOutline,
+  mdiGiftOutline: mdiGiftOutline,
+  mdiChartPieOutline: mdiChartPieOutline
 }
 const checkActive = ref(router.page.url)
 let menu = reactive({})
@@ -43,21 +53,44 @@ const isMenuNavBarActive = ref(false)
 const menuOpenLg = () => {
   layoutStore.isAsideLgActive = !layoutStore.isAsideLgActive
 }
-const cssTop = (value) => {
+const cssTop = (value, key) => {
     if(document.getElementById('hover-'+value)){
-        return document.getElementById('hover-'+value).offsetTop +'px'
+        if(key > 0){
+            let targetElement = document.querySelector('#hover-'+value)
+            let height = 0
+            let num = 68.8 * key;
+            let previousElement = targetElement.previousElementSibling
+            for (var i = 0; i < key; i++) {
+                height += previousElement.clientHeight
+                previousElement = previousElement.previousElementSibling
+            }
+             return document.getElementById('hover-'+value).offsetTop - height + num +'px'
+        }else{
+             return document.getElementById('hover-'+value).offsetTop +'px'
+        }
     }
-    return '64px'
+    return '60px'
+}
+
+const checkExpanded = (childs) => {
+
+    let check = false;
+    childs.forEach((value, key) => {
+        if(value.link == checkActive.value){
+            check = true;
+        }
+    });
+    return check;
 }
 </script>
 <template>
     <aside
-        class="fixed top-0 left-0 z-40 w-64 h-screen transition-position -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-        :class="{ 'lg:w-16' : layoutStore.isAsideLgActive}"
+        class="fixed top-0 left-0 z-40 w-60 h-screen transition-position -translate-x-full bg-[#edf1f8] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        :class="{ 'lg:w-20' : layoutStore.isAsideLgActive}"
         aria-label="Sidenav"
         id="drawer-navigation"
         >
-        <div class="overflow-y-auto py-5 h-full bg-white dark:bg-gray-800">
+        <div class="overflow-y-auto py-2.5 h-full dark:bg-gray-800">
             <form action="#" method="GET" class="md:hidden mb-2">
                 <label for="sidebar-search" class="sr-only">Search</label>
                 <div class="relative">
@@ -86,11 +119,13 @@ const cssTop = (value) => {
                     />
                 </div>
             </form>
-            <div class="justify-between items-center mb-3 py-2 px-5 lg:flex md:flex sm:hidden">
+            <div class="justify-between items-center mb-3 py-2 px-5 lg:flex md:flex sm:hidden h-12"
+                :class="{ 'lg:justify-center' : layoutStore.isAsideLgActive}"
+                >
                  <div class="cursor-pointer" @click="menuOpenLg">
                      <svg
                         aria-hidden="true"
-                        class="w-6 h-6"
+                        class="w-6 h-6 text-gray-800 dark:text-white"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -112,29 +147,32 @@ const cssTop = (value) => {
                 </a>
 
             </div>
-                <ul class="space-y-2" data-accordion="open">
-                    <li v-for="(value, key) in menu" :key="key" class="px-3 group" :id="'hover-'+value.text">
-                        <div v-if="value.children">
+                <ul class="space-y-2" data-accordion="collapse">
+                    <li v-for="(value, key) in menu" :key="key" class="px-3 group " :id="'hover-'+value.text">
+                        <div v-if="value.children.length > 0" class="flow-root">
                              <button
                                     type="button"
-                                    class="flex items-center relative p-2 w-full text-base font-medium text-gray-900 rounded-lg transition ease-in-out duration-75  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    class="flex items-center justify-center relative py-2 px-1 w-full font-normal rounded-lg transition ease-in-out duration-75 bg-inherit dark:text-white"
+                                    :aria-expanded="checkExpanded(value.children)"
                                     :data-accordion-target="'#dropdown-'+value.text"
                                     :aria-controls="'#dropdown-'+value.text"
 
                                 >
 
-                                <svg
-                                    aria-hidden="true"
-                                    class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    v-html="value.icon"
-                                >
-                                </svg>
+
+                                <div class="flex justify-center items-center w-9 h-9 rounded-full group-hover:bg-main"
+                                    :class="[checkExpanded(value.children) ? 'bg-main' : '']">
+                                    <BaseIcon
+                                        v-if="value.icon"
+                                        :path="mdiIcon[value.icon] ? mdiIcon[value.icon] : value.icon"
+                                        class="flex-none group-hover:text-white"
+                                        :class="[checkExpanded(value.children) ? 'text-white' : '']"
+                                        :size="18"
+                                      />
+                                </div>
                                 <span :class="{
-                                        'flex-1 ml-3 text-left whitespace-nowrap' :true,
-                                        'text-red' : checkActive == value.link,
+                                        'flex-1 ml-3 text-left whitespace-nowrap text-sm font-normal group-hover:text-main' :true,
+                                        'text-main' : checkExpanded(value.children),
                                         'hidden' : layoutStore.isAsideLgActive
                                     }"
 
@@ -143,50 +181,71 @@ const cssTop = (value) => {
 
                                 <svg
                                     data-accordion-icon
+                                    v-if="value.children.length > 0 && !layoutStore.isAsideLgActive"
+                                    :class="[checkExpanded(value.children) ? 'text-main' : '']"
+                                    class="w-[12px] h-[12px] dark:text-white group-hover:text-main"
                                     aria-hidden="true"
-                                    class="w-6 h-6"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"
-                                    ></path>
+                                    fill="none"
+                                    viewBox="0 0 14 8">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
                                 </svg>
-                                <ul class="group-hover:block fixed bg-white z-100 top-20 border border-gray-300 rounded -right-56 w-56 hidden shadow-lg shadow-gray-500/50  p-2 space-y-2 "  v-if="layoutStore.isAsideLgActive" :style="'top:'+ cssTop(value.text)+';'">
+
+                                <ul class="group-hover:block fixed bg-white z-100 top-20 border border-gray-300 rounded -right-56 w-56 hidden shadow-lg shadow-gray-500/50  p-2 space-y-2"  v-if="layoutStore.isAsideLgActive" :style="'top:'+ cssTop(value.text, key)+';'">
                                     <li v-for="(chil, key) in value.children" :key="key">
                                         <a
                                             href="#"
                                             :class="{
-                                                'flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700' :true,
-                                                'text-red-400' : checkActive == chil.link
+                                                'flex items-center text-sm p-2 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700' :true,
+                                                '!text-main bg-red-100 hover:bg-red-100' : checkActive == chil.link
                                             }"
                                         >{{ chil.name }}</a
                                         >
                                     </li>
                                 </ul>
                             </button>
-                            <ul :id="'dropdown-'+value.text" class="hidden py-2 space-y-2 " v-show="!layoutStore.isAsideLgActive">
-                                <li v-for="(chil, key) in value.children" :key="key">
+                            <a  href="#"
+                                :class="{
+                                    'flex items-center group-hover:text-main justify-center text-mini text-gray-500' : true,
+                                    '!text-main' : checkExpanded(value.children)
+                                }" v-if="layoutStore.isAsideLgActive"
+                                >{{ value.summary }}
+                            </a>
+                            <ul :id="'dropdown-'+value.text" class="hidden py-2 space-y-2 w-48 float-right border-l border-l-[#edf1f8] group-hover:border-l-red-200 before:content-[''] group-hover:before:h-3 group-hover:before:w-px group-hover:before:bg-red-200 group-hover:before:absolute group-hover:before:-top-2 group-hover:before:-left-px relative"
+                            :class="{'!border-l-red-200 before:h-3 before:w-px before:bg-red-200 before:absolute before:-top-2 before:-left-px' :checkExpanded(value.children),
+                            }"
+                             v-show="!layoutStore.isAsideLgActive">
+                                <li v-for="(chil, key) in value.children" :key="key" class="pl-4">
                                     <a
                                         href="#"
                                         :class="{
-                                            'flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700' :true,
-                                            'text-red-400' : checkActive == chil.link
+                                            'flex items-center text-sm p-2 pl-4 w-full rounded-lg transition duration-75 group hover:bg-white hover:text-main dark:text-white dark:hover:bg-gray-700' :true,
+                                            'text-main bg-white' : checkActive == chil.link
                                         }"
                                     >{{ chil.name }}</a
                                     >
                                 </li>
                             </ul>
                         </div>
-                        <div v-else>
+                        <div v-else class="flow-root">
                             <a
                                 href="#"
-                                class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                                class="flex items-center  py-2 px-1 rounded-lg dark:text-white group"
+                                :class="{'justify-center ' : layoutStore.isAsideLgActive}"
                             >
-                                <svg
+                                <div
+                                    class="flex justify-center items-center w-9 h-9 rounded-full group-hover:bg-main"
+                                    :class="[checkActive == value.link ? 'bg-main' : '']"
+                                >
+                                    <BaseIcon
+                                        v-if="value.icon"
+                                        :path="mdiIcon[value.icon] ? mdiIcon[value.icon] : value.icon"
+                                        class="flex-none group-hover:text-white text-gray-500"
+                                        :class="[checkActive == value.link ? 'text-white' : '']"
+                                        :size="18"
+                                      />
+                                </div>
+                                <!-- <svg
                                     aria-hidden="true"
                                     class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                     fill="currentColor"
@@ -195,11 +254,20 @@ const cssTop = (value) => {
                                      v-html="value.icon"
                                 >
 
-                                </svg>
+                                </svg> -->
+
                                 <span :class="{
-                                        'ml-3' : true,
-                                        'text-red' : checkActive == value.link
-                                    }">{{ value.name }}</span>
+                                        'ml-3 text-sm group-hover:text-main text-gray-500' : true,
+                                        'text-main' : checkActive == value.link
+                                    }" v-if="!layoutStore.isAsideLgActive"
+                                    >{{ value.name }}</span>
+                            </a>
+                            <a  href="#"
+                                :class="{
+                                    'flex items-center group-hover:text-main justify-center text-mini text-gray-500' : true,
+                                    'text-main' : checkActive == value.link
+                                }" v-if="layoutStore.isAsideLgActive"
+                                >{{ value.summary }}
                             </a>
                         </div>
                     </li>

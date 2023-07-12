@@ -1,17 +1,17 @@
 <script setup>
 import { ref } from "vue"
 import { Tabs, Tab } from 'flowbite-vue'
-const activeTab = ref('all')
+const activeTab = ref('use')
 </script>
 <template>
       <!-- Notifications -->
     <div
         class="hidden !fixed overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
-        id="notification-dropdown"
+        id="summary-dropdown"
     >
         <div>
             <tabs variant="underline" v-model="activeTab" class="" >
-            <tab name="work" title="Công việc">
+            <tab name="use" title="Hay dùng">
               <div class="overflow-y-auto h-96">
                   <a
                 href="#"
@@ -46,7 +46,7 @@ const activeTab = ref('all')
             </a>
               </div>
             </tab>
-            <tab name="check" title="Duyệt">
+            <tab name="save" title="Đã lưu">
               <div class="overflow-y-auto h-96">
                 <a
                 href="#"
@@ -81,7 +81,7 @@ const activeTab = ref('all')
             </a>
               </div>
             </tab>
-            <tab name="all" title="Tất cả" >
+            <tab name="create" title="Tạo nhanh" >
                 <div class="overflow-y-auto h-96">
                  <a
                 href="#"

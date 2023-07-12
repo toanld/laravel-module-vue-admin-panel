@@ -14,6 +14,7 @@
 // Route::middleware('auth:web')->resource('personnel','PersonnelController');
 Route::prefix('personnel')
     ->middleware(['auth:web'])
+    ->name('personnel')
     ->group(function (){
         Route::get('/','PersonnelController@index')->name('personnel.home');
         Route::get('/{id}','PersonnelController@index')->name('personnel2.home');

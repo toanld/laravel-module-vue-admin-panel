@@ -38,10 +38,17 @@ class HandleInertiaRequests extends Middleware
         $menu = Menu::getMenuTree('admin');
         $prefix = substr($request->route()->getPrefix(),1);
         $arr_menu = [];
+        $arr_menu_top = [];
         $menu_module = config(strtolower($prefix) . '.menu');
+        $menu_top = config(strtolower($prefix) . '.menutop');
+        $menu_app = config('config.menu');
 
         if(!empty($menu_module)){
             $arr_menu = $menu_module;
+        }
+
+        if(!empty($menu_top)){
+            $arr_menu_top = $menu_top;
         }
 
         return array_merge(parent::share($request), [
@@ -58,7 +65,9 @@ class HandleInertiaRequests extends Middleware
             ],
             'navigation' => [
                 'menu' => $menu,
-                'menu_module' => $arr_menu
+                'menu_module' => $arr_menu,
+                'menu_top' => $arr_menu_top,
+                "menu_app" => $menu_app
             ]
         ]);
     }

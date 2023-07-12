@@ -6,3 +6,8 @@
 @import "_progress.css";
 @import "_scrollbars.css";
 @import "_table.css";
+
+@import "font/index.css";
+*{
+     font-family: HelveticaWorld!important;
+}

@@ -17,15 +17,17 @@ const props = defineProps({
   size: {
     type: [String, Number],
     default: 16
-  }
+  },
+  stype: String,
 })
 
 const spanClass = computed(() => `inline-flex justify-center items-center ${props.w} ${props.h}`)
 </script>
 
 <template>
-  <span :class="spanClass">
+  <span :class="spanClass"  :style="stype">
     <svg
+
       viewBox="0 0 24 24"
       :width="size"
       :height="size"
