@@ -1,46 +1,9 @@
 <script setup>
 import { reactive, computed,ref } from 'vue'
 import { usePage,Link, router } from '@inertiajs/vue3'
-import BaseIcon from '@/Components/BaseIcon.vue'
 import { useLayoutStore } from '@/Stores/layout.js'
 
-import {
-  mdiMonitor,
-  mdiAccountSettings,
-  mdiFolderAccountOutline,
-  mdiAccount,
-  mdiMenu,
-  mdiMinus,
-  mdiPlus,
-  mdiStore,
-  mdiPostOutline,
-  mdiChevronUp,
-  mdiChevronDown,
-  mdiCardAccountDetailsOutline,
-  mdiFileSyncOutline,
-  mdiPlusBoxOutline,
-  mdiGiftOutline,
-  mdiChartPieOutline
-} from "@mdi/js";
 
-const mdiIcon = {
-  mdiMonitor: mdiMonitor,
-  mdiAccountSettings: mdiAccountSettings,
-  mdiFolderAccountOutline:mdiFolderAccountOutline,
-  mdiAccount: mdiAccount,
-  mdiMenu: mdiMenu,
-  mdiMinus: mdiMinus,
-  mdiPlus: mdiPlus,
-  mdiStore: mdiStore,
-  mdiPostOutline: mdiPostOutline,
-  mdiChevronUp: mdiChevronUp,
-  mdiChevronDown : mdiChevronDown,
-  mdiCardAccountDetailsOutline : mdiCardAccountDetailsOutline,
-  mdiFileSyncOutline: mdiFileSyncOutline,
-  mdiPlusBoxOutline: mdiPlusBoxOutline,
-  mdiGiftOutline: mdiGiftOutline,
-  mdiChartPieOutline: mdiChartPieOutline
-}
 const checkActive = ref(router.page.url)
 let menu = reactive({})
 menu = computed(() => usePage().props.navigation.menu_module)
@@ -162,13 +125,14 @@ const checkExpanded = (childs) => {
 
                                 <div class="flex justify-center items-center w-9 h-9 rounded-full group-hover:bg-main"
                                     :class="[checkExpanded(value.children) ? 'bg-main' : '']">
-                                    <BaseIcon
+                                    <i v-if="value.icon" :class="[value.icon, checkExpanded(value.children) ? 'text-white' : '']" class="group-hover:text-white"></i>
+                                    <!-- <BaseIcon
                                         v-if="value.icon"
                                         :path="mdiIcon[value.icon] ? mdiIcon[value.icon] : value.icon"
                                         class="flex-none group-hover:text-white"
                                         :class="[checkExpanded(value.children) ? 'text-white' : '']"
                                         :size="18"
-                                      />
+                                      /> -->
                                 </div>
                                 <span :class="{
                                         'flex-1 ml-3 text-left whitespace-nowrap text-sm font-normal group-hover:text-main' :true,
@@ -211,7 +175,7 @@ const checkExpanded = (childs) => {
                                 }" v-if="layoutStore.isAsideLgActive"
                                 >{{ value.summary }}
                             </a>
-                            <ul :id="'dropdown-'+value.text" class="hidden py-2 space-y-2 w-48 float-right border-l border-l-[#edf1f8] group-hover:border-l-red-200 before:content-[''] group-hover:before:h-3 group-hover:before:w-px group-hover:before:bg-red-200 group-hover:before:absolute group-hover:before:-top-2 group-hover:before:-left-px relative"
+                            <ul :id="'dropdown-'+value.text" class=" hidden py-2 space-y-2 w-48 float-right border-l border-l-[#edf1f8] group-hover:border-l-red-200 before:content-[''] group-hover:before:h-3 group-hover:before:w-px group-hover:before:bg-red-200 group-hover:before:absolute group-hover:before:-top-2 group-hover:before:-left-px relative"
                             :class="{'!border-l-red-200 before:h-3 before:w-px before:bg-red-200 before:absolute before:-top-2 before:-left-px' :checkExpanded(value.children),
                             }"
                              v-show="!layoutStore.isAsideLgActive">
@@ -237,13 +201,11 @@ const checkExpanded = (childs) => {
                                     class="flex justify-center items-center w-9 h-9 rounded-full group-hover:bg-main"
                                     :class="[checkActive == value.link ? 'bg-main' : '']"
                                 >
-                                    <BaseIcon
-                                        v-if="value.icon"
-                                        :path="mdiIcon[value.icon] ? mdiIcon[value.icon] : value.icon"
-                                        class="flex-none group-hover:text-white text-gray-500"
-                                        :class="[checkActive == value.link ? 'text-white' : '']"
-                                        :size="18"
-                                      />
+                                <i v-if="value.icon"
+                                    class="flex-none group-hover:text-white text-gray-500"
+                                    :class="[value.icon,checkActive == value.link ? 'text-white' : '']"
+                                    >
+                                </i>
                                 </div>
                                 <!-- <svg
                                     aria-hidden="true"
@@ -277,31 +239,3 @@ const checkExpanded = (childs) => {
 
         </aside>
 </template>
-
-
-<!--  <script setup>
-import { reactive, computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
-import { useLayoutStore } from '@/Stores/layout.js'
-import AsideMenuLayer from '@/Erp/Components/AsideMenuLayer.vue'
-import OverlayLayer from '@/Components/OverlayLayer.vue'
-
-let menu = reactive({})
-menu = computed(() => usePage().props.navigation.menu_module)
-const layoutStore = useLayoutStore()
-</script>
-
-<template>
-
-  <AsideMenuLayer
-    v-if="Object.keys(menu).length"
-    :menu="menu"
-    :class="[layoutStore.isAsideMobileExpanded ? 'left-0' : '-left-60 lg:left-0', {'lg:hidden xl:flex': !layoutStore.isAsideLgActive}, layoutStore.isAsideExpanded ? 'w-20' : 'w-60']"
-  />
-  <OverlayLayer
-    v-show="layoutStore.isAsideLgActive"
-    z-index="z-30"
-    @overlay-click="layoutStore.isAsideLgActive = false"
-  />
-</template>
- -->

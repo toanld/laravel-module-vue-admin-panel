@@ -16,7 +16,7 @@ return [
                     "uri" => "/personnel",
                     "link" => "/personnel",
                     "text" => "Truyền thông và văn hóa doanh nghiệp",
-                    "icon" => "mdiEarth",
+                    "icon" => "icon-global",
                     "color" => "color: rgb(32, 175, 255); background: rgba(32, 175, 255, 0.08);"
                 ],
                 [
@@ -24,7 +24,7 @@ return [
                     "uri" => "/personnel/create",
                     "link" => "/personnel/create",
                     "text" => "Lưu trữ, chia sẻ và quản lý tài liệu",
-                    "icon" => "mdiBookOpenPageVariantOutline",
+                    "icon" => "icon-courses",
                     "color" => "color: rgb(110, 98, 255); background: rgba(110, 98, 255, 0.08);"
                 ],
                 [
@@ -32,7 +32,7 @@ return [
                     "uri" => "/personnel/create",
                     "link" => "/personnel/create",
                     "text" => "Giao việc, giám sát và đánh giá kết quả",
-                    "icon" => "mdiBagChecked",
+                    "icon" => "icon-business",
                     "color" => "color: rgb(32, 175, 255); background: rgba(32, 175, 255, 0.08);"
                 ],
                 [
@@ -40,7 +40,7 @@ return [
                     "uri" => "/personnel/create",
                     "link" => "/personnel/create",
                     "text" => "Quản lý tiến độ, nhân lực, dòng tiền dự án",
-                    "icon" => "mdiMonitorEdit",
+                    "icon" => "icon-project",
                     "color" => "color: rgb(21, 200, 114);"
                 ],
                 [
@@ -48,7 +48,7 @@ return [
                     "uri" => "/personnel/create",
                     "link" => "/personnel/create",
                     "text" => "Số và Tự động hóa 100% quy trình",
-                    "icon" => "mdiTransitConnectionVariant",
+                    "icon" => "icon-workflow",
                     "color" => "color: rgb(251, 175, 26); background: rgba(251, 175, 26, 0.08);"
                 ],
                 [
@@ -56,7 +56,7 @@ return [
                     "uri" => "/personnel/out",
                     "link" => "/personnel/out",
                     "text" => "Quản lý công văn đi, đến, nội bộ",
-                    "icon" => "mdiCalendarTextOutline",
+                    "icon" => "icon-bar-chart",
                     "color" => "color: rgb(21, 200, 114); background: rgba(21, 200, 114, 0.08);"
                 ],
                 [
@@ -64,7 +64,7 @@ return [
                     "uri" => "/personnel/out",
                     "link" => "/personnel/out",
                     "text" => "Lich làm việc công ty, phòng ban",
-                    "icon" => "mdiClipboardTextClockOutline",
+                    "icon" => "icon-calendars",
                     "color" => "color: rgb(242, 65, 65); background: rgba(242, 65, 65, 0.08);"
                 ],
                 [
@@ -72,7 +72,7 @@ return [
                     "uri" => "/personnel/out",
                     "link" => "/personnel/out",
                     "text" => "Quy trình tạo hồ sơ, trình và ký số",
-                    "icon" => "mdiLeadPencil",
+                    "icon" => "icon-pencil",
                     "color" => "color: rgb(110, 98, 255); background: rgba(110, 98, 255, 0.08);"
                 ],
                 [
@@ -80,7 +80,7 @@ return [
                     "uri" => "/personnel/out",
                     "link" => "/personnel/out",
                     "text" => "Kho trí thức nội bộ",
-                    "icon" => "mdiAccount",
+                    "icon" => "icon-user",
                     "color" => "color: rgb(255, 0, 0); background: rgba(255, 0, 0, 0.08);"
                 ]
 
@@ -99,7 +99,7 @@ return [
                     "uri" => "/personnel-contract-contract",
                     "link" => "/personnel-contract-contract",
                     "text" => "Số hóa đơn từ và quy trình duyệt",
-                    "icon" => "mdiNoteOutline",
+                    "icon" => "icon-document",
                     "color"=> "color: rgb(32, 175, 255); background: rgba(32, 175, 255, 0.08);"
                 ],
                 [
@@ -107,7 +107,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Thông tin, quá trình sử dụng tài sản",
-                    "icon" => "mdiLaptop",
+                    "icon" => "icon-computer",
                     "color" => "color: rgb(251, 175, 26); background: rgba(251, 175, 26, 0.08);"
                 ],
                 [
@@ -115,7 +115,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Xây dựng, quản lý quy trình tuyển dụng",
-                    "icon" => "mdiAccountPlus",
+                    "icon" => "icon-add-user",
                     "color" => "color: rgb(21, 200, 114); background: rgba(21, 200, 114, 0.08);"
                 ],
                 [
@@ -123,7 +123,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Hồ sơ, hợp đồng, bảo hiểm nhân sự",
-                    "icon" => "mdiAccountSupervisor",
+                    "icon" => "icon-user-group",
                     "color" => "color: rgb(242, 65, 65); background: rgba(242, 65, 65, 0.08);"
                 ],
                 [
@@ -131,7 +131,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Quản lý công phép, làm thêm, nghỉ bù",
-                    "icon" => "mdiCheckboxMarkedCircleOutline",
+                    "icon" => "icon-checked",
                     "color"=> "color: rgb(110, 98, 255); background: rgba(110, 98, 255, 0.08);"
                 ],
                 [
@@ -139,7 +139,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Tính và trả lương trực tiếp qua VPBank",
-                    "icon" => "mdiCurrencyUsd",
+                    "icon" => "icon-us-dollar",
                     "color" => "color: rgb(32, 175, 255); background: rgba(32, 175, 255, 0.08);"
                 ],
                 [
@@ -147,7 +147,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Quản lý đánh giá định kỳ nhân sự",
-                    "icon" => "mdiFormatListChecks",
+                    "icon" => "icon-tasks",
                     "color" => "color: rgb(21, 200, 114); background: rgba(21, 200, 114, 0.08);"
                 ],
                 [
@@ -155,7 +155,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Quản lý mục tiêu và chỉ tiêu KPI",
-                    "icon" => "mdiFinance",
+                    "icon" => "icon-chart-collumn",
                     "color" => "color: rgb(251, 175, 26); background: rgba(251, 175, 26, 0.08);"
                 ],
                 [
@@ -163,7 +163,7 @@ return [
                     "uri" => "/personnel-contract-contract?menu=status",
                     "link" => "/personnel-contract-contract?menu=status",
                     "text" => "Quản lý các khóa đào tạo nội bộ",
-                    "icon" => "mdiSchool",
+                    "icon" => "icon-school",
                     "color" => "color: rgb(21, 200, 114); background: rgba(21, 200, 114, 0.08);"
                 ]
             ]
@@ -181,7 +181,7 @@ return [
                     "uri" => "/personnel-insurance-insurance",
                     "link" => "/personnel-insurance-insurance",
                     "text" => "Quản lý, đo lường chiến dịch marketing",
-                    "icon" => "mdiBullhornOutline",
+                    "icon" => "icon-news",
                     "color"=> "color: rgb(242, 65, 65); background: rgba(242, 65, 65, 0.08);"
                 ],
                 [
@@ -189,7 +189,7 @@ return [
                     "uri" => "/personnel-insurance-insurance?menu=up",
                     "link" => "/personnel-insurance-insurance?menu=up",
                     "text" => "Lưu trữ, chăm sóc, cơ hội, khách hàng",
-                    "icon" => "mdiMessageProcessingOutline",
+                    "icon" => "icon-chat",
                     "color" => "color: rgb(110, 98, 255); background: rgba(110, 98, 255, 0.08);"
                 ],
                 [
@@ -197,7 +197,7 @@ return [
                     "uri" => "/personnel-insurance-insurance?menu=down",
                     "link" => "/personnel-insurance-insurance?menu=down",
                     "text" => "Quản lý, kiểm soát quy trình bán hàng",
-                    "icon" => "mdiBagPersonal",
+                    "icon" => "icon-shopping-bag",
                     "color" => "color: rgb(32, 175, 255); background: rgba(32, 175, 255, 0.08);"
                 ],
                 [
@@ -205,7 +205,7 @@ return [
                     "uri" => "/personnel-insurance-insurance/report-history",
                     "link" => "/personnel-insurance-insurance/report-history",
                     "text" => "Quản lý và quy trình duyệt thu chi",
-                    "icon" => "mdiPercentOutline",
+                    "icon" => "icon-percentage",
                     "color" => "color: rgb(251, 175, 26); background: rgba(251, 175, 26, 0.08);"
                 ],
                 [
@@ -213,7 +213,7 @@ return [
                     "uri" => "/personnel-insurance-insurance/report-history",
                     "link" => "/personnel-insurance-insurance/report-history",
                     "text" => "Quản lý xuất, nhập, tồn kho",
-                    "icon" => "mdiCubeOutline",
+                    "icon" => "icon-box",
                     "color"=> "color: rgb(21, 200, 114); background: rgba(21, 200, 114, 0.08);"
                 ],
                 [
@@ -221,7 +221,7 @@ return [
                     "uri" => "/personnel-insurance-insurance/report-history",
                     "link" => "/personnel-insurance-insurance/report-history",
                     "text" => "Quản lý và quy trình duyệt thu chi",
-                    "icon" => "mdiBagPersonalTag",
+                    "icon" => "icon-shop",
                     "color"=> "color: rgb(242, 65, 65); background: rgba(242, 65, 65, 0.08);"
                 ]
             ]
@@ -239,7 +239,7 @@ return [
                     "uri" => "/personnel-insurance-insurance",
                     "link" => "/personnel-insurance-insurance",
                     "text" => "Hỗ trợ khách hàng bằng ticket",
-                    "icon" => "mdiHeadset",
+                    "icon" => "icon-headset",
                     "color" => "color: rgb(110, 98, 255); background: rgba(110, 98, 255, 0.08);"
                 ],
                 [
@@ -247,7 +247,7 @@ return [
                     "uri" => "/personnel-insurance-insurance?menu=up",
                     "link" => "/personnel-insurance-insurance?menu=up",
                     "text" => "Thư viện tài nguyên mẫu",
-                    "icon" => "mdiCartVariant",
+                    "icon" => "icon-sell-stock",
                     "color"=> "color: rgb(32, 175, 255); background: rgba(32, 175, 255, 0.08);"
                 ],
                 [
@@ -255,7 +255,7 @@ return [
                     "uri" => "/personnel-insurance-insurance?menu=down",
                     "link" => "/personnel-insurance-insurance?menu=down",
                     "text" => "Hệ thống báo cáo BI",
-                    "icon" => "mdiClockTimeThreeOutline",
+                    "icon" => "icon-pie-chart",
                     "color" => "color: rgb(251, 175, 26); background: rgba(251, 175, 26, 0.08);"
                 ],
                 [
@@ -263,7 +263,7 @@ return [
                     "uri" => "/personnel-insurance-insurance/report-history",
                     "link" => "/personnel-insurance-insurance/report-history",
                     "text" => "BPA, xương sống của chuyển đổi số",
-                    "icon" => "mdiVectorTriangle",
+                    "icon" => "icon-flow-chart",
                     "color" => "color: rgb(21, 200, 114); background: rgba(21, 200, 114, 0.08);"
                 ],
                 [
@@ -271,7 +271,7 @@ return [
                     "uri" => "/personnel-insurance-insurance/report-history",
                     "link" => "/personnel-insurance-insurance/report-history",
                     "text" => "Tích hợp A với hệ thống của bạn",
-                    "icon" => "mdiXml",
+                    "icon" => "icon-source-code",
                     "color" => "color: rgb(242, 65, 65); background: rgba(242, 65, 65, 0.08);"
                 ]
 

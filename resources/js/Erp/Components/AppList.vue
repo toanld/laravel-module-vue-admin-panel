@@ -2,7 +2,10 @@
 import { reactive, computed,ref, onMounted } from 'vue'
 import { usePage,Link, router } from '@inertiajs/vue3'
 import BaseIcon from '@/Components/BaseIcon.vue'
-import { Tabs, Tab } from 'flowbite-vue'
+// import { Tabs, Tab } from 'flowbite-vue'
+
+import tabs from '@/Erp/Components/Tabs.vue'
+import tab from '@/Erp/Components/Tab.vue'
 const activeTab = ref('use')
 import {
 mdiEarth,
@@ -80,7 +83,7 @@ const handlePaneClick = (e) => {
 <template>
      <!-- Apps -->
     <div
-        class="hidden !fixed shadow-3xl z-[100] border border-gray-200 overflow-hidden z-50 my-4 w-9/12 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+        class="hidden  shadow-3xl z-[100] border border-gray-200 overflow-hidden z-50 my-4 w-9/12 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl !-left-10"
         id="apps-dropdown"
 
     >
@@ -97,7 +100,9 @@ const handlePaneClick = (e) => {
                                 <div class="uppercase text-xs pl-3 pt-5 pb-3 font-bold">{{ value.name }}</div>
                                 <div v-for="(child, i) in value.children" :key="i">
                                     <a href="#" class="w-full p-3 flex items-center group rounded-2xl border border-white hover:border-gray-200">
-                                        <BaseIcon
+
+                                            <i v-if="child.icon" :style="child.color" class="w-9 h-9 flex justify-center items-center !text-lg flex-none group-hover:text-white rounded-xl" :class="child.icon"></i>
+                                       <!--  <BaseIcon
                                             :stype="child.color"
                                             v-if="child.icon"
                                             :path="mdiIcon[child.icon] ? mdiIcon[child.icon] : child.icon"
@@ -105,7 +110,7 @@ const handlePaneClick = (e) => {
                                             w="w-9"
                                             h="h-9"
                                             :size="18"
-                                          />
+                                          /> -->
                                         <div class="ml-2 w-full">
                                             <div class="text-sm text-gray-200 text-gray-800 h-6 flex justify-between">
                                                 {{ child.name }}

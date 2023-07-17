@@ -66,6 +66,12 @@ createInertiaApp({
             .use(pinia)
             //.use(myPlugin)
             .use(ZiggyVue, Ziggy);
+             app.config.globalProperties.$overflowHidenBody = () => {
+            document.querySelector('body').classList.add('overflow-hidden');
+        }
+        app.config.globalProperties.$removeOverflowHidenBody = () => {
+            document.querySelector('body').classList.remove('overflow-hidden');
+        }
         app.config.globalProperties.$myTrans = myTrans;
         app.directive('click-outside', {
           mounted(el, binding, vnode) {
@@ -103,5 +109,5 @@ if ((!localStorage[darkModeKey] && window.matchMedia('(prefers-color-scheme: dar
 /* Collapse mobile aside menu on route change */
 router.on('navigate', (event) => {
   layoutStore.isAsideMobileExpanded = false
-  layoutStore.isAsideLgActive = false
+  layoutStore.isAsideLgActive = true
 })

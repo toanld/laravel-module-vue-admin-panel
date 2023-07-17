@@ -25,6 +25,9 @@ module.exports = {
             primary: {"1050" : "#f94949","1000": "#edf1f8","50":"#eef2ff","100":"#e0e7ff","200":"#c7d2fe","300":"#a5b4fc","400":"#818cf8","500":"#6366f1","600":"#4f46e5","700":"#4338ca","800":"#3730a3","900":"#312e81","950":"#1e1b4b"},
             'main' : '#f94949'
         },
+        width: {
+            '500': '500px',
+        },
         fontFamily: {
             'body': [
                 'Inter',
@@ -67,6 +70,9 @@ module.exports = {
       },
       left : {
         '22' : '22px'
+      },
+      transitionTimingFunction: {
+        'max-width' : 'max-width .2s ease-in,opacity .2s ease-in'
       },
       fontSize:{
         'mini' : '.7em'

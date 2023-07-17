@@ -17,7 +17,7 @@ const toggle = ref(true)
 <template>
     <!-- Dropdown menu -->
     <div
-        class="hidden !fixed z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl pb-2 w-72"
+        class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl pb-2 w-72"
         id="dropdown"
     >
         <div class="py-3 px-4">
@@ -40,11 +40,12 @@ const toggle = ref(true)
                     href="#"
                     class="flex items-center py-2 px-1 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                 >
-                <BaseIcon
+                <i class="icon icon-settings flex-none text-gray-800 group-hover:block mr-2"></i>
+               <!--  <BaseIcon
                     :path="mdiCogOutline"
                     class="flex-none text-gray-800 group-hover:block mr-1"
                     :size="18"
-                  />
+                  /> -->
 
                 Cài đặt hệ thống
                 </a>
@@ -54,11 +55,12 @@ const toggle = ref(true)
                     href="#"
                     class="flex py-2 px-1 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                 >
-                <BaseIcon
+                <i class="icon icon-bank flex-none text-gray-800 group-hover:block mr-2"></i>
+                <!-- <BaseIcon
                     :path="mdiInformationVariantCircleOutline"
                     class="flex-none text-gray-800 group-hover:block mr-1"
                     :size="18"
-                  />
+                  /> -->
                 Thông tin đối soát
                 </a>
             </li>
@@ -67,11 +69,13 @@ const toggle = ref(true)
                     href="#"
                     class="flex py-2 px-1 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                 >
-                <BaseIcon
+                <i class="icon icon-book flex-none text-gray-800 group-hover:block mr-2"></i>
+
+               <!--  <BaseIcon
                     :path="mdiNoteMultipleOutline"
                     class="flex-none text-gray-800 group-hover:block mr-1"
                     :size="18"
-                  />
+                  /> -->
                 Hướng dẫn sử dụng
                 </a>
             </li>
@@ -81,11 +85,13 @@ const toggle = ref(true)
                     class="flex justify-between py-2 px-1 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                 >
                 <div class="flex items-center">
-                    <BaseIcon
+                    <i class="icon icon-theme flex-none text-gray-800 group-hover:block mr-2"></i>
+
+                   <!--  <BaseIcon
                         :path="mdiNoteMultipleOutline"
                         class="flex-none text-gray-800 group-hover:block mr-1"
                         :size="18"
-                      />
+                      /> -->
                     Đổi màu giao diện
                 </div>
                 <div>
@@ -103,11 +109,13 @@ const toggle = ref(true)
                     class="flex justify-between items-center py-2 px-1 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                 >
                 <div class="flex items-center">
-                    <BaseIcon
+                    <i class="icon icon-chat flex-none text-gray-800 group-hover:block mr-2"></i>
+
+                    <!-- <BaseIcon
                         :path="mdiMessageProcessingOutline"
                         class="flex-none text-gray-800 group-hover:block mr-1"
                         :size="18"
-                      />
+                      /> -->
                         Chat với XX
                 </div>
                 <div class="">
@@ -125,11 +133,12 @@ const toggle = ref(true)
                     class="flex py-2 px-1 justify-between rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
                 >
                 <div class="flex items-center">
-                    <BaseIcon
+                    <i class="icon icon-google-translate flex-none text-gray-800 group-hover:block mr-2"></i>
+                   <!--  <BaseIcon
                         :path="mdiTranslateVariant"
                         class="flex-none text-gray-800 group-hover:block mr-1"
                         :size="18"
-                      />
+                      /> -->
                         Ngôn ngữ
 
                 </div>
@@ -147,11 +156,13 @@ const toggle = ref(true)
                     href="#"
                     class="flex items-center rounded-lg  py-2 px-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
-                <BaseIcon
+                    <i class="icon icon-key flex-none text-gray-800 group-hover:block mr-2"></i>
+
+               <!--  <BaseIcon
                     :path="mdiKeyVariant"
                     class="flex-none text-gray-800 group-hover:block mr-1"
                     :size="18"
-                  />
+                  /> -->
 
                     Đổi mật khẩu
                 </a>
@@ -161,11 +172,13 @@ const toggle = ref(true)
                     href="#"
                     class="flex items-center  rounded-lg py-2 px-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
-                <BaseIcon
+                    <i class="icon icon-export flex-none text-gray-800 group-hover:block mr-2"></i>
+
+              <!--   <BaseIcon
                     :path="mdiLogout"
                     class="flex-none text-gray-800 group-hover:block mr-1"
                     :size="18"
-                  />
+                  /> -->
 
                     Đăng xuất
                 </a>

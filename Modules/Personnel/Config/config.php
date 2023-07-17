@@ -6,7 +6,7 @@ return [
         [
             "name" => 'Danh sách nhân sự',
             "uri" => "<nolink>",
-            "icon" => 'mdiCardAccountDetailsOutline',
+            "icon" => 'icon-contact-card',
             "link" => "",
             'summary' => 'Nhân sự',
             'text' => "list-personnel",
@@ -47,7 +47,7 @@ return [
         [
             "name" => 'Hợp đồng lao động',
             "uri" => "<nolink>",
-            "icon" => 'mdiFileSyncOutline',
+            "icon" => 'icon-contract-job',
             "link" => "",
             'summary' => 'Hợp đồng',
             'text' => "personnel-contract-contract",
@@ -72,7 +72,7 @@ return [
         [
             "name" => 'Bảo hiểm',
             "uri" => "<nolink>",
-            "icon" => 'mdiPlusBoxOutline',
+            "icon" => 'icon-hospital-3',
             "link" => "",
             'summary' => 'Bảo hiểm',
             'summary' => 'Bảo hiểm',
@@ -103,7 +103,7 @@ return [
         [
             "name" => 'Quyết định',
             "uri" => "/personnel-bonus-decision",
-            "icon" => 'mdiCardAccountDetailsOutline',
+            "icon" => 'icon-gift',
             "link" => "/personnel-bonus-decision",
             'summary' => 'Quyết định',
             'text' => "personnel-bonus-decision",
@@ -112,7 +112,7 @@ return [
         [
             "name" => 'Báo cáo',
             "uri" => "/personnel-report-report",
-            "icon" => 'mdiChartPieOutline',
+            "icon" => 'icon-pie-chart',
             "link" => "/personnel-report-report",
             'summary' => 'Báo cáo',
             'text' => "personnel-report-report",

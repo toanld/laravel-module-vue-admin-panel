@@ -1,12 +1,15 @@
 <script setup>
 import { ref } from "vue"
-import { Tabs, Tab } from 'flowbite-vue'
+// import { Tabs, Tab } from 'flowbite-vue'
+
+import tabs from '@/Erp/Components/Tabs.vue'
+import tab from '@/Erp/Components/Tab.vue'
 const activeTab = ref('all')
 </script>
 <template>
       <!-- Notifications -->
     <div
-        class="hidden !fixed overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
+        class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl !-left-5"
         id="notification-dropdown"
     >
         <div>
