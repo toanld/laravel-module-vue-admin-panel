@@ -117,33 +117,24 @@ const handlePaneClick = (e) => {
                 </div>
             </div>
             <div class="flex items-center lg:order-2 py-2.5" >
-                 <form action="#" method="GET" class="hidden md:block md:pl-2">
+                 <form action="#" method="GET" class="hidden md:block md:pl-2 md:mr-4">
                     <label for="topbar-search" class="sr-only">Search</label>
-                    <div class="relative md:w-60 md:w-96 mr-3">
-                        <div
-                            class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
-                        >
-                            <svg
-                                class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                ></path>
-                            </svg>
+                    <div class="relative md:w-64 mr-3">
+                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none" >
+                            <i class="icon-search text-icon"></i>
                         </div>
                         <input
                             type="text"
                             name="email"
                             id="topbar-search"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Search"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full px-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Tìm kiếm"
                         />
+                        <i
+                            data-dropdown-toggle="search-dropdown"
+                            class="absolute top-0 right-0 text-icon icon-slider-2 cursor-pointer p-1 flex-shrink-0 mr-2" ></i>
                     </div>
+
                 </form>
                 <button
                     type="button"
@@ -165,10 +156,8 @@ const handlePaneClick = (e) => {
                     >
                     <span class="sr-only">summary</span>
                     <!-- Bell icon -->
-                    Lối tắt
-                    <svg class=" text-main ml-2 w-[14px] h-[14px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
-                  </svg>
+                    <span class="pl-2 pr-1">Lối tắt</span>
+                    <i class="icon-caret-down text-main pr-1"></i>
                 </button>
                 <a
                     href="#"
@@ -176,7 +165,7 @@ const handlePaneClick = (e) => {
                     >
                     <span class="sr-only">home</span>
                     <!-- Bell icon -->
-                    <i class="icon-home text-gray-800 dark:text-white group-hover:text-main"></i>
+                    <i class="icon-home text-icon dark:text-white group-hover:text-main"></i>
                    <!--  <svg class="w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"/>
                   </svg> -->
@@ -189,7 +178,7 @@ const handlePaneClick = (e) => {
                 >
                     <span class="sr-only">View notifications</span>
                     <!-- Icon -->
-                    <i class="icon-thumbnails text-gray-800 dark:text-white group-hover:text-main"></i>
+                    <i class="icon-thumbnails text-icon dark:text-white group-hover:text-main"></i>
 
                 </button>
                  <button
@@ -200,7 +189,7 @@ const handlePaneClick = (e) => {
                     >
                     <span class="sr-only">View notifications</span>
                     <!-- Bell icon -->
-                    <i class="icon-notify text-gray-800 dark:text-white group-hover:text-main"></i>
+                    <i class="icon-notify text-icon dark:text-white group-hover:text-main"></i>
                    <!--  <svg
                         aria-hidden="true"
                         class="w-6 h-6 group-hover:text-main"

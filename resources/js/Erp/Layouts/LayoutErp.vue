@@ -9,6 +9,7 @@ import Notification from '@/Erp/Components/Notification.vue'
 import AppList from '@/Erp/Components/AppList.vue'
 import UserProfile from '@/Erp/Components/UserProfile.vue'
 import Summary from '@/Erp/Components/Summary.vue'
+import Search from '@/Erp/Components/Search.vue'
 import { onMounted } from 'vue'
 const layoutStore = useLayoutStore()
 defineProps({
@@ -34,7 +35,7 @@ const closeDom = () => {
             <slot></slot>
         </main>
     </div>
-    <div class="bow-old fixed top-0 left-0 w-full h-full bg-gray-100 opacity-50 z-50 hidden" @click="closeDom"></div>
+    <div class="bow-old fixed top-0 left-0 w-full h-full bg-gray-300 opacity-50 z-50 hidden" @click="closeDom"></div>
     <Summary></Summary>
      <!-- Dropdown menu -->
     <Notification></Notification>
@@ -42,4 +43,6 @@ const closeDom = () => {
     <AppList></AppList>
     <!-- Dropdown menu -->
     <UserProfile></UserProfile>
+
+    <Search></Search>
 </template>
