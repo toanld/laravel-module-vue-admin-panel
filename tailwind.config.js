@@ -10,7 +10,7 @@ module.exports = {
     './resources/js/**/*.{vue,js,ts,jsx,tsx}',
     './Modules/*/Resources/**/*.blade.php',
     './extensions/plugins/*/resources/**/*.blade.php',
-    './Modules/*/Resources**/*.{vue,js,ts,jsx,tsx}',
+    './Modules/*/Resources/**/*.{vue,js,ts,jsx,tsx}',
     './resources/js/**/*.js',
       "./node_modules/flowbite/**/*.js",
   ],
