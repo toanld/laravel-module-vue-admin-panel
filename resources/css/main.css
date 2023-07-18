@@ -10,7 +10,10 @@
 @import "font/index.css";
 @import "font/font-icon.css";
 @import "font/icons.css";
-
+:root {
+  --color-main: #f94949;
+  --color-bg-hover: #f9494914;
+}
 *{
      font-family: HelveticaWorld!important;
 /*     overflow: hidden;*/

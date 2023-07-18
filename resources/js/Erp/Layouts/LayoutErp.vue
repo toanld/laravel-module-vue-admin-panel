@@ -28,7 +28,7 @@ const closeDom = () => {
         <!-- Sidebar -->
         <AsideMenu></AsideMenu>
         <main class="pl-4 pb-b h-auto pt-20 transition-position "
-            :class="{ 'md:ml-20': layoutStore.isAsideLgActive,'md:ml-60' : !layoutStore.isAsideLgActive}"
+            :class="{ 'md:ml-16': layoutStore.isAsideLgActive,'md:ml-60' : !layoutStore.isAsideLgActive}"
             >
             <i class="sidemenu-item-icon icon-contact-card"></i>
             <slot></slot>

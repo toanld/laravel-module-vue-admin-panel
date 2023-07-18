@@ -49,7 +49,7 @@ const checkExpanded = (childs) => {
 <template>
     <aside
         class="fixed top-0 left-0 z-40 w-60 h-screen transition-position -translate-x-full bg-[#edf1f8] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-        :class="{ 'lg:w-20' : layoutStore.isAsideLgActive}"
+        :class="{ 'lg:w-[70px]' : layoutStore.isAsideLgActive}"
         aria-label="Sidenav"
         id="drawer-navigation"
         >
@@ -111,7 +111,7 @@ const checkExpanded = (childs) => {
 
             </div>
                 <ul class="space-y-2" data-accordion="collapse">
-                    <li v-for="(value, key) in menu" :key="key" class="px-3 group " :id="'hover-'+value.text">
+                    <li v-for="(value, key) in menu" :key="key" class="px-2 group " :id="'hover-'+value.text">
                         <div v-if="value.children.length > 0" class="flow-root">
                              <button
                                     type="button"
@@ -155,15 +155,18 @@ const checkExpanded = (childs) => {
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
                                 </svg>
 
-                                <ul class="group-hover:block fixed bg-white z-100 top-20 border border-gray-300 rounded -right-56 w-56 hidden shadow-lg shadow-gray-500/50  p-2 space-y-2"  v-if="layoutStore.isAsideLgActive" :style="'top:'+ cssTop(value.text, key)+';'">
-                                    <li v-for="(chil, key) in value.children" :key="key">
+                                <ul class="group-hover:block transition-height fixed bg-white z-100 top-20 border border-gray-300 rounded right-0 left-[70px] w-56  shadow-lg shadow-gray-500/50  hidden group-hover:p-2 space-y-2"  v-if="layoutStore.isAsideLgActive" :style="'top:'+ cssTop(value.text, key)+';'">
+                                    <li v-for="(chil, key) in value.children" :key="key" >
                                         <a
                                             href="#"
                                             :class="{
-                                                'flex items-center text-sm p-2 w-full text-gray-900 rounded-lg transition duration-75 group hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700' :true,
-                                                '!text-main bg-red-100 hover:bg-red-100' : checkActive == chil.link
+
+                                                'text-gray-900 flex items-center text-sm p-2 w-full rounded-lg transition duration-75 group hover:bg-slate-100 dark:text-white dark:hover:bg-slate-700' :true,
+                                                '!text-main bg-bghover hover:bg-red-100' : checkActive == chil.link
                                             }"
-                                        >{{ chil.name }}</a
+                                        >
+                                            {{ chil.name }}
+                                        </a
                                         >
                                     </li>
                                 </ul>

@@ -41,7 +41,7 @@ const handlePaneClick = (e) => {
 <template>
     <nav class="bg-white border-b border-gray-200 px-4  dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-40"
         :class="{
-            'md:ml-20' : layoutStore.isAsideLgActive,
+            'md:ml-16' : layoutStore.isAsideLgActive,
             'md:ml-60' : !layoutStore.isAsideLgActive
         }">
         <div class="flex flex-wrap justify-between items-center">
@@ -89,12 +89,12 @@ const handlePaneClick = (e) => {
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
                 <div class="flex items-center group relative py-2.5">
-                    <div class="w-8 h-8 rounded-full border border-main flex items-center justify-center cursor-pointer mr-2 group-hover:shadow group-hover:shadow-red-500 group-hover:border-main group-hover:bg-main transition-all">
+                    <div class="w-8 h-8 rounded-full border border-main flex items-center justify-center cursor-pointer mr-5 group-hover:shadow group-hover:shadow-main group-hover:border-main group-hover:bg-main transition-all">
                         <svg class="w-[14px] h-[14px] text-main transition-all group-hover:rotate-90 dark:text-white group-hover:text-white e" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                         </svg>
                     </div>
-                    {{ title }}
+                    <span class="font-medium">{{ title }}</span>
                     <ul class="hidden p-3 space-y-2 w-48 rounded-lg bg-white group-hover:block group-hover:absolute group-hover:top-12 shadow-3xl group-hover:left-0">
                         <li v-for="(value, key) in menu" :key="key" class="">
                             <a
@@ -161,7 +161,7 @@ const handlePaneClick = (e) => {
                     @click="handlePaneClick"
                     type="button"
                     data-dropdown-toggle="summary-dropdown"
-                    class="p-2 mr-1  gourp uppercase text-main border border-main flex items-center justify-center text-xs rounded-lg group hover:text-main hover:bg-red-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="p-2 mr-1  gourp uppercase text-main border border-main flex items-center justify-center text-xs rounded-lg group hover:text-main hover:bg-bghover dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     >
                     <span class="sr-only">summary</span>
                     <!-- Bell icon -->
@@ -172,7 +172,7 @@ const handlePaneClick = (e) => {
                 </button>
                 <a
                     href="#"
-                    class="w-9 h-9 flex items-center justify-center group p-2 ml-1.5 text-gray-500 rounded-lg group hover:text-gray-900 hover:bg-red-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="w-9 h-9 flex items-center justify-center group p-2 ml-1.5 text-gray-500 rounded-lg group hover:text-gray-900 hover:bg-bghover dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     >
                     <span class="sr-only">home</span>
                     <!-- Bell icon -->
@@ -185,7 +185,7 @@ const handlePaneClick = (e) => {
                     @click="handlePaneClick"
                     type="button"
                     data-dropdown-toggle="apps-dropdown"
-                    class="w-9 h-9 flex items-center justify-center group p-2 ml-1.5 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-red-100 group dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700  dark:focus:ring-main"
+                    class="w-9 h-9 flex items-center justify-center group p-2 ml-1.5 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-bghover group dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700  dark:focus:ring-main"
                 >
                     <span class="sr-only">View notifications</span>
                     <!-- Icon -->
@@ -196,7 +196,7 @@ const handlePaneClick = (e) => {
                     @click="handlePaneClick"
                     type="button"
                     data-dropdown-toggle="notification-dropdown"
-                    class="w-9 h-9 flex items-center justify-center gourp ml-1.5 p-2 text-gray-500 rounded-lg group hover:text-gray-900 hover:bg-red-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="w-9 h-9 flex items-center justify-center gourp ml-1.5 p-2 text-gray-500 rounded-lg group hover:text-gray-900 hover:bg-bghover dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     >
                     <span class="sr-only">View notifications</span>
                     <!-- Bell icon -->
