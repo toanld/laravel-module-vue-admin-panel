@@ -2,6 +2,7 @@
 
 return [
     'name' => 'Personnel',
+    'prefix' => 'personnel',
     'menu' =>[
         [
             "name" => 'Danh sách nhân sự',
