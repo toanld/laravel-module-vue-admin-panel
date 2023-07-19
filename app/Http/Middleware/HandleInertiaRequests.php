@@ -27,6 +27,11 @@ class HandleInertiaRequests extends Middleware
         return parent::version($request);
     }
 
+    public function rootView(Request $request)
+    {
+        return myapp()->rootViewInetia();
+    }
+
     /**
      * Define the props that are shared by default.
      *

@@ -12,6 +12,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
+        myapp()->rootViewInetia('admin::layouts.admin');
         $this->middleware('can:admin list', ['only' => ['index']]);
         $this->middleware('can:admin create', ['only' => ['create', 'store']]);
         $this->middleware('can:admin edit', ['only' => ['edit', 'update']]);
