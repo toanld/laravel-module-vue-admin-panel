@@ -11,7 +11,14 @@ import UserProfile from '@/Erp/Components/UserProfile.vue'
 import Summary from '@/Erp/Components/Summary.vue'
 import Search from '@/Erp/Components/Search.vue'
 import { onMounted } from 'vue'
+import { initFlowbite } from 'flowbite'
+
+// initialize components based on data attribute selectors
+// onMounted(() => {
+//     initFlowbite();
+// })
 const layoutStore = useLayoutStore()
+
 defineProps({
     title: String
 })

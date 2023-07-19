@@ -37,6 +37,9 @@ const handlePaneClick = (e) => {
     document.querySelector('.bow-old').classList.remove('hidden')
     document.querySelector('.bow-old').classList.add('block')
 }
+const handleMenuLeft = () => {
+  layoutStore.isAsideLgActive = false
+}
 </script>
 <template>
     <nav class="bg-white border-b border-gray-200 px-4  dark:bg-gray-800 dark:border-gray-700 fixed left-0 right-0 top-0 z-40"
@@ -45,12 +48,13 @@ const handlePaneClick = (e) => {
             'md:ml-60' : !layoutStore.isAsideLgActive
         }">
         <div class="flex flex-wrap justify-between items-center">
-            <div class="flex justify-start items-center w-64">
+            <div class="flex justify-start items-center lg:w-48 xl:w-64 md:w-9">
                 <button
-                    data-drawer-target="drawer-navigation"
-                    data-drawer-toggle="drawer-navigation"
-                    aria-controls="drawer-navigation"
-                    class="p-x mr-2 py-2.5 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                    data-drawer-target="logo-sidebar"
+                    data-drawer-toggle="logo-sidebar"
+                    aria-controls="logo-sidebar"
+                    @click="handleMenuLeft"
+                    class="p-x mr-2 py-2.5 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900  dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                     <svg
                         aria-hidden="true"
@@ -80,21 +84,21 @@ const handlePaneClick = (e) => {
                     </svg>
                     <span class="sr-only">Toggle sidebar</span>
                 </button>
-                <a href="https://flowbite.com" class="flex items-center justify-between mr-4 md:hidden py-2.5">
+              <!--   <a href="https://flowbite.com" class="flex items-center justify-between mr-4 md:hidden py-2.5">
                     <img
                         src="https://flowbite.s3.amazonaws.com/logo.svg"
                         class="mr-3 h-8"
                         alt="Flowbite Logo"
                     />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                </a>
+                </a> -->
                 <div class="flex items-center group relative py-2.5">
                     <div class="w-8 h-8 rounded-full border border-main flex items-center justify-center cursor-pointer mr-5 group-hover:shadow group-hover:shadow-main group-hover:border-main group-hover:bg-main transition-all">
                         <svg class="w-[14px] h-[14px] text-main transition-all group-hover:rotate-90 dark:text-white group-hover:text-white e" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                         </svg>
                     </div>
-                    <span class="font-medium">{{ title }}</span>
+                    <span class="font-medium md:hidden lg:block">{{ title }}</span>
                     <ul class="hidden p-3 space-y-2 w-48 rounded-lg bg-white group-hover:block group-hover:absolute group-hover:top-12 shadow-3xl group-hover:left-0">
                         <li v-for="(value, key) in menu" :key="key" class="">
                             <a
@@ -117,9 +121,9 @@ const handlePaneClick = (e) => {
                 </div>
             </div>
             <div class="flex items-center lg:order-2 py-2.5" >
-                 <form action="#" method="GET" class="hidden md:block md:pl-2 md:mr-4">
+                 <form action="#" method="GET" class="hidden md:block md:pl-2 lg:mr-4 md:mr-1">
                     <label for="topbar-search" class="sr-only">Search</label>
-                    <div class="relative md:w-64 mr-3">
+                    <div class="relative md:w-40 lg:w-64 mr-3">
                         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none" >
                             <i class="icon-search text-icon"></i>
                         </div>
@@ -127,7 +131,7 @@ const handlePaneClick = (e) => {
                             type="text"
                             name="email"
                             id="topbar-search"
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full px-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-white h-9 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full px-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Tìm kiếm"
                         />
                         <i
@@ -138,9 +142,11 @@ const handlePaneClick = (e) => {
                 </form>
                 <button
                     type="button"
-                    data-drawer-toggle="drawer-navigation"
-                    aria-controls="drawer-navigation"
-                    class="p-2 mr-1 text-gray-500 rounded-lg md:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                     data-drawer-target="logo-sidebar"
+                     data-drawer-toggle="logo-sidebar"
+                     aria-controls="logo-sidebar"
+                     @click="handleMenuLeft"
+                    class="p-2 mr-1 text-gray-500 rounded-lg md:hidden hover:text-gray-900  dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                     >
                     <span class="sr-only">Toggle search</span>
                     <svg  class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
