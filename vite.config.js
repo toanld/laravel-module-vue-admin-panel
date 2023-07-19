@@ -8,6 +8,7 @@ export default defineConfig({
         alias:{
             '@modules' : path.resolve(__dirname + '/Modules'),
             '@erp' : path.resolve(__dirname + '/Modules/Erp/Resources/Vuejs'),
+            '@admin' : path.resolve(__dirname + '/Modules/Admin/Resources/Vuejs'),
             '@' : __dirname+'/resources/js'
         },
     },
@@ -18,7 +19,7 @@ export default defineConfig({
     },
     plugins: [
         laravel({
-            input: 'resources/js/app.js',
+            input: ['resources/js/app.js','Modules/Admin/Resources/admin.js'],
             refresh: true,
         }),
         vue({

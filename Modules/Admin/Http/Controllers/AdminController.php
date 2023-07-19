@@ -4,7 +4,6 @@ namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\Admin\Entities\ModelExample as Admin;
 use Inertia\Inertia;
@@ -13,6 +12,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
+        Inertia::setRootView('dashboard');
         $this->middleware('can:admin list', ['only' => ['index']]);
         $this->middleware('can:admin create', ['only' => ['create', 'store']]);
         $this->middleware('can:admin edit', ['only' => ['edit', 'update']]);
@@ -22,9 +22,9 @@ class AdminController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function Dashboard()
     {
-
+        return Inertia::module('admin::Dashboard');
         $data = Admin::orderBy('id','DESC')->paginate(30);
         return Inertia::module('admin::Index', [
             //'datas' => Inertia::lazy(fn () =>  $data),
