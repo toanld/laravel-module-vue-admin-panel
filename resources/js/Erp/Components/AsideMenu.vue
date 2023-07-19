@@ -137,10 +137,10 @@ const checkExpanded = (childs) => {
                                 >
                                 <svg
                                     data-accordion-icon
-                                    v-if="value.children.length > 0 && !layoutStore.isAsideLgActive"
-                                    :class="[checkExpanded(value.children) ? 'text-main' : '']"
-                                    class="w-[12px] h-[12px] dark:text-white group-hover:text-main"
                                     aria-hidden="true"
+                                    v-show="value.children.length > 0 && !layoutStore.isAsideLgActive"
+                                    :class="[checkExpanded(value.children) ? 'text-main' : '']"
+                                    class="w-[12px] h-[12px] dark:text-white group-hover:text-main  rotate-180 shrink-0"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 14 8">
