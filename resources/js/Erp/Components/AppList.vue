@@ -83,7 +83,7 @@ const handlePaneClick = (e) => {
 <template>
      <!-- Apps -->
     <div
-        class="hidden  shadow-3xl z-[100] border border-gray-200 overflow-hidden z-50 my-4 w-9/12 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl !-left-10"
+        class="hidden  shadow-3xl z-[100] border border-gray-200 overflow-hidden z-50 my-4 sm:w-11/12 md:w-11/12 lg:w-11/12 xl:w-9/12 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl !-left-10"
         id="apps-dropdown"
 
     >
@@ -95,10 +95,10 @@ const handlePaneClick = (e) => {
             <tab name="all" title="Tất cả" >
                 <div class="block">
                     <div class="max-w-full">
-                        <div class="w-full grid grid-cols-4 gap-4">
+                        <div class="w-full grid lg:grid-cols-4 lg:gap-4 sm:grid-cols-1 sm:h-600 md:grid-cols-1 md:h-600 sm:overflow-y-auto md:overflow-y-auto">
                             <div v-for="(value, key) in menu" :key="key">
-                                <div class="uppercase text-xs pl-3 pt-5 pb-3 font-bold">{{ value.name }}</div>
-                                <div v-for="(child, i) in value.children" :key="i">
+                                <div class="lg:block md:hidden uppercase text-xs pl-3 pt-5 pb-3 font-bold">{{ value.name }}</div>
+                                <div class="lg:block md:hidden" v-for="(child, i) in value.children" :key="i">
                                     <a href="#" class="w-full p-3 flex items-center group rounded-2xl border border-white hover:border-gray-200">
 
                                             <i v-if="child.icon" :style="child.color" class="w-9 h-9 flex justify-center items-center !text-lg flex-none group-hover:text-white rounded-xl" :class="child.icon"></i>
@@ -124,6 +124,32 @@ const handlePaneClick = (e) => {
 
                                         </div>
                                     </a>
+                                </div>
+
+                                <div class="sm:block md:block lg:hidden">
+                                    <div class="uppercase w-max text-xs pl-3 pt-5 pb-3 font-bold border-b border-b-gray-200">
+                                        {{ value.name }}
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div v-for="(child, i) in value.children" :key="i">
+                                            <a href="#" class="w-full p-3 flex items-center group rounded-2xl border border-white hover:border-gray-200">
+
+                                                    <i v-if="child.icon" :style="child.color" class="w-9 h-9 flex justify-center items-center !text-lg flex-none group-hover:text-white rounded-xl" :class="child.icon"></i>
+                                                <div class="ml-2 w-full">
+                                                    <div class="text-sm text-gray-200 text-gray-800 h-6 flex justify-between">
+                                                        {{ child.name }}
+                                                        <BaseIcon
+                                                            :path="mdiCheckCircleOutline"
+                                                            class="flex-none hidden text-gray-800 group-hover:block -mt-1"
+                                                            :size="18"
+                                                          />
+                                                    </div>
+                                                    <div class="text-[.7em] whitespace-nowrap text-gray-600 -mt-1">{{ child.text }}</div>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

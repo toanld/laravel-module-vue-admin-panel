@@ -48,13 +48,13 @@ const checkExpanded = (childs) => {
 </script>
 <template>
     <aside
-        class="fixed top-0 left-0 z-40 w-60 h-screen transition-position -translate-x-full bg-[#edf1f8] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-        :class="{ 'lg:w-[70px]' : layoutStore.isAsideLgActive}"
-        aria-label="Sidenav"
-        id="drawer-navigation"
+        class="fixed top-0 left-0 z-40 w-60 h-screen sm:mt-61 md:mt-0 sm:bg-white transition-transform -translate-x-full md:bg-[#edf1f8] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        :class="{ 'md:w-[70px] sm:w-60' : layoutStore.isAsideLgActive}"
+        aria-label="Sidebar"
+        id="logo-sidebar"
         >
-        <div class="overflow-y-auto py-2.5 h-full dark:bg-gray-800">
-            <form action="#" method="GET" class="md:hidden mb-2">
+        <div class="overflow-y-auto h-full dark:bg-gray-800">
+            <form action="#" method="GET" class="md:hidden  px-2 py-4 ">
                 <label for="sidebar-search" class="sr-only">Search</label>
                 <div class="relative">
                     <div
@@ -77,15 +77,15 @@ const checkExpanded = (childs) => {
                         type="text"
                         name="search"
                         id="sidebar-search"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Search"
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Tìm kiếm"
                     />
                 </div>
             </form>
             <div class="justify-between items-center mb-3 py-2 px-5 lg:flex md:flex sm:hidden h-12"
                 :class="{ 'lg:justify-center' : layoutStore.isAsideLgActive}"
                 >
-                 <div class="cursor-pointer" @click="menuOpenLg">
+                 <div class="cursor-pointer sm:hidden md:block" @click="menuOpenLg">
                      <svg
                         aria-hidden="true"
                         class="w-6 h-6 text-gray-800 dark:text-white"
@@ -126,13 +126,6 @@ const checkExpanded = (childs) => {
                                 <div class="flex justify-center items-center w-9 h-9 rounded-full group-hover:bg-main"
                                     :class="[checkExpanded(value.children) ? 'bg-main' : '']">
                                     <i v-if="value.icon" :class="[value.icon, checkExpanded(value.children) ? 'text-white' : '']" class="group-hover:text-white"></i>
-                                    <!-- <BaseIcon
-                                        v-if="value.icon"
-                                        :path="mdiIcon[value.icon] ? mdiIcon[value.icon] : value.icon"
-                                        class="flex-none group-hover:text-white"
-                                        :class="[checkExpanded(value.children) ? 'text-white' : '']"
-                                        :size="18"
-                                      /> -->
                                 </div>
                                 <span :class="{
                                         'flex-1 ml-3 text-left whitespace-nowrap text-sm font-normal group-hover:text-main' :true,
@@ -142,7 +135,6 @@ const checkExpanded = (childs) => {
 
                                 >{{ value.name }}</span
                                 >
-
                                 <svg
                                     data-accordion-icon
                                     v-if="value.children.length > 0 && !layoutStore.isAsideLgActive"
@@ -178,7 +170,7 @@ const checkExpanded = (childs) => {
                                 }" v-if="layoutStore.isAsideLgActive"
                                 >{{ value.summary }}
                             </a>
-                            <ul :id="'dropdown-'+value.text" class=" hidden py-2 space-y-2 w-48 float-right border-l border-l-[#edf1f8] group-hover:border-l-red-200 before:content-[''] group-hover:before:h-3 group-hover:before:w-px group-hover:before:bg-red-200 group-hover:before:absolute group-hover:before:-top-2 group-hover:before:-left-px relative"
+                            <ul :id="'dropdown-'+value.text" class=" hidden py-2 space-y-2 w-48 sm:mr-2 md:mr-2 lg:mr-2 float-right border-l border-l-[#edf1f8] group-hover:border-l-red-200 before:content-[''] group-hover:before:h-3 group-hover:before:w-px group-hover:before:bg-red-200 group-hover:before:absolute group-hover:before:-top-2 group-hover:before:-left-px relative"
                             :class="{'!border-l-red-200 before:h-3 before:w-px before:bg-red-200 before:absolute before:-top-2 before:-left-px' :checkExpanded(value.children),
                             }"
                              v-show="!layoutStore.isAsideLgActive">
@@ -210,17 +202,6 @@ const checkExpanded = (childs) => {
                                     >
                                 </i>
                                 </div>
-                                <!-- <svg
-                                    aria-hidden="true"
-                                    class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                     v-html="value.icon"
-                                >
-
-                                </svg> -->
-
                                 <span :class="{
                                         'ml-3 text-sm group-hover:text-main text-gray-500' : true,
                                         'text-main' : checkActive == value.link

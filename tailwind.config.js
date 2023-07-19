@@ -31,6 +31,9 @@ module.exports = {
             '70' : '70px',
             '500': '500px',
         },
+        height: {
+            600: '600px',
+        },
         fontFamily: {
             'body': [
                 'Inter',
@@ -73,6 +76,9 @@ module.exports = {
       },
       left : {
         '22' : '22px'
+      },
+       margin: {
+        61: '61px',
       },
       transitionTimingFunction: {
         'max-width' : 'max-width .2s ease-in,opacity .2s ease-in'
