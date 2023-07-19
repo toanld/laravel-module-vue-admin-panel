@@ -4,6 +4,7 @@ namespace Modules\Admin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Inertia\Inertia;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -24,10 +25,13 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        //app()->make('router')->aliasMiddleware('innertia', InertiaAdmin::class);
+
     }
 
     /**

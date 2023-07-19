@@ -12,7 +12,6 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        Inertia::setRootView('dashboard');
         $this->middleware('can:admin list', ['only' => ['index']]);
         $this->middleware('can:admin create', ['only' => ['create', 'store']]);
         $this->middleware('can:admin edit', ['only' => ['edit', 'update']]);
