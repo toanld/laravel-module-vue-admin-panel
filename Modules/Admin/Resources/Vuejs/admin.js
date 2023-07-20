@@ -1,4 +1,4 @@
-import './css/main.css';
+//import './css/main.css';
 
 import NProgress from 'nprogress'
 import { createPinia } from 'pinia'
@@ -11,7 +11,7 @@ import { createApp, h} from 'vue';
 //window.md5 = require('md5');
 import { createInertiaApp, router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import { ZiggyVue } from '../../../../vendor/tightenco/ziggy/dist/vue.m';
 import {myTrans} from "@admin/functions";
 import md5 from 'md5';
 window.myTrans = myTrans;
@@ -102,11 +102,11 @@ styleStore.setStyle(localStorage[styleKey] ?? 'basic')
 
 /* Dark mode */
 if ((!localStorage[darkModeKey] && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage[darkModeKey] === '1') {
-  styleStore.setDarkMode(true)
+  styleStore.setDarkMode(false)
 }
 
 /* Collapse mobile aside menu on route change */
 router.on('navigate', (event) => {
   layoutStore.isAsideMobileExpanded = false
-  layoutStore.isAsideLgActive = true
+  layoutStore.isAsideLgActive = false
 })

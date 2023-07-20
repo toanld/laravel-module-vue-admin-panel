@@ -53,22 +53,6 @@ const menuClick = (event, item) => {
         <div class="text-center flex-1 lg:text-left lg:pl-6 xl:text-center xl:pl-0" :class="{'hidden': layoutStore.isAsideExpanded}">
           <b class="font-black text-black">One</b>
         </div>
-        <!-- <button
-          class="hidden lg:inline-block p-3"
-          @click.prevent="layoutStore.isAsideLgActive = false"
-        >
-          <BaseIcon
-            :path="mdiClose"
-          />
-        </button> -->
-        <!-- <button
-          class="hidden lg:inline-block p-3"
-          @click.prevent="layoutStore.asideMobileToggle()"
-        >
-          <BaseIcon
-            :path="mdiClose"
-          />
-        </button> -->
         <button
           class="hidden lg:inline-block p-3 mx-auto"
           @click.prevent="layoutStore.asideToggle()"

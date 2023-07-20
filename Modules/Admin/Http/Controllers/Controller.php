@@ -13,6 +13,10 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
+    public function load(){
+        myapp()->rootViewInetia('admin::layouts.admin');
+    }
+
     /**
      * Delete resource response
      * @return json

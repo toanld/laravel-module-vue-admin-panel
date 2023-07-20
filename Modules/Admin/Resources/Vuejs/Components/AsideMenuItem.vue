@@ -81,7 +81,8 @@ const activeInactiveStyle = computed(
 </script>
 
 <template>
-  <li>
+  <li v-if="item.name">
+
     <component
       :is="itemHref ? Link : 'div'"
       :href="itemHref"

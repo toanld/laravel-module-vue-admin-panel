@@ -47,7 +47,6 @@ class HandleInertiaRequests extends Middleware
         $menu_module = config(strtolower($prefix) . '.menu');
         $menu_top = config(strtolower($prefix) . '.menutop');
         $menu_app = config('config.menu');
-
         if(!empty($menu_module)){
             $arr_menu = $menu_module;
         }
