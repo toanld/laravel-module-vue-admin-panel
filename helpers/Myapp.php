@@ -6,13 +6,22 @@ class Myapp
     use \App\Traits\SingletonTrait;
     protected $modules = false;
     protected $isWebviewApp = false;
+    protected $isMobile = false;
+    protected $mobileDetect = null;
+
     protected $rootViewInetia = 'erp::layouts.app';
     function rootViewInetia($rootView = null){
         if(!empty($rootView)) $this->rootViewInetia = $rootView;
         return $this->rootViewInetia;
     }
+
     function setIsApp(){
         $this->isWebviewApp = true;
+    }
+    public function isMobile(){
+        if(is_null($this->mobileDetect)) $this->mobileDetect = new \Detection\MobileDetect;
+        $this->isMobile =  ($this->mobileDetect->isMobile() ? ($this->mobileDetect->isTablet() ? false : true) : false);
+        return $this->isMobile;
     }
     function isApp(){
         return $this->isWebviewApp;

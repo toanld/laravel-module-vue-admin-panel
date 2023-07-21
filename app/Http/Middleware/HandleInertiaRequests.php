@@ -29,6 +29,11 @@ class HandleInertiaRequests extends Middleware
 
     public function rootView(Request $request)
     {
+        // if ($request->route()->getPrefix() == '/admin') {
+        //    return 'admin::layouts.admin';
+        // }
+
+        // return parent::rootView($request);
         return myapp()->rootViewInetia();
     }
 

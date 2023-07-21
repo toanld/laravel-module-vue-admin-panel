@@ -24,6 +24,7 @@ export default defineConfig({
                 'Modules/Admin/Resources/Vuejs/css/main.css',
 
             ],
+
             refresh: true,
         }),
         vue({

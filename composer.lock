@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4ff48df32f7ecee514280701381f081",
+    "content-hash": "32a538c69e87f3df0f39be8c2fe892f8",
     "packages": [
         {
             "name": "balajidharma/laravel-admin-core",
@@ -1940,6 +1940,64 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "mobiledetect/mobiledetectlib",
+            "version": "3.74.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/serbanghita/Mobile-Detect.git",
+                "reference": "812a4aa4605c63fc33d7fe32ca82f29275940b9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/812a4aa4605c63fc33d7fe32ca82f29275940b9d",
+                "reference": "812a4aa4605c63fc33d7fe32ca82f29275940b9d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "v2.19.3",
+                "phpunit/phpunit": "^7.0.0",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Detection\\": "src/"
+                },
+                "classmap": [
+                    "src/MobileDetect.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Serban Ghita",
+                    "email": "serbanghita@gmail.com",
+                    "homepage": "http://mobiledetect.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
+            "homepage": "https://github.com/serbanghita/Mobile-Detect",
+            "keywords": [
+                "detect mobile devices",
+                "mobile",
+                "mobile detect",
+                "mobile detector",
+                "php mobile detect"
+            ],
+            "support": {
+                "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
+                "source": "https://github.com/serbanghita/Mobile-Detect/tree/3.74.0"
+            },
+            "time": "2022-12-04T15:37:32+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5771,11 +5829,11 @@
         },
         {
             "name": "toanld/modules-inertia",
-            "version": "dev-main",
+            "version": "dev-minh",
             "dist": {
                 "type": "path",
                 "url": "packages/toanld/modules-inertia",
-                "reference": "2fc9d543cbd5ef83896afcb61dc028576f222509"
+                "reference": "d574440e41181dc92e27c1552ac4613169172637"
             },
             "require": {
                 "inertiajs/inertia-laravel": "^0.6.3||^0.6.8",

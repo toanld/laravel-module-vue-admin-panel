@@ -48,7 +48,7 @@ const checkExpanded = (childs) => {
 </script>
 <template>
     <aside
-        class="fixed top-0 left-0 z-40 w-60 h-screen sm:mt-61 md:mt-0 sm:bg-white transition-transform -translate-x-full md:bg-[#edf1f8] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-60 h-screen mini:mt-61 sm:mt-61 md:mt-0 mini:bg-white sm:bg-white transition-transform -translate-x-full md:bg-[#edf1f8] md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         :class="{ 'md:w-[70px] sm:w-60' : layoutStore.isAsideLgActive}"
         aria-label="Sidebar"
         id="logo-sidebar"
@@ -82,7 +82,7 @@ const checkExpanded = (childs) => {
                     />
                 </div>
             </form>
-            <div class="justify-between items-center mb-3 py-2 px-5 lg:flex md:flex sm:hidden h-12"
+            <div class="justify-between items-center mb-3 py-2 px-5 lg:flex md:flex mini:hidden sm:hidden h-12"
                 :class="{ 'lg:justify-center' : layoutStore.isAsideLgActive}"
                 >
                  <div class="cursor-pointer sm:hidden md:block" @click="menuOpenLg">

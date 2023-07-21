@@ -29,12 +29,12 @@ Route::group([
     Route::post('edit-account-info', 'UserController@accountInfoStore')->name('admin.account.info.store');
     Route::post('change-password', 'UserController@changePasswordStore')->name('admin.account.password.store');
 
+Route::get('/dashboard','AdminController@Dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+
+
 });
-Route::group([
-    'prefix' => config('admin.prefix'),
-    'middleware' => ['auth'],
-], function () {
-    Route::get('/dashboard','AdminController@Dashboard')->middleware(['auth', 'verified'])->name('dashboard');
-});
+
+Route::get('/dashboard','AdminController@Dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+
 
 require __DIR__.'/auth.php';
