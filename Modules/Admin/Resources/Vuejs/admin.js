@@ -7,7 +7,7 @@ import { useLayoutStore } from '@admin/Stores/layout.js'
 
 import { darkModeKey, styleKey } from '@admin/config.js'
 import 'flowbite';
-import { createApp, h} from 'vue';
+import { createApp, h, defineAsyncComponent} from 'vue';
 //window.md5 = require('md5');
 import { createInertiaApp, router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -37,25 +37,21 @@ createInertiaApp({
     },
     title: (title) => `${title} - ${appName}`,
     //resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-    resolve: (name) => {
+    async resolve(name) { // Use 'async' to correctly handle dynamic imports
         let page = null;
 
         let isModule = name.split("::");
 
         if (isModule.length > 1) {
-            // let a =   import.meta.glob('@modules/Admin/Resources/Pages/Index.vue')['/modules/Admin/Resources/Pages/Index.vue']();
             let module = isModule[0];
             let pathTo = isModule[1];
             pathTo = pathTo.replace("\\", "/");
-            //console.log(module, pathTo);//Admin Resources/Pages/Index
             let key = `/Modules/${module}/${pathTo}.vue`;
-            console.log('module');
-            //let value = import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
-            let value = import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
+            let value = await import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
             page = resolvePageComponent(key, value);
 
         } else {
-            page = resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue'));
+            page = (await import(`./Pages/${name}.vue`)).default; // Use 'await' for dynamic imports and '.default' for the default export
         }
         return page;
     },

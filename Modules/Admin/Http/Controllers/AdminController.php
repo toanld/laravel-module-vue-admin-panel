@@ -13,6 +13,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->load();
+        //$this->middleware('checkPermission:super-admin,editor');
         $this->middleware('can:admin list', ['only' => ['index']]);
         $this->middleware('can:admin create', ['only' => ['create', 'store']]);
         $this->middleware('can:admin edit', ['only' => ['edit', 'update']]);
@@ -24,7 +25,7 @@ class AdminController extends Controller
      */
     public function Dashboard()
     {
-        $user = auth()->user();
+
         //dd($user->hasRole(['super-admin', 'editor']));
         return Inertia::module('admin::Dashboard');
         $data = Admin::orderBy('id','DESC')->paginate(30);
