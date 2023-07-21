@@ -8,13 +8,13 @@ import {
     mdiAlertBoxOutline,
     mdiArrowLeftBoldOutline
 } from "@mdi/js"
-import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
-import SectionMain from "@/Components/SectionMain.vue"
-import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue"
-import BaseButton from "@/Components/BaseButton.vue"
-import CardBox from "@/Components/CardBox.vue"
-import BaseButtons from "@/Components/BaseButtons.vue"
-import NotificationBar from "@/Components/NotificationBar.vue"
+import LayoutAuthenticated from "@admin/Layouts/LayoutAuthenticated.vue"
+import SectionMain from "@admin/Components/SectionMain.vue"
+import SectionTitleLineWithButton from "@admin/Components/SectionTitleLineWithButton.vue"
+import BaseButton from "@admin/Components/BaseButton.vue"
+import CardBox from "@admin/Components/CardBox.vue"
+import BaseButtons from "@admin/Components/BaseButtons.vue"
+import NotificationBar from "@admin/Components/NotificationBar.vue"
 import ItemList from "@modules/Blog/Resources/Components/ItemList.vue"
 
 const props = defineProps({

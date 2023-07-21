@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link, useForm,router } from "@inertiajs/vue3"
-import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
+import LayoutAuthenticated from "@erp/Layouts/LayoutAuthenticated.vue"
 import LayoutErp from "@erp/Layouts/LayoutErp.vue"
 
 const props = defineProps({

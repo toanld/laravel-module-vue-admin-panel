@@ -7,17 +7,16 @@ import {
     mdiTrashCan,
     mdiAlertBoxOutline,
 } from "@mdi/js"
-import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
-import SectionMain from "@/Components/SectionMain.vue"
-import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue"
-import BaseButton from "@/Components/BaseButton.vue"
-import CardBox from "@/Components/CardBox.vue"
-import BaseButtons from "@/Components/BaseButtons.vue"
-import NotificationBar from "@/Components/NotificationBar.vue"
-import Pagination from "@/Components/Admin/Pagination.vue"
-import Sort from "@/Components/Admin/Sort.vue"
-
-import LayoutErpApp from "@/Erp/Layouts/LayoutErpApp.vue"
+import LayoutAuthenticated from "@erp/Layouts/LayoutAuthenticated.vue"
+import SectionMain from "@erp/Components/SectionMain.vue"
+import SectionTitleLineWithButton from "@erp/Components/SectionTitleLineWithButton.vue"
+import BaseButton from "@erp/Components/BaseButton.vue"
+import CardBox from "@erp/Components/CardBox.vue"
+import BaseButtons from "@erp/Components/BaseButtons.vue"
+import NotificationBar from "@erp/Components/NotificationBar.vue"
+import Pagination from "@erp/Components/Admin/Pagination.vue"
+import Sort from "@erp/Components/Admin/Sort.vue"
+import LayoutErpApp from "@erp/Layouts/LayoutErpApp.vue"
 import { onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
 onMounted(() => {

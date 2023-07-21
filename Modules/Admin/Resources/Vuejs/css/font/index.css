@@ -17,17 +17,17 @@
 
 @font-face {
     font-family: "HelveticaWorld";
-    src: url("/assets/fonts/helveticaworld/HelveticaWorld-Regular.eot");
+    src: url("./helveticaworld/HelveticaWorld-Regular.eot");
     /* IE9 Compat Modes */
-    src: url("/assets/fonts/helveticaworld/HelveticaWorld-Regular.eot?#iefix") format("embedded-opentype"),
+    src: url("./helveticaworld/HelveticaWorld-Regular.eot?#iefix") format("embedded-opentype"),
         /* IE6-IE8 */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Regular.otf") format("opentype"),
+    url("./helveticaworld/HelveticaWorld-Regular.otf") format("opentype"),
         /* Open Type Font */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Regular.ttf") format("truetype"),
+    url("./helveticaworld/HelveticaWorld-Regular.ttf") format("truetype"),
         /* Safari, Android, iOS */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Regular.woff") format("woff"),
+    url("./helveticaworld/HelveticaWorld-Regular.woff") format("woff"),
         /* Modern Browsers */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Regular.woff2") format("woff2");
+    url("./helveticaworld/HelveticaWorld-Regular.woff2") format("woff2");
     /* Modern Browsers */
     font-weight: 400;
     font-style: normal;
@@ -36,17 +36,17 @@
 
 @font-face {
     font-family: "HelveticaWorld";
-    src: url("/assets/fonts/helveticaworld/HelveticaWorld-Bold.eot");
+    src: url("./helveticaworld/HelveticaWorld-Bold.eot");
     /* IE9 Compat Modes */
-    src: url("/assets/fonts/helveticaworld/HelveticaWorld-Bold.eot?#iefix") format("embedded-opentype"),
+    src: url("./helveticaworld/HelveticaWorld-Bold.eot?#iefix") format("embedded-opentype"),
         /* IE6-IE8 */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Bold.otf") format("opentype"),
+    url("./helveticaworld/HelveticaWorld-Bold.otf") format("opentype"),
         /* Open Type Font */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Bold.ttf") format("truetype"),
+    url("./helveticaworld/HelveticaWorld-Bold.ttf") format("truetype"),
         /* Safari, Android, iOS */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Bold.woff") format("woff"),
+    url("./helveticaworld/HelveticaWorld-Bold.woff") format("woff"),
         /* Modern Browsers */
-        url("/assets/fonts/helveticaworld/HelveticaWorld-Bold.woff2") format("woff2");
+    url("./helveticaworld/HelveticaWorld-Bold.woff2") format("woff2");
     /* Modern Browsers */
     font-weight: 600;
     font-style: normal;

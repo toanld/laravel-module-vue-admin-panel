@@ -4,14 +4,14 @@ import {
   mdiMenu,
   mdiArrowLeftBoldOutline
 } from "@mdi/js"
-import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
-import SectionMain from "@/Components/SectionMain.vue"
-import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue"
-import CardBox from "@/Components/CardBox.vue"
-import FormField from '@/Components/FormField.vue'
-import FormControl from '@/Components/FormControl.vue'
-import BaseButton from '@/Components/BaseButton.vue'
-import BaseButtons from '@/Components/BaseButtons.vue'
+import LayoutAuthenticated from "@erp/Layouts/LayoutAuthenticated.vue"
+import SectionMain from "@erp/Components/SectionMain.vue"
+import SectionTitleLineWithButton from "@erp/Components/SectionTitleLineWithButton.vue"
+import CardBox from "@erp/Components/CardBox.vue"
+import FormField from '@erp/Components/FormField.vue'
+import FormControl from '@erp/Components/FormControl.vue'
+import BaseButton from '@erp/Components/BaseButton.vue'
+import BaseButtons from '@erp/Components/BaseButtons.vue'
 
 const props = defineProps({
   data: {

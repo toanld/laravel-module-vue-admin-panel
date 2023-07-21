@@ -13,6 +13,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
+        $this->load();
         $this->middleware('can:admin list', ['only' => ['index']]);
         $this->middleware('can:admin create', ['only' => ['create', 'store']]);
         $this->middleware('can:admin edit', ['only' => ['edit', 'update']]);
