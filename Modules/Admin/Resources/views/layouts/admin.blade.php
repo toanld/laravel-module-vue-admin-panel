@@ -12,7 +12,7 @@
         </script>
         <!-- Scripts -->
         @routes
-        @vite('resources/js/app.js')
+        @vite('Modules/Admin/Resources/Vuejs/admin.js')
         @inertiaHead
     </head>
     <body class="font-sans antialiased">

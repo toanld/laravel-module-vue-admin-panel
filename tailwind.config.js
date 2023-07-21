@@ -34,6 +34,9 @@ module.exports = {
         height: {
             600: '600px',
         },
+        screens: {
+            mini : '320px'
+        },
         fontFamily: {
             'body': [
                 'Inter',

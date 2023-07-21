@@ -24,8 +24,21 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-
         $data = Personnel::orderBy('id','DESC')->paginate(30);
+        if (myapp()->isMobile()) {
+            return Inertia::module('personnel::Mobile/Index', [
+                //'datas' => Inertia::lazy(fn () =>  $data),
+                'title' => 'Danh sách nhân sự',
+                'datas' => $data,
+                'filters' => request()->all('search'),
+                'can' => [
+                    'create' => Auth::user()->can('personnel create'),
+                    'edit' => Auth::user()->can('personnel edit'),
+                    'delete' => Auth::user()->can('personnel delete'),
+                    'manage' => Auth::user()->can('personnel manage')
+                ]
+            ]);
+        }
         return Inertia::module('personnel::Index', [
             //'datas' => Inertia::lazy(fn () =>  $data),
             'title' => 'Danh sách nhân sự',

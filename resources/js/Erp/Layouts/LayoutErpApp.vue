@@ -4,9 +4,9 @@ import { useLayoutStore } from '@/Stores/layout.js'
 import { useStyleStore } from '@/Stores/style.js'
 import AsideMenu from '@/Erp/Components/AsideMenu.vue'
 import FooterBar from '@/Components/FooterBar.vue'
-import NavBar from '@/Erp/Components/NavBar.vue'
+import NavBarApp from '@/Erp/Components/Mobile/NavBarApp.vue'
 import Notification from '@/Erp/Components/Notification.vue'
-import AppList from '@/Erp/Components/AppList.vue'
+import AppList from '@/Erp/Components/Mobile/AppList.vue'
 import UserProfile from '@/Erp/Components/UserProfile.vue'
 import Summary from '@/Erp/Components/Summary.vue'
 import Search from '@/Erp/Components/Search.vue'
@@ -33,7 +33,7 @@ const closeDom = () => {
 <template>
     <div class="antialiased bg-gray-50 dark:bg-gray-900">
 
-        <NavBar :title="title"></NavBar>
+        <NavBarApp :title="title"></NavBarApp>
         <!-- Sidebar -->
         <AsideMenu></AsideMenu>
         <main class="pl-4 pb-b h-auto pt-20 transition-position "
@@ -50,7 +50,7 @@ const closeDom = () => {
      <!-- Dropdown menu -->
     <Notification></Notification>
     <!-- Dropdown menu -->
-    <AppList></AppList>
+
     <!-- Dropdown menu -->
     <UserProfile></UserProfile>
 
