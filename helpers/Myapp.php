@@ -8,6 +8,7 @@ class Myapp
     protected $isWebviewApp = false;
     protected $isMobile = false;
     protected $mobileDetect = null;
+    protected $currentModule = null;
 
     protected $rootViewInetia = 'erp::layouts.app';
     function rootViewInetia($rootView = null){
@@ -38,6 +39,27 @@ class Myapp
         }
         $this->modules = [];
         return [];
+    }
+    public function getCurrentModule(){
+        if(!empty($this->currentModule)) return $this->currentModule;
+        $url = request()->url();
+        $path = request()->path();
+        $moduleRoutes = app('router')->getRoutes()->getRoutesByMethod()["GET"];
+        foreach ($moduleRoutes as $route) {
+            if($path == "/" || empty($path)){
+                if ($route->uri == "/" || empty($route->uri)) {
+                    $currentModule = explode("\\",$route->getActionName());
+                    $this->currentModule = ($currentModule[0] == "Modules" &&  isset($currentModule[1])) ? $currentModule[1] : null;
+                    break;
+                }
+            }
+            if (str_contains($path,$route->uri) && $route->uri != "/") {
+                $currentModule = explode("\\",$route->getActionName());
+                $this->currentModule = ($currentModule[0] == "Modules" &&  isset($currentModule[1])) ? $currentModule[1] : null;
+                break;
+            }
+        }
+        return $this->currentModule;
     }
 }
 function myapp(){

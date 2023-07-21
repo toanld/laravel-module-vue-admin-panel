@@ -40,6 +40,7 @@ return [
             'migration/create-data-example-table' => 'Database/Migrations/' . $date_migration . '_create-data-example-table.php',
             'migration/add-permission' => 'Database/Migrations/' . $date_migration . '_add-permission.php',
             'files/ModelExample' => 'Entities/ModelExample.php',
+            'Controller-base' => 'Http/Controllers/Controller.php',
             'files/includes' => 'Helpers/includes.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
@@ -63,6 +64,7 @@ return [
             'views/index' => ['LOWER_NAME'],
             'views/master' => ['LOWER_NAME', 'STUDLY_NAME'],
             'scaffold/config' => ['STUDLY_NAME','LOWER_NAME'],
+            'Controller-base' => ['STUDLY_NAME','LOWER_NAME'],
             'composer' => [
                 'LOWER_NAME',
                 'STUDLY_NAME',

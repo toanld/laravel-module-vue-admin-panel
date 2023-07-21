@@ -4,7 +4,7 @@ namespace $CLASS_NAMESPACE$;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\$STUDLY_NAME$\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\$STUDLY_NAME$\Entities\ModelExample as $STUDLY_NAME$;
 use Inertia\Inertia;
