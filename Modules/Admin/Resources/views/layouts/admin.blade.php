@@ -13,10 +13,11 @@
         <!-- Scripts -->
         @routes
         @vite('Modules/Admin/Resources/Vuejs/admin.js')
+
+        @vite('Modules/Admin/Resources/Vuejs/css/main.css')
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
-        <h1>admin</h1>
         @inertia
     </body>
 </html>

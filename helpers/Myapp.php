@@ -9,6 +9,12 @@ class Myapp
     protected $isMobile = false;
     protected $mobileDetect = null;
 
+    protected $rootViewInetia = 'erp::layouts.app';
+    function rootViewInetia($rootView = null){
+        if(!empty($rootView)) $this->rootViewInetia = $rootView;
+        return $this->rootViewInetia;
+    }
+
     function setIsApp(){
         $this->isWebviewApp = true;
     }

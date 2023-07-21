@@ -19,6 +19,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
+        $this->load();
         $this->middleware('can:user list', ['only' => ['index', 'show']]);
         $this->middleware('can:user create', ['only' => ['create', 'store']]);
         $this->middleware('can:user edit', ['only' => ['edit', 'update']]);

@@ -13,6 +13,7 @@ class MenuController extends Controller
 {
     public function __construct()
     {
+        $this->load();
         $this->middleware('can:menu list', ['only' => ['index']]);
         $this->middleware('can:menu create', ['only' => ['create', 'store']]);
         $this->middleware('can:menu edit', ['only' => ['edit', 'update']]);

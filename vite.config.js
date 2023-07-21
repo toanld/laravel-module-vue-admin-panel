@@ -19,7 +19,12 @@ export default defineConfig({
     },
     plugins: [
         laravel({
-            input: ['resources/js/app.js','Modules/Admin/Resources/Vuejs/admin.js'],
+            input: ['resources/js/app.js',
+                'Modules/Admin/Resources/Vuejs/admin.js',
+                'Modules/Admin/Resources/Vuejs/css/main.css',
+
+            ],
+
             refresh: true,
         }),
         vue({

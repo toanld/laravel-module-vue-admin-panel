@@ -14,6 +14,7 @@ class MenuItemController extends Controller
 {
     public function __construct()
     {
+        $this->load();
         $this->middleware('can:menu.item list', ['only' => ['index', 'show']]);
         $this->middleware('can:menu.item create', ['only' => ['create', 'store']]);
         $this->middleware('can:menu.item edit', ['only' => ['edit', 'update']]);

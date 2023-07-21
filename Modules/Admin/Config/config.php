@@ -2,21 +2,7 @@
 
 return [
     'name' => 'Admin',
+    'prefix' => 'admin',
     'menu' =>[
-            "name" => 'Admin',
-            "uri" => "<nolink>",
-            "link" => "",
-            "children" => [
-              [
-                "name" => "Thêm mới",
-                "uri" => "/admin/create",
-                "link" => "/admin/create"
-              ],
-                [
-                    "name" => "Danh sách",
-                    "uri" => "/admin",
-                    "link" => "/admin"
-                ]
-            ]
         ]
 ];

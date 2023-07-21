@@ -29,11 +29,12 @@ class HandleInertiaRequests extends Middleware
 
     public function rootView(Request $request)
     {
-        if ($request->route()->getPrefix() == '/admin') {
-           return 'admin::layouts.admin';
-        }
+        // if ($request->route()->getPrefix() == '/admin') {
+        //    return 'admin::layouts.admin';
+        // }
 
-        return parent::rootView($request);
+        // return parent::rootView($request);
+        return myapp()->rootViewInetia();
     }
 
     /**
@@ -51,7 +52,6 @@ class HandleInertiaRequests extends Middleware
         $menu_module = config(strtolower($prefix) . '.menu');
         $menu_top = config(strtolower($prefix) . '.menutop');
         $menu_app = config('config.menu');
-
         if(!empty($menu_module)){
             $arr_menu = $menu_module;
         }
