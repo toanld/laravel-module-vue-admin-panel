@@ -22,14 +22,14 @@ const fillChartData = () => {
 onMounted(() => {
   fillChartData()
 })
+/*
 const mainStore = useMainStore()
-
-/* Fetch sample data */
 mainStore.fetch('clients')
 mainStore.fetch('history')
 
 const clientBarItems = computed(() => mainStore.clients.slice(0, 4))
 const transactionBarItems = computed(() => mainStore.history)
+//*/
 </script>
 
 <template>
