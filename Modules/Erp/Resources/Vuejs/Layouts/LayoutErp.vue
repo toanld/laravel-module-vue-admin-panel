@@ -17,6 +17,7 @@ import { initFlowbite } from 'flowbite'
 // onMounted(() => {
 //     initFlowbite();
 // })
+import { ref } from 'vue'
 const layoutStore = useLayoutStore()
 
 defineProps({
@@ -25,21 +26,19 @@ defineProps({
 const closeDom = () => {
     document.querySelector('.bow-old').classList.remove('block')
     document.querySelector('.bow-old').classList.add('hidden')
-    internalInstance.appContext.config.globalProperties.$removeOverflowHidenBody()
-
+    if(typeof internalInstance !== "undefined") internalInstance.appContext.config.globalProperties.$removeOverflowHidenBody()
 }
 </script>
 
 <template>
-    <div class="antialiased bg-gray-50 dark:bg-gray-900">
-
+    <div class="antia   liased bg-gray-50 dark:bg-gray-900">
         <NavBar :title="title"></NavBar>
         <!-- Sidebar -->
         <AsideMenu></AsideMenu>
         <main class="pl-4 pb-b h-auto pt-20 transition-position "
             :class="{ 'md:ml-16': layoutStore.isAsideLgActive,'md:ml-60' : !layoutStore.isAsideLgActive}"
             >
-             <div class="mini:text-red-400 sm:text-blue-200">tesst</div>
+             <div class="mini:text-red-400 sm:text-blue-200" @click="clickNotify">tesst</div>
             <i class="sidemenu-item-icon icon-contact-card"></i>
             <slot></slot>
 

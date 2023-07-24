@@ -1,10 +1,14 @@
 <script setup>
-import { ref } from "vue"
+import { ref,onMounted } from "vue"
 // import { Tabs, Tab } from 'flowbite-vue'
 
 import tabs from '@erp/Components/Tabs.vue'
 import tab from '@erp/Components/Tab.vue'
 const activeTab = ref('all')
+const el = ref()
+onMounted(() => {
+    console.log('onMounted');
+})
 </script>
 <template>
       <!-- Notifications -->

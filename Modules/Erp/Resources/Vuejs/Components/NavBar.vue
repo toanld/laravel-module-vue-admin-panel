@@ -29,11 +29,11 @@ menu = computed(() => usePage().props.navigation.menu_top)
 const closeDom = () => {
     document.querySelector('.bow-old').classList.remove('block')
     document.querySelector('.bow-old').classList.add('hidden')
-    internalInstance.appContext.config.globalProperties.$removeOverflowHidenBody()
+    if(typeof internalInstance !== "undefined") internalInstance.appContext.config.globalProperties.$removeOverflowHidenBody()
 
 }
 const handlePaneClick = (e) => {
-    internalInstance.appContext.config.globalProperties.$overflowHidenBody()
+    if(typeof internalInstance !== "undefined") internalInstance.appContext.config.globalProperties.$overflowHidenBody()
     document.querySelector('.bow-old').classList.remove('hidden')
     document.querySelector('.bow-old').classList.add('block')
 }

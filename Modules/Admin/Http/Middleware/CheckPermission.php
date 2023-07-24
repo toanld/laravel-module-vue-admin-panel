@@ -16,9 +16,8 @@ class CheckPermission
      */
     public function handle(Request $request, Closure $next)
     {
-        dd("aaaaa");
-        $user = $request->user();
-        if ($user && $user->hasAnyRole($roles)) {
+        $user = auth()->user();
+        if ($user && $user->hasRole(['super-admin', 'editor'])) {
             // User belongs to one of the specified roles, continue with the request
             return $next($request);
         } else {

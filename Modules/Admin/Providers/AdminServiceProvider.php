@@ -4,6 +4,7 @@ namespace Modules\Admin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Admin\Console\VueCreatePage;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -29,7 +30,11 @@ class AdminServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
-        //app()->make('router')->aliasMiddleware('innertia', InertiaAdmin::class);
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                VueCreatePage::class
+            ]);
+        }
         //$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
         //$kernel->pushMiddleware('Modules\Admin\Http\Middleware\InertiaAdmin');
         //$kernel->pushMiddleware('Modules\Admin\Http\Middleware\CheckPermission');

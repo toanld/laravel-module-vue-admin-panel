@@ -1,5 +1,3 @@
-//import './css/main.css';
-
 import NProgress from 'nprogress'
 import { createPinia } from 'pinia'
 import { useStyleStore } from '@admin/Stores/style.js'
@@ -7,7 +5,7 @@ import { useLayoutStore } from '@admin/Stores/layout.js'
 
 import { darkModeKey, styleKey } from '@admin/config.js'
 import 'flowbite';
-import { createApp, h, defineAsyncComponent} from 'vue';
+import { createApp, h} from 'vue';
 //window.md5 = require('md5');
 import { createInertiaApp, router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -37,21 +35,25 @@ createInertiaApp({
     },
     title: (title) => `${title} - ${appName}`,
     //resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-    async resolve(name) { // Use 'async' to correctly handle dynamic imports
+    resolve: (name) => {
         let page = null;
 
         let isModule = name.split("::");
 
         if (isModule.length > 1) {
+            // let a =   import.meta.glob('@modules/Admin/Resources/Pages/Index.vue')['/modules/Admin/Resources/Pages/Index.vue']();
             let module = isModule[0];
             let pathTo = isModule[1];
             pathTo = pathTo.replace("\\", "/");
+            //console.log(module, pathTo);//Admin Resources/Pages/Index
             let key = `/Modules/${module}/${pathTo}.vue`;
-            let value = await import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
+            console.log('module');
+            //let value = import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
+            let value = import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
             page = resolvePageComponent(key, value);
 
         } else {
-            page = (await import(`./Pages/${name}.vue`)).default; // Use 'await' for dynamic imports and '.default' for the default export
+            page = resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue'));
         }
         return page;
     },
@@ -61,7 +63,7 @@ createInertiaApp({
             .use(pinia)
             //.use(myPlugin)
             .use(ZiggyVue, Ziggy);
-             app.config.globalProperties.$overflowHidenBody = () => {
+        app.config.globalProperties.$overflowHidenBody = () => {
             document.querySelector('body').classList.add('overflow-hidden');
         }
         app.config.globalProperties.$removeOverflowHidenBody = () => {
@@ -69,17 +71,17 @@ createInertiaApp({
         }
         app.config.globalProperties.$myTrans = myTrans;
         app.directive('click-outside', {
-          mounted(el, binding, vnode) {
-            el.clickOutsideEvent = function(event) {
-              if (!(el === event.target || el.contains(event.target))) {
-                binding.value(event, el);
-              }
-            };
-            document.body.addEventListener('click', el.clickOutsideEvent);
-          },
-          unmounted(el) {
-            document.body.removeEventListener('click', el.clickOutsideEvent);
-          }
+            mounted(el, binding, vnode) {
+                el.clickOutsideEvent = function(event) {
+                    if (!(el === event.target || el.contains(event.target))) {
+                        binding.value(event, el);
+                    }
+                };
+                document.body.addEventListener('click', el.clickOutsideEvent);
+            },
+            unmounted(el) {
+                document.body.removeEventListener('click', el.clickOutsideEvent);
+            }
         });
         return app.mount(el);
     },
@@ -98,11 +100,11 @@ styleStore.setStyle(localStorage[styleKey] ?? 'basic')
 
 /* Dark mode */
 if ((!localStorage[darkModeKey] && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage[darkModeKey] === '1') {
-  styleStore.setDarkMode(false)
+    styleStore.setDarkMode(true)
 }
 
 /* Collapse mobile aside menu on route change */
 router.on('navigate', (event) => {
-  layoutStore.isAsideMobileExpanded = false
-  layoutStore.isAsideLgActive = false
+    layoutStore.isAsideMobileExpanded = false
+    layoutStore.isAsideLgActive = true
 })
