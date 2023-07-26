@@ -53,6 +53,21 @@ class PersonnelController extends Controller
         ]);
     }
 
+    public function notifications(Request $request)
+    {
+        // return Inertia::render('Personnel::Resources/Pages/Index', [
+        //     'meno' => '1ss'
+        // ]);
+        // return Inertia::render('Pages/Index', [
+        //     'meno' => '1ss'
+        // ]);
+        return response()->json([
+            'data' => 'sdsd'
+        ]);
+
+
+    }
+
     /**
      * Show the form for creating a new resource.
      * @return Renderable

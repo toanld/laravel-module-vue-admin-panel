@@ -50,6 +50,7 @@ createInertiaApp({
             //console.log(module, pathTo);//Admin Resources/Pages/Index
             let key = `/Modules/${module}/${pathTo}.vue`;
             console.log('module');
+            console.log(key)
             //let value = import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
             let value = import.meta.glob('@modules/*/Resources/Pages/**/*.vue');
             page = resolvePageComponent(key, value);

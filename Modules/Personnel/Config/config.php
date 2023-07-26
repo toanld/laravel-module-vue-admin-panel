@@ -5,7 +5,7 @@ return [
     'prefix' => 'personnel',
     'menu' =>[
         [
-            "name" => 'Danh sách nhân sự',
+            "name" => 'Hồ sơ nhân sự',
             "uri" => "<nolink>",
             "icon" => 'icon-contact-card',
             "link" => "",
@@ -150,5 +150,48 @@ return [
             "children" => []
         ],
 
+    ],
+    'menuapp' => [
+         [
+            "name" => 'Menu',
+            "uri" => "<nolink>",
+            "icon" => 'icon-xbox-menu',
+            "link" => "",
+            "class" => "",
+            'summary' => 'Menu',
+            'text' => "list-menu",
+            "children" => true
+        ],
+        [
+            "name" => 'Trang chủ',
+            "uri" => "<nolink>",
+            "icon" => 'icon-home',
+            "link" => "",
+            "class" => "",
+            'summary' => 'home',
+            'text' => "home",
+            "children" => false
+        ],
+        [
+            "name" => 'Tạo mới',
+            "uri" => "<nolink>",
+            "icon" => 'icon-plus-circle',
+            "link" => "",
+            "class" => 'text-main',
+            'summary' => 'home',
+            'text' => "home",
+            "children" => false
+        ],
+        [
+            "name" => 'Cá nhân',
+            "uri" => "<nolink>",
+            "icon" => 'icon-gender-neutral-user',
+            "logo" => '',
+            "link" => "",
+            "class" => "",
+            'summary' => 'user',
+            'text' => "user",
+            "children" => true
+        ],
     ]
 ];

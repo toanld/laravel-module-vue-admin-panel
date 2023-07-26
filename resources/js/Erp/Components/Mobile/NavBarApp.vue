@@ -1,5 +1,5 @@
 <script setup>
-import Notification from '@/Erp/Components/Notification.vue'
+import Notification from '@/Erp/Components/Mobile/Notification.vue'
 import AppList from '@/Erp/Components/Mobile/AppList.vue'
 import UserProfile from '@/Erp/Components/UserProfile.vue'
 import { useLayoutStore } from '@/Stores/layout.js'
@@ -24,6 +24,8 @@ onMounted(() => {
 })
 const layoutStore = useLayoutStore()
 const show = ref(false)
+const showNoti = ref(false)
+
 let menu = reactive({})
 menu = computed(() => usePage().props.navigation.menu_top)
 const closeDom = () => {
@@ -32,10 +34,10 @@ const closeDom = () => {
     internalInstance.appContext.config.globalProperties.$removeOverflowHidenBody()
 
 }
-const handlePaneClick = (e) => {
+const handleNotificationClick = (e) => {
     internalInstance.appContext.config.globalProperties.$overflowHidenBody()
-    document.querySelector('.bow-old').classList.remove('hidden')
-    document.querySelector('.bow-old').classList.add('block')
+    showNoti.value = !showNoti.value
+    console.log(showNoti.value)
 }
 const handleMenuLeft = () => {
   layoutStore.isAsideLgActive = false
@@ -67,9 +69,8 @@ const showApp = () => {
                     </button>
                     <span class="font-medium">{{ title }}</span>
                     <button
-                        @click="handlePaneClick"
+                        @click="handleNotificationClick"
                         type="button"
-                        data-dropdown-toggle="notification-dropdown"
                         class="w-9 h-9 flex items-center justify-center gourp ml-1.5 p-2 text-gray-500 rounded-lg group hover:text-gray-900 hover:bg-bghover dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         >
                         <span class="sr-only">View notifications</span>
@@ -82,5 +83,9 @@ const showApp = () => {
     <Transition name="slide">
        <AppList  v-model="show" v-if="show"></AppList>
     </Transition >
+    <Transition name="slide-right">
+        <Notification v-model="showNoti" v-if="showNoti"></Notification>
+    </Transition >
+
 </template>
 

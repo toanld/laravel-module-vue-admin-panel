@@ -36,7 +36,8 @@ const props = defineProps({
         type: Object,
         default: () => ({}),
     },
-    title: String
+    title: String,
+    meno: String
 })
 
 const form = useForm({

@@ -1,27 +1,33 @@
 <script setup>
-import { ref, computed, watch } from "vue"
+import { ref, computed, watch, getCurrentInstance } from "vue"
 import { router, usePage } from '@inertiajs/vue3'
 // import { usePage } from '@inertiajs/inertia-vue3';
-import Loading from './Loading.vue'
+import Loading from '../Loading.vue'
 // import { Tabs, Tab } from 'flowbite-vue'
 import axios from 'axios'
 import { Inertia } from '@inertiajs/inertia';
 import tabs from '@/Erp/Components/Tabs.vue'
 import tab from '@/Erp/Components/Tab.vue'
-const { data, get } = usePage();
 
-
-const activeTab = ref('all')
 const props = defineProps({
-    name: String
+    modelValue: {
+        type: [String, Number, Boolean, Array, Object],
+        default: ''
+    },
+     name: String
 })
+const emit = defineEmits(['update:modelValue'])
 
+const internalInstance = getCurrentInstance()
+const activeTab = ref('all')
+const showLoading = ref(false)
+//watch
 watch(() => props.name, (first, second) => {
      if(first == 'notifications'){
         getNoti()
      }
 });
-const showLoading = ref(false)
+//method
 const getNoti = () => {
 
     // Inertia.get('/personnel/notifications');
@@ -33,21 +39,24 @@ const getNoti = () => {
         }
     })
 }
+const handleCloseModel = () => {
+    internalInstance.appContext.config.globalProperties.$removeOverflowHidenBody()
+    emit('update:modelValue', false)
+}
 </script>
 <template>
       <!-- Notifications -->
-    <div
-        class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl !-left-5"
-        id="notification-dropdown"
-
-    >
-
+    <div class="fixed left-0 bg-white h-full z-50 w-full" id="notification-dropdown">
+        <div class="h-12 w-full relative flex justify-center items-center border-b border-gray-200">
+            <i class="icon-left absolute top-2.5 left-2.5 cursor-pointer" @click="handleCloseModel"></i>
+            Trung tâm thông báo
+        </div>
         <div>
-            <Loading top="top-12" v-if="showLoading"></Loading>
+            <Loading ></Loading>
             <tabs variant="underline" v-model="activeTab" class="" >
             <tab name="work" title="Công việc">
 
-              <div class="overflow-y-auto h-96">
+              <div class="overflow-y-auto h-screen app">
                   <a
                 href="#"
                 class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600"
@@ -82,7 +91,7 @@ const getNoti = () => {
               </div>
             </tab>
             <tab name="check" title="Duyệt">
-              <div class="overflow-y-auto h-96">
+              <div class="overflow-y-auto h-screen app">
                 <a
                 href="#"
                 class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600"
@@ -117,7 +126,7 @@ const getNoti = () => {
               </div>
             </tab>
             <tab name="all" title="Tất cả" >
-                <div class="overflow-y-auto h-96">
+                <div class="overflow-y-auto h-screen app">
                  <a
                 href="#"
                 class="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600"
@@ -330,7 +339,7 @@ const getNoti = () => {
         </div>
         <a
             href="#"
-            class="block py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:hover:underline"
+            class="block absolute bottom-0 left-0 w-full py-2 text-md font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:hover:underline"
         >
             <div class="inline-flex items-center">
                 <svg

@@ -2,7 +2,7 @@
 
 import { useLayoutStore } from '@/Stores/layout.js'
 import { useStyleStore } from '@/Stores/style.js'
-import AsideMenu from '@/Erp/Components/AsideMenu.vue'
+import AsideMenu from '@/Erp/Components/Mobile/AsideMenu.vue'
 import FooterBar from '@/Components/FooterBar.vue'
 import NavBarApp from '@/Erp/Components/Mobile/NavBarApp.vue'
 import Notification from '@/Erp/Components/Notification.vue'
@@ -22,12 +22,7 @@ const layoutStore = useLayoutStore()
 defineProps({
     title: String
 })
-const closeDom = () => {
-    document.querySelector('.bow-old').classList.remove('block')
-    document.querySelector('.bow-old').classList.add('hidden')
-    internalInstance.appContext.config.globalProperties.$removeOverflowHidenBody()
 
-}
 </script>
 
 <template>
@@ -35,7 +30,6 @@ const closeDom = () => {
 
         <NavBarApp :title="title"></NavBarApp>
         <!-- Sidebar -->
-        <AsideMenu></AsideMenu>
         <main class="pl-4 pb-b h-auto pt-20 transition-position "
             :class="{ 'md:ml-16': layoutStore.isAsideLgActive,'md:ml-60' : !layoutStore.isAsideLgActive}"
             >
@@ -44,15 +38,8 @@ const closeDom = () => {
             <slot></slot>
 
         </main>
+        <AsideMenu></AsideMenu>
     </div>
-    <div class="bow-old fixed top-0 left-0 w-full h-full bg-gray-300 opacity-50 z-50 hidden" @click="closeDom"></div>
-    <Summary></Summary>
-     <!-- Dropdown menu -->
-    <Notification></Notification>
-    <!-- Dropdown menu -->
+    <div class="bow-old fixed top-0 left-0 w-full h-full bg-gray-300 opacity-50 z-40 hidden"></div>
 
-    <!-- Dropdown menu -->
-    <UserProfile></UserProfile>
-
-    <Search></Search>
 </template>

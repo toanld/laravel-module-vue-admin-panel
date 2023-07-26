@@ -10,8 +10,10 @@ import AppList from '@/Erp/Components/AppList.vue'
 import UserProfile from '@/Erp/Components/UserProfile.vue'
 import Summary from '@/Erp/Components/Summary.vue'
 import Search from '@/Erp/Components/Search.vue'
-import { onMounted } from 'vue'
+import { onMounted, getCurrentInstance, ref } from 'vue'
 import { initFlowbite } from 'flowbite'
+
+const internalInstance = getCurrentInstance()
 
 // initialize components based on data attribute selectors
 // onMounted(() => {
@@ -22,6 +24,10 @@ const layoutStore = useLayoutStore()
 defineProps({
     title: String
 })
+const name = ref('')
+const changeText = (e) => {
+    name.value = e
+}
 const closeDom = () => {
     document.querySelector('.bow-old').classList.remove('block')
     document.querySelector('.bow-old').classList.add('hidden')
@@ -33,7 +39,7 @@ const closeDom = () => {
 <template>
     <div class="antialiased bg-gray-50 dark:bg-gray-900">
 
-        <NavBar :title="title"></NavBar>
+        <NavBar :title="title" @text="changeText"></NavBar>
         <!-- Sidebar -->
         <AsideMenu></AsideMenu>
         <main class="pl-4 pb-b h-auto pt-20 transition-position "
@@ -48,7 +54,7 @@ const closeDom = () => {
     <div class="bow-old fixed top-0 left-0 w-full h-full bg-gray-300 opacity-50 z-50 hidden" @click="closeDom"></div>
     <Summary></Summary>
      <!-- Dropdown menu -->
-    <Notification></Notification>
+    <Notification :name="name"></Notification>
     <!-- Dropdown menu -->
     <AppList></AppList>
     <!-- Dropdown menu -->

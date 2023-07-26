@@ -4,13 +4,15 @@ import AppList from '@/Erp/Components/AppList.vue'
 import UserProfile from '@/Erp/Components/UserProfile.vue'
 import { useLayoutStore } from '@/Stores/layout.js'
 import { reactive, computed,ref,getCurrentInstance, onMounted } from 'vue'
-
 import { usePage,Link, router } from '@inertiajs/vue3'
+import axios from 'axios'
 
 const internalInstance = getCurrentInstance()
+
 defineProps({
-    title: String
+    title: String,
 })
+const emit = defineEmits(['text'])
 const checkActive = ref(router.page.url)
 onMounted(() => {
     if(checkActive.value.charAt(0) === "/"){
@@ -36,6 +38,7 @@ const handlePaneClick = (e) => {
     internalInstance.appContext.config.globalProperties.$overflowHidenBody()
     document.querySelector('.bow-old').classList.remove('hidden')
     document.querySelector('.bow-old').classList.add('block')
+    emit('text', e)
 }
 const handleMenuLeft = () => {
   layoutStore.isAsideLgActive = false
@@ -182,13 +185,13 @@ const handleMenuLeft = () => {
                     data-dropdown-toggle="apps-dropdown"
                     class="w-9 h-9 flex items-center justify-center group p-2 ml-1.5 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-bghover group dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700  dark:focus:ring-main"
                 >
-                    <span class="sr-only">View notifications</span>
+                    <span class="sr-only">View apps</span>
                     <!-- Icon -->
                     <i class="icon-thumbnails text-icon dark:text-white group-hover:text-main"></i>
 
                 </button>
                  <button
-                    @click="handlePaneClick"
+                    @click="handlePaneClick('notifications')"
                     type="button"
                     data-dropdown-toggle="notification-dropdown"
                     class="w-9 h-9 flex items-center justify-center gourp ml-1.5 p-2 text-gray-500 rounded-lg group hover:text-gray-900 hover:bg-bghover dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"

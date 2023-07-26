@@ -17,6 +17,5 @@ Route::prefix('personnel')
     ->name('personnel')
     ->group(function (){
         Route::get('/','PersonnelController@index')->name('personnel.home');
-        Route::get('/{id}','PersonnelController@index')->name('personnel2.home');
-
+        Route::get('/notifications','PersonnelController@notifications')->name('personnel.notifications');
     });
