@@ -1,5 +1,3 @@
-//import './css/main.css';
-
 import NProgress from 'nprogress'
 import { createPinia } from 'pinia'
 import { useStyleStore } from '@admin/Stores/style.js'
@@ -65,7 +63,7 @@ createInertiaApp({
             .use(pinia)
             //.use(myPlugin)
             .use(ZiggyVue, Ziggy);
-             app.config.globalProperties.$overflowHidenBody = () => {
+        app.config.globalProperties.$overflowHidenBody = () => {
             document.querySelector('body').classList.add('overflow-hidden');
         }
         app.config.globalProperties.$removeOverflowHidenBody = () => {
@@ -73,17 +71,17 @@ createInertiaApp({
         }
         app.config.globalProperties.$myTrans = myTrans;
         app.directive('click-outside', {
-          mounted(el, binding, vnode) {
-            el.clickOutsideEvent = function(event) {
-              if (!(el === event.target || el.contains(event.target))) {
-                binding.value(event, el);
-              }
-            };
-            document.body.addEventListener('click', el.clickOutsideEvent);
-          },
-          unmounted(el) {
-            document.body.removeEventListener('click', el.clickOutsideEvent);
-          }
+            mounted(el, binding, vnode) {
+                el.clickOutsideEvent = function(event) {
+                    if (!(el === event.target || el.contains(event.target))) {
+                        binding.value(event, el);
+                    }
+                };
+                document.body.addEventListener('click', el.clickOutsideEvent);
+            },
+            unmounted(el) {
+                document.body.removeEventListener('click', el.clickOutsideEvent);
+            }
         });
         return app.mount(el);
     },
@@ -102,11 +100,11 @@ styleStore.setStyle(localStorage[styleKey] ?? 'basic')
 
 /* Dark mode */
 if ((!localStorage[darkModeKey] && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage[darkModeKey] === '1') {
-  styleStore.setDarkMode(false)
+    styleStore.setDarkMode(true)
 }
 
 /* Collapse mobile aside menu on route change */
 router.on('navigate', (event) => {
-  layoutStore.isAsideMobileExpanded = false
-  layoutStore.isAsideLgActive = false
+    layoutStore.isAsideMobileExpanded = false
+    layoutStore.isAsideLgActive = true
 })

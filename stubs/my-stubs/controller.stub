@@ -4,7 +4,7 @@ namespace $CLASS_NAMESPACE$;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Modules\$STUDLY_NAME$\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\$STUDLY_NAME$\Entities\ModelExample as $STUDLY_NAME$;
 use Inertia\Inertia;
@@ -13,6 +13,7 @@ class $CLASS$ extends Controller
 {
     public function __construct()
     {
+        $this->load();
         $this->middleware('can:$LOWER_NAME$ list', ['only' => ['index']]);
         $this->middleware('can:$LOWER_NAME$ create', ['only' => ['create', 'store']]);
         $this->middleware('can:$LOWER_NAME$ edit', ['only' => ['edit', 'update']]);

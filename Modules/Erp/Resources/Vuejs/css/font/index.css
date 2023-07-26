@@ -1,0 +1,54 @@
+/*@font-face {
+    font-family: 'Roboto';
+    src: url('/assets/fonts/roboto/Roboto-Regular.ttf') format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/assets/fonts/roboto/HelveticaWorld-Bold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}*/
+
+@font-face {
+    font-family: "HelveticaWorld";
+    src: url("./helveticaworld/HelveticaWorld-Regular.eot");
+    /* IE9 Compat Modes */
+    src: url("./helveticaworld/HelveticaWorld-Regular.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */
+        url("./helveticaworld/HelveticaWorld-Regular.otf") format("opentype"),
+        /* Open Type Font */
+        url("./helveticaworld/HelveticaWorld-Regular.ttf") format("truetype"),
+        /* Safari, Android, iOS */
+        url("./helveticaworld/HelveticaWorld-Regular.woff") format("woff"),
+        /* Modern Browsers */
+        url("./helveticaworld/HelveticaWorld-Regular.woff2") format("woff2");
+    /* Modern Browsers */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "HelveticaWorld";
+    src: url("./helveticaworld/HelveticaWorld-Bold.eot");
+    /* IE9 Compat Modes */
+    src: url("./helveticaworld/HelveticaWorld-Bold.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */
+        url("./helveticaworld/HelveticaWorld-Bold.otf") format("opentype"),
+        /* Open Type Font */
+        url("./helveticaworld/HelveticaWorld-Bold.ttf") format("truetype"),
+        /* Safari, Android, iOS */
+        url("./helveticaworld/HelveticaWorld-Bold.woff") format("woff"),
+        /* Modern Browsers */
+        url("./helveticaworld/HelveticaWorld-Bold.woff2") format("woff2");
+    /* Modern Browsers */
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

@@ -19,9 +19,11 @@ export default defineConfig({
     },
     plugins: [
         laravel({
-            input: ['resources/js/app.js',
+            input: [
                 'Modules/Admin/Resources/Vuejs/admin.js',
                 'Modules/Admin/Resources/Vuejs/css/main.css',
+                'Modules/Erp/Resources/Vuejs/app.js',
+                'Modules/Erp/Resources/Vuejs/css/main.css',
 
             ],
 

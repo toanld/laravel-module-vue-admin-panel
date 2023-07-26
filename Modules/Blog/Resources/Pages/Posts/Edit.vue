@@ -4,15 +4,15 @@ import {
   mdiMenu,
   mdiArrowLeftBoldOutline
 } from "@mdi/js"
-import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
-import SectionMain from "@/Components/SectionMain.vue"
-import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue"
-import CardBox from "@/Components/CardBox.vue"
-import FormField from '@/Components/FormField.vue'
-import FormControl from '@/Components/FormControl.vue'
-import BaseButton from '@/Components/BaseButton.vue'
-import BaseButtons from '@/Components/BaseButtons.vue'
-import editor from '@/Components/Tinymce.vue'
+import LayoutAuthenticated from "@admin/Layouts/LayoutAuthenticated.vue"
+import SectionMain from "@admin/Components/SectionMain.vue"
+import SectionTitleLineWithButton from "@admin/Components/SectionTitleLineWithButton.vue"
+import CardBox from "@admin/Components/CardBox.vue"
+import FormField from '@admin/Components/FormField.vue'
+import FormControl from '@admin/Components/FormControl.vue'
+import BaseButton from '@admin/Components/BaseButton.vue'
+import BaseButtons from '@admin/Components/BaseButtons.vue'
+import editor from '@admin/Components/Tinymce.vue'
 import Vue3TagsInput from 'vue3-tags-input'
 
 const props = defineProps({

@@ -1,8 +1,8 @@
 <script setup>
 import { Head } from '@inertiajs/vue3'
 import { computed, ref, onMounted } from 'vue'
-import { useMainStore } from '@/Stores/main'
-import * as chartConfig from '@/Components/Charts/chart.config.js'
+import { useMainStore } from '@admin/Stores/main'
+import * as chartConfig from '@admin/Components/Charts/chart.config.js'
 import LineChart from '@admin/Components/Charts/LineChart.vue'
 import SectionMain from '@admin/Components/SectionMain.vue'
 import CardBoxWidget from '@admin/Components/CardBoxWidget.vue'
@@ -22,14 +22,14 @@ const fillChartData = () => {
 onMounted(() => {
   fillChartData()
 })
+/*
 const mainStore = useMainStore()
-
-/* Fetch sample data */
 mainStore.fetch('clients')
 mainStore.fetch('history')
 
 const clientBarItems = computed(() => mainStore.clients.slice(0, 4))
 const transactionBarItems = computed(() => mainStore.history)
+//*/
 </script>
 
 <template>

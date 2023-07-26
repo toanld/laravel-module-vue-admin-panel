@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Inertia\Inertia;
 
@@ -14,8 +15,10 @@ class Controller extends BaseController
 
 
     public function load(){
+        //*/
         myapp()->rootViewInetia('admin::layouts.admin');
     }
+
 
     /**
      * Delete resource response

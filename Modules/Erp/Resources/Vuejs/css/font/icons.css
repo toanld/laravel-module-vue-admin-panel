@@ -1,0 +1,1 @@
+@key-frames icon-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}.icon-spin{animation:icon-spin 2s linear infinite}[class*=" icon-"].badge,[class^=icon-].badge{font-size:1em}
