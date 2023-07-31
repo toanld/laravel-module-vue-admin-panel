@@ -2,6 +2,7 @@
 
 return [
     'name' => '$STUDLY_NAME$',
+    'table_prefix' => '$LOWER_NAME$_',
     'menu' =>[
             "name" => '$STUDLY_NAME$',
             "uri" => "<nolink>",

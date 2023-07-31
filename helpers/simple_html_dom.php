@@ -21,6 +21,7 @@
  * Version Rev. 1.9.1 (291)
  */
 
+
 define('HDOM_TYPE_ELEMENT', 1);
 define('HDOM_TYPE_COMMENT', 2);
 define('HDOM_TYPE_TEXT', 3);
@@ -87,7 +88,9 @@ function file_get_html(
 		$dom->clear();
 		return false;
 	}
-
+    $contents = convertToUnicode($contents);
+	//$contents = str_replace([chr(9),chr(10),chr(13)],"",$contents);
+	$contents = Str::of($contents)->replaceMatches('/ {2,}/', ' ');
 	return $dom->load($contents, $lowercase, $stripRN);
 }
 

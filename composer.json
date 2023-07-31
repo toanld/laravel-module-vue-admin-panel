@@ -15,6 +15,7 @@
         "balajidharma/laravel-admin-core": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6",
+        "ryannielson/meta": "1.1.*",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",

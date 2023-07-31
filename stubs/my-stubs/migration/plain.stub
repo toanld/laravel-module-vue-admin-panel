@@ -13,7 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create(config('$LOWER_NAME$.table_prefix') . '$TABLE$', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->string('slug',170)->nullable()->index();
+            $table->string('md5',40)->index();
+            $table->integer('length')->index()->default(0);
+
+
+            $table->timestamps();
+            $table->index('created_at');
+            $table->index('updated_at');
+            $table->index(['length','md5']);
+        });
     }
 
     /**
@@ -23,6 +35,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists(config('$LOWER_NAME$.table_prefix') . '$TABLE$');
         //
     }
 };

@@ -15,7 +15,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     myapp()->getCurrentModule();
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
