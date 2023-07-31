@@ -2,11 +2,11 @@
 import { router } from '@inertiajs/vue3'
 import { mdiLogout, mdiClose, mdiMenu } from '@mdi/js'
 import { computed } from 'vue'
-import { useLayoutStore } from '@erp/Stores/layout.js'
-import { useStyleStore } from '@erp/Stores/style.js'
-import AsideMenuList from '@erp/Components/AsideMenuList.vue'
-import AsideMenuItem from '@erp/Components/AsideMenuItem.vue'
-import BaseIcon from '@erp/Components/BaseIcon.vue'
+import { useLayoutStore } from '@/Stores/layout.js'
+import { useStyleStore } from '@/Stores/style.js'
+import AsideMenuList from '@/Components/AsideMenuList.vue'
+import AsideMenuItem from '@/Components/AsideMenuItem.vue'
+import BaseIcon from '@/Components/BaseIcon.vue'
 
 defineProps({
   menu: {
