@@ -4,6 +4,11 @@ import vue from '@vitejs/plugin-vue';
 const path = require('path');
 let glob = require('glob');
 export default defineConfig({
+    build: {
+        outDir: 'public/assets/build/all',
+        emptyOutDir: true,
+        manifest: true,
+    },
     resolve:{
         alias:{
             '@modules' : path.resolve(__dirname + '/Modules'),
@@ -19,6 +24,7 @@ export default defineConfig({
     },
     plugins: [
         laravel({
+            buildDirectory: 'assets/build/all',
             input: [
                 'Modules/Admin/Resources/Vuejs/admin.js',
                 'Modules/Admin/Resources/Vuejs/css/main.css',

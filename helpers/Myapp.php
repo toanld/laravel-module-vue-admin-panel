@@ -10,7 +10,7 @@ class Myapp
     protected $mobileDetect = null;
     protected $currentModule = null;
 
-    protected $rootViewInetia = 'erp::layouts.app';
+    protected $rootViewInetia = 'admin::layouts.admin';
     function rootViewInetia($rootView = null){
         if(!empty($rootView)) $this->rootViewInetia = $rootView;
         return $this->rootViewInetia;

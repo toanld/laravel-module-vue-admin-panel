@@ -24,7 +24,6 @@ class BlogController extends Controller
         $this->middleware('can:blog delete', ['only' => ['destroy']]);
     }
     public function getData2(){
-        sleep(10);
         $data2 = Blog::orderBy('id','ASC')->paginate(30);
         return $data2;
     }
@@ -101,7 +100,7 @@ class BlogController extends Controller
         $blog->slug = Str::slug($request->title);
         $blog->user_id = Auth::user()->id;
         $blog->teaser = $request->teaser;
-        $blog->content = $request->content;
+        $blog->content = $request->description;
         $blog->category_id = $request->category_id;
         $blog->tag_id = implode(',', $tagId);
         $blog->status = $request->status ? 1 : 0;
@@ -178,7 +177,7 @@ class BlogController extends Controller
             $tagId = array_unique($tagId);
         }
 
-        
+
         if($data){
             if ($request->file('image')) {
                 $path = $request->file('image')->store('public');
@@ -189,7 +188,7 @@ class BlogController extends Controller
             $data->slug = Str::slug($request->title);
             $data->user_id = Auth::user()->id;
             $data->teaser = $request->teaser;
-            $data->content = $request->content;
+            $data->content = $request->description;
             $data->category_id = $request->category_id;
             $data->status = 0;
             $data->tag_id = implode(',', $tagId);

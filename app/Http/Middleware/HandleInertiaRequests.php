@@ -14,7 +14,7 @@ class HandleInertiaRequests extends Middleware
      *
      * @var string
      */
-    protected $rootView = 'erp::layouts.app';
+    protected $rootView = 'admin::layouts.admin';
 
     /**
      * Determine the current asset version.

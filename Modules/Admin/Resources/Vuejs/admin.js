@@ -106,5 +106,5 @@ if ((!localStorage[darkModeKey] && window.matchMedia('(prefers-color-scheme: dar
 /* Collapse mobile aside menu on route change */
 router.on('navigate', (event) => {
     layoutStore.isAsideMobileExpanded = false
-    layoutStore.isAsideLgActive = true
+    layoutStore.isAsideLgActive = false
 })
