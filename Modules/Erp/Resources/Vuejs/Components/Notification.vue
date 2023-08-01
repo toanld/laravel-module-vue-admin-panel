@@ -1,24 +1,52 @@
 <script setup>
-import { ref,onMounted } from "vue"
+import { ref, computed, watch } from "vue"
+import { router, usePage } from '@inertiajs/vue3'
+// import { usePage } from '@inertiajs/inertia-vue3';
+import Loading from './Loading.vue'
 // import { Tabs, Tab } from 'flowbite-vue'
-
+import axios from 'axios'
+import { Inertia } from '@inertiajs/inertia';
 import tabs from '@erp/Components/Tabs.vue'
 import tab from '@erp/Components/Tab.vue'
+const { data, get } = usePage();
+
+
 const activeTab = ref('all')
-const el = ref()
-onMounted(() => {
-    console.log('onMounted');
+const props = defineProps({
+    name: String
 })
+
+watch(() => props.name, (first, second) => {
+     if(first == 'notifications'){
+        getNoti()
+     }
+});
+const showLoading = ref(false)
+const getNoti = () => {
+
+    // Inertia.get('/personnel/notifications');
+    axios.get('/personnel/notifications').then(function (response) {
+        showLoading.value = true
+        if(response.data){
+            showLoading.value = false
+            console.log(response)
+        }
+    })
+}
 </script>
 <template>
       <!-- Notifications -->
     <div
         class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl !-left-5"
         id="notification-dropdown"
+
     >
+
         <div>
+            <Loading top="top-12" v-if="showLoading"></Loading>
             <tabs variant="underline" v-model="activeTab" class="" >
             <tab name="work" title="Công việc">
+
               <div class="overflow-y-auto h-96">
                   <a
                 href="#"

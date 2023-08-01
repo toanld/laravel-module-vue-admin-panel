@@ -158,7 +158,7 @@ return [
             "icon" => 'icon-xbox-menu',
             "link" => "",
             "class" => "",
-            'summary' => 'Menu',
+            'summary' => 'menu',
             'text' => "list-menu",
             "children" => true
         ],

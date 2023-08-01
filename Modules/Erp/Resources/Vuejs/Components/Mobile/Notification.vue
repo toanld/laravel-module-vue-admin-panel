@@ -6,8 +6,8 @@ import Loading from '../Loading.vue'
 // import { Tabs, Tab } from 'flowbite-vue'
 import axios from 'axios'
 import { Inertia } from '@inertiajs/inertia';
-import tabs from '@/Erp/Components/Tabs.vue'
-import tab from '@/Erp/Components/Tab.vue'
+import tabs from '@erp/Components/Tabs.vue'
+import tab from '@erp/Components/Tab.vue'
 
 const props = defineProps({
     modelValue: {
