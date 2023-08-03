@@ -2,6 +2,8 @@
 import { Head, Link, useForm,router } from "@inertiajs/vue3"
 import LayoutAuthenticated from "@erp/Layouts/LayoutAuthenticated.vue"
 import LayoutErp from "@erp/Layouts/LayoutErp.vue"
+import BaseInput from "@erp/Components/BaseInput.vue"
+
 
 const props = defineProps({
     datas: {
@@ -35,6 +37,7 @@ function destroy(id) {
 <template>
     <LayoutErp>
         <main class="p-4 md:ml-64 h-auto pt-20">
+            <BaseInput></BaseInput>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 <div
                     class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"

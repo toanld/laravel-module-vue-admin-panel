@@ -21,7 +21,7 @@ watch(() => props.name, (first, second) => {
         getNoti()
      }
 });
-const showLoading = ref(false)
+const showLoading = ref(true)
 const getNoti = () => {
 
     // Inertia.get('/personnel/notifications');
