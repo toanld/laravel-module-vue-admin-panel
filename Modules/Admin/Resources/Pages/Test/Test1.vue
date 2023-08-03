@@ -1,92 +1,77 @@
-<script setup>
-import { Head, Link, useForm } from "@inertiajs/vue3"
-import { reactive } from 'vue'
-import {
-  mdiAccountKey,
-  mdiPlus,
-  mdiSquareEditOutline,
-  mdiTrashCan,
-  mdiAlertBoxOutline,
-} from "@mdi/js"
-import LayoutAuthenticated from "@admin/Layouts/LayoutAuthenticated.vue"
-import SectionMain from "@admin/Components/SectionMain.vue"
-import SectionTitleLineWithButton from "@admin/Components/SectionTitleLineWithButton.vue"
-import BaseButton from "@admin/Components/BaseButton.vue"
-import CardBox from "@admin/Components/CardBox.vue"
-import BaseButtons from "@admin/Components/BaseButtons.vue"
-import NotificationBar from "@admin/Components/NotificationBar.vue"
-import Pagination from "@admin/Components/Admin/Pagination.vue"
-import Sort from "@admin/Components/Admin/Sort.vue"
-
-const props = defineProps({
-    users: {
-        type: Array,
-        default: () => ([]),
-    },
-})
-
-const form = useForm({
-    username: 'toan',
-    email: 'toanld1905@gmail.com',
-})
-
-function submitForm() {
-    // Gửi yêu cầu thêm mới người dùng tới Laravel qua Inertia
-    form.post(route('testsubmit'));
-}
-
-function destroy(id) {
-    if (confirm("Are you sure you want to delete?")) {
-        formDelete.delete(route("user.destroy", id))
-    }
-}
-
-</script>
 <template>
-  <LayoutAuthenticated>
-    <Head title="Users" />
-    <SectionMain>
-        <div>
-            <form action="#">
-                <div class="grid gap-4 mb-4 sm:grid-cols-2">
-                    <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name" value="iPad Air Gen 5th Wi-Fi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ex. Apple iMac 27&ldquo;">
-                    </div>
-                    <div>
-                        <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-                        <input type="text" name="brand" id="brand" value="Google" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ex. Apple">
-                    </div>
-                    <div>
-                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                        <input type="number" value="399" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$299">
-                    </div>
-                    <div>
-                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Electronics</option>
-                            <option value="TV">TV/Monitors</option>
-                            <option value="PC">PC</option>
-                            <option value="GA">Gaming/Console</option>
-                            <option value="PH">Phones</option>
-                        </select>
-                    </div>
-                    <div class="sm:col-span-2">
-                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                        <textarea id="description" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write a description...">Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US</textarea>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Update product
-                    </button>
-                    <button type="button" class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                        <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                        Delete
-                    </button>
-                </div>
-            </form>
+    <div>
+        <Head title="Contacts" />
+        <h1 class="mb-8 text-3xl font-bold">Contacts</h1>
+        <div class="flex items-center justify-between mb-6">
+            <search-filter v-model="form.search" class="mr-4 w-full max-w-md" @reset="reset">
+                <label class="block text-gray-700">Trashed:</label>
+                <select v-model="form.trashed" class="form-select mt-1 w-full">
+                    <option :value="null" />
+                    <option value="with">With Trashed</option>
+                    <option value="only">Only Trashed</option>
+                </select>
+            </search-filter>
+            <Link class="btn-indigo" href="/contacts/create">
+                <span>Create</span>
+                <span class="hidden md:inline">&nbsp;Contact</span>
+            </Link>
         </div>
-    </SectionMain>
-  </LayoutAuthenticated>
+        <div class="bg-white rounded-md shadow overflow-x-auto">
+            <table class="w-full whitespace-nowrap">
+                <tr class="text-left font-bold">
+                    <th class="pb-4 pt-6 px-6">Name</th>
+                    <th class="pb-4 pt-6 px-6">Organization</th>
+                    <th class="pb-4 pt-6 px-6">City</th>
+                    <th class="pb-4 pt-6 px-6" colspan="2">Phone</th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </template>
+
+<script>
+import { Head, Link } from '@inertiajs/vue3'
+import Icon from '@admin/Shared/Icon.vue'
+import pickBy from 'lodash/pickBy'
+import Layout from '@admin/Shared/Layout.vue'
+import throttle from 'lodash/throttle'
+import mapValues from 'lodash/mapValues'
+import Pagination from '@admin/Shared/Pagination.vue'
+import SearchFilter from '@admin/Shared/SearchFilter.vue'
+
+export default {
+    components: {
+        Head,
+        Icon,
+        Link,
+        Pagination,
+        SearchFilter,
+    },
+    layout: Layout,
+    props: {
+        filters: Object,
+        contacts: Object,
+    },
+    data() {
+        return {
+            form: {
+                search: '',
+                trashed: '',
+            },
+        }
+    },
+    watch: {
+        form: {
+            deep: true,
+            handler: throttle(function () {
+                this.$inertia.get('/contacts', pickBy(this.form), { preserveState: true })
+            }, 150),
+        },
+    },
+    methods: {
+        reset() {
+            this.form = mapValues(this.form, () => null)
+        },
+    },
+}
+</script>

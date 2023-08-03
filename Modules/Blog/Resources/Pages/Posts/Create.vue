@@ -25,7 +25,7 @@ const props = defineProps({
 const form = useForm({
   title: '',
   teaser: '',
-  content: '',
+  description: '',
   category_id: 0,
   status: true,
   publish_date: null,
@@ -123,10 +123,10 @@ function handleChangeTag(tags) {
         </FormField>
 
         <FormField
-          label="Content"
-          :class="{ 'text-red-400': form.errors.content }"
+          label="description"
+          :class="{ 'text-red-400': form.errors.description }"
         >
-          <editor v-model="form.content" :error="form.errors.content"></editor>
+          <editor v-model="form.description" :error="form.errors.description"></editor>
 
         </FormField>
 

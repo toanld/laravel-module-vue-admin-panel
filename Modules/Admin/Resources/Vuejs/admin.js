@@ -100,11 +100,11 @@ styleStore.setStyle(localStorage[styleKey] ?? 'basic')
 
 /* Dark mode */
 if ((!localStorage[darkModeKey] && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage[darkModeKey] === '1') {
-    styleStore.setDarkMode(true)
+    styleStore.setDarkMode(false)
 }
 
 /* Collapse mobile aside menu on route change */
 router.on('navigate', (event) => {
     layoutStore.isAsideMobileExpanded = false
-    layoutStore.isAsideLgActive = true
+    layoutStore.isAsideLgActive = false
 })

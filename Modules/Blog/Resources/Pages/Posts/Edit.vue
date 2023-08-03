@@ -34,7 +34,7 @@ const form = useForm({
   _method: 'put',
   title: props.data.title,
   teaser: props.data.teaser,
-  content: props.data.content,
+  description: props.data.description,
   category_id: props.data.category_id,
   status: props.data.status ? true : false,
   publish_date: props.data.publish_date,
@@ -135,10 +135,10 @@ function onFileChange(e) {
         </FormField>
 
         <FormField
-          label="Content"
-          :class="{ 'text-red-400': form.errors.content }"
+          label="description"
+          :class="{ 'text-red-400': form.errors.description }"
         >
-          <editor v-model="form.content" :error="form.errors.content"></editor>
+          <editor v-model="form.description" :error="form.errors.description"></editor>
         </FormField>
 
         <FormField label="Tags">

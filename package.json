@@ -26,6 +26,7 @@
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/vue3": "^1.0.0",
         "@tinymce/tinymce-vue": "^4.0.7",
+        "@popperjs/core": "^2.11.0",
         "flowbite": "^1.7.0",
         "flowbite-vue": "^0.0.14",
         "glob": "^10.3.3",

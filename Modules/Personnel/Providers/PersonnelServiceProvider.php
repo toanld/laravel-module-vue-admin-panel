@@ -24,6 +24,7 @@ class PersonnelServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        myapp()->rootViewInetia('erp::layouts.app');
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
