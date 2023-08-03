@@ -1,1 +1,0 @@
-import{d as e}from"./md5.aa6931b5.js";const i=e("layout",{state:()=>({isAsideMobileExpanded:!1,isAsideLgActive:!1,isAsideExpanded:!1}),actions:{asideMobileToggle(){this.isAsideMobileExpanded=!this.isAsideMobileExpanded},asideToggle(){this.isAsideExpanded=!this.isAsideExpanded}}});export{i as u};

@@ -70,7 +70,7 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'content' => 'required',
+            'description' => 'required',
             'category_id' => 'required'
         ]);
 
@@ -100,7 +100,7 @@ class BlogController extends Controller
         $blog->slug = Str::slug($request->title);
         $blog->user_id = Auth::user()->id;
         $blog->teaser = $request->teaser;
-        $blog->content = $request->description;
+        $blog->description = $request->description;
         $blog->category_id = $request->category_id;
         $blog->tag_id = implode(',', $tagId);
         $blog->status = $request->status ? 1 : 0;
@@ -148,7 +148,7 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'content' => 'required',
+            'description' => 'required',
             'category_id' => 'required'
         ]);
         $data = Blog::find($id);
@@ -188,7 +188,7 @@ class BlogController extends Controller
             $data->slug = Str::slug($request->title);
             $data->user_id = Auth::user()->id;
             $data->teaser = $request->teaser;
-            $data->content = $request->description;
+            $data->description = $request->description;
             $data->category_id = $request->category_id;
             $data->status = 0;
             $data->tag_id = implode(',', $tagId);

@@ -30,8 +30,21 @@ const form = useForm({
   status: true,
   publish_date: null,
   tags: [],
-  image: null
+  image: null,
+  errors:[]
 })
+function submitForm(){
+    form.post(route('blog.store'),{
+        preserveScroll: true,
+        onSuccess: (data) => {
+            console.log(data);
+        },
+        onError: (e) => {
+            console.log(e);
+        }
+    });
+}
+console.log(form);
 
 function handleChangeTag(tags) {
   form.tags = tags;
@@ -57,7 +70,7 @@ function handleChangeTag(tags) {
       </SectionTitleLineWithButton>
       <CardBox
         form
-        @submit.prevent="form.post(route('blog.store'))"
+        @submit.prevent="submitForm()"
       >
         <FormField
           label="Title"
