@@ -49,11 +49,14 @@ const props = defineProps({
     data: {
         type: Object,
         default: () => {}
+    },
+    index: {
+        type: Number,
+        default: 0
     }
 })
 const emit = defineEmits(['update:modelValue','update:id'])
 const inputValue = ref('')
-const width = ref(0)
 const showBox = ref(false)
 const idv = ref(0)
 const loading = ref(false)
@@ -83,7 +86,6 @@ const filterData = computed(() => {
 
 
 const handleClickInput = () => {
-    width.value = document.querySelector('.'+props.name).offsetWidth
     showBox.value = true
 }
 
@@ -100,10 +102,10 @@ const del = () => {
 </script>
 <template>
     <div class="relative py-2" :class="[mb]">
-        <input type="text" v-model="inputValue" :name="props.name" id="floating_outlined" :class="props.name" class="block px-2.5 placeholder:opacity-0 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent bg-white rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-main dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-main peer focus:placeholder:opacity-100" :placeholder="placeholder" :autocomplete="autocomplete"
+        <input type="text" v-model="inputValue" :name="props.name" :id="'floating_outlined'+index" :class="props.name" class="block px-2.5 placeholder:opacity-0 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent bg-white rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-main dark:focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-main focus:border-main peer focus:placeholder:opacity-100" :placeholder="placeholder" :autocomplete="autocomplete"
         @click="handleClickInput"
        />
-        <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-3 left-1 flex items-center">
+        <label :for="'floating_outlined'+index" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-3 left-1 flex items-center line-clamp-1">
             {{ title }}
             <i class="icon-questions ml-1 cursor-pointer" v-if="tooltip" data-tooltip-target="tooltip-default"></i>
 

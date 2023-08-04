@@ -1,5 +1,5 @@
 const plugin = require('tailwindcss/plugin')
-
+const colors = require("tailwindcss/colors")
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,6 +13,7 @@ module.exports = {
     './Modules/*/Resources/**/*.{vue,js,ts,jsx,tsx}',
     './resources/js/**/*.js',
       "./node_modules/flowbite/**/*.js",
+     "./node_modules/vue-tailwind-datepicker/**/*.js",
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
@@ -25,7 +26,12 @@ module.exports = {
             primary: {"1050" : "#f94949","1000": "#edf1f8","50":"#eef2ff","100":"#e0e7ff","200":"#c7d2fe","300":"#a5b4fc","400":"#818cf8","500":"#6366f1","600":"#4f46e5","700":"#4338ca","800":"#3730a3","900":"#312e81","950":"#1e1b4b"},
             'main' : 'var(--color-main)',
             'bghover': 'var(--color-bg-hover)',
-            'icon' : '#768286'
+            'icon' : '#768286',
+            // 'vtd-primary':  colors.sky,
+            'vtd-primary-500' : 'var(--color-main)',
+            'vtd-primary-50' : 'var(--color-bg-hover)',
+            'vtd-primary-300' : 'var(--color-bg-hover)',
+            'vtd-secondary': colors.gray,
         },
         width: {
             '70' : '70px',
