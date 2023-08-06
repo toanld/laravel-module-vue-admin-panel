@@ -16,7 +16,7 @@ const props = defineProps({
   }
 })
 
-const spanClass = computed(() => `relative overflow-hidden rounded-2xl bg-gray-200 before:content-[''] before:absolute before:-left-1/2 before:w-1/3 before:bg-main before:rounded-2xl ${'before:'+props.h}  ${props.w} ${props.h}  ${props.top}`)
+const spanClass = computed(() => `relative overflow-hidden rounded-2xl bg-gray-200 before:content-[''] before:absolute before:-left-1/2 before:h-0.5  before:w-1/3 before:bg-main before:rounded-2xl   ${props.w} ${props.h}  ${props.top}`)
 </script>
 
 <template>

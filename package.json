@@ -25,14 +25,15 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/vue3": "^1.0.0",
-        "@tinymce/tinymce-vue": "^4.0.7",
         "@popperjs/core": "^2.11.0",
+        "@tinymce/tinymce-vue": "^4.0.7",
         "flowbite": "^1.7.0",
         "flowbite-vue": "^0.0.14",
         "glob": "^10.3.3",
         "md5": "^2.3.0",
         "nprogress": "^0.2.0",
         "vue3-tags-input": "^1.0.7",
-        "sass": "^1.58.3"
+        "sass": "^1.64.2",
+        "vue-tailwind-datepicker": "^1.4.5"
     }
 }

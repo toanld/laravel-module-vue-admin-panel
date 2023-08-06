@@ -2,8 +2,8 @@ import NProgress from 'nprogress'
 import { createPinia } from 'pinia'
 import { useStyleStore } from '@erp/Stores/style.js'
 import { useLayoutStore } from '@erp/Stores/layout.js'
-
 import { darkModeKey, styleKey } from '@erp/config.js'
+import VueTailwindDatepicker from 'vue-tailwind-datepicker'
 import 'flowbite';
 import { createApp, h} from 'vue';
 //window.md5 = require('md5');
@@ -62,6 +62,7 @@ createInertiaApp({
             .use(plugin)
             .use(pinia)
             //.use(myPlugin)
+            .use(VueTailwindDatepicker)
             .use(ZiggyVue, Ziggy);
              app.config.globalProperties.$overflowHidenBody = () => {
             document.querySelector('body').classList.add('overflow-hidden');
